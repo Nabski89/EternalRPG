@@ -37,11 +37,12 @@
   </PropertyGroup>
   <ItemGroup>
      <Compile Include="Assets\Script\SkillUpScript.cs" />
+     <Compile Include="Assets\Script\UIMana.cs" />
      <Compile Include="Assets\Script\ButtonController.cs" />
      <Compile Include="Assets\Script\Projectile.cs" />
      <Compile Include="Assets\Script\SkillLizard.cs" />
      <Compile Include="Assets\Script\UIHealth.cs" />
-     <Compile Include="Assets\Script\UIMana.cs" />
+     <Compile Include="Assets\Script\UIStam.cs" />
     <Reference Include="UnityEngine">
         <HintPath>C:/Program Files/Unity/Hub/Editor/2020.2.4f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>

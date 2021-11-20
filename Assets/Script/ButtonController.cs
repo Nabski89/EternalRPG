@@ -8,7 +8,7 @@ public class ButtonController : MonoBehaviour
 
 
     public int maxHealth = 10;
-    public int currentHealth = 3;
+    public int currentHealth = 10;
 
     //Stamina, controls resting
     public int StaminaMax = 600;
@@ -90,21 +90,22 @@ public class ButtonController : MonoBehaviour
             }
         }
 
-
         //Go to sleep and restore stamina
         if (resting == 1)
         {
             Stamina = Stamina + StaminaRegen;
             Mana = Mana + ManaRegen;
-
             if (Stamina >= 600)
             {
                 Stamina = StaminaMax;
                 resting = 0;
-
-                Debug.Log("GOOD MORNINGGGGGGG : ");
             }
         }
+//update our stamina bar
+                Debug.Log("Health Bullshit Lizard Activate : ");
+        UIStam.instance.SetValue(Stamina / (float)StaminaMax);
+
+
     }
 
 

@@ -14,19 +14,15 @@ public class UIHealth : MonoBehaviour
     void Awake()
     {
         instance = this;
-        Debug.Log("Fail Part nut ");
     }
 
     void Start()
     {
-        Debug.Log("Fail Part thigh");
         originalSize = maskHealth.rectTransform.rect.width;
-        Debug.Log("Fail Part butt ");
     }
 
     public void SetValue(float value)
     {
-        Debug.Log("Fail Part cut ");
         maskHealth.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, originalSize * value);
     }
 }
