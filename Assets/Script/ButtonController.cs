@@ -17,7 +17,7 @@ public class ButtonController : MonoBehaviour
 
     //Mana, controls casting spells
     public int ManaMax = 100;
-    public int ManaRegen = 1;
+    public int ManaRegen = 0;
     public int Mana = 1;
 
     //Age, Controls if you die
@@ -46,15 +46,24 @@ public class ButtonController : MonoBehaviour
     public void ChangeHealth(int amount)
     {
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
-
-        Debug.Log("Fail Part 1 ");
-        //This tries to send it to the health UI
+        //This sends it to the health UI
         UIHealth.instance.SetValue(currentHealth / (float)maxHealth);
-        Debug.Log("Fail Part 2 ");
         Debug.Log(currentHealth + "/" + maxHealth);
-        Debug.Log("Health Bullshit Lizard Activate : ");
-
     }
+    //Dis shoots da bullet
+
+public GameObject projectilePrefab;
+    void Launch()
+    {
+        Debug.Log("Ur a wizard arry");
+
+        GameObject projectileObject = Instantiate(projectilePrefab);
+
+  //      projectilePrefab projectile = projectileObject.GetComponent<projectilePrefab>();
+ //       projectile.Launch(lookDirection, 300);
+  
+    }
+    
 
 
     // Start is called before the first frame update
@@ -101,11 +110,14 @@ public class ButtonController : MonoBehaviour
                 resting = 0;
             }
         }
-//update our stamina bar
-                Debug.Log("Health Bullshit Lizard Activate : ");
+        //update our stamina bar
         UIStam.instance.SetValue(Stamina / (float)StaminaMax);
 
 
+                if (Input.GetKeyDown(KeyCode.C))
+        {
+            Launch();
+        }
     }
 
 
@@ -120,12 +132,15 @@ public class ButtonController : MonoBehaviour
             skillUpReq = 10 + skill * skill;
             skillUpProgress = 0;
         }
+        if (skill == 10 && skillUpProgress == 0)
+        {
+            Debug.Log("Ur a wizard arry");
+            //       GameObject ButtonController2 = Instantiate(Object);
+        }
     }
 
 
 
-
-    //Dis shoots da bullet
 
 
 
