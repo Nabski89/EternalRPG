@@ -5,8 +5,6 @@ using UnityEngine;
 public class ButtonController : MonoBehaviour
 {
     public int resting = 0;
-
-
     public int maxHealth = 10;
     public int currentHealth = 10;
 
@@ -17,7 +15,7 @@ public class ButtonController : MonoBehaviour
 
     //Mana, controls casting spells
     public int ManaMax = 100;
-    public int ManaRegen = 0;
+    public int ManaRegen = 1;
     public int Mana = 1;
 
     //Age, Controls if you die
@@ -27,7 +25,28 @@ public class ButtonController : MonoBehaviour
     public int skill = 0;
     public int skillUpReq = 10;
     public int skillUpProgress = 0;
+    public int ActiveObject = 0;
 
+    public void Deselected()
+    {
+        ActiveObject = 0;
+        //figure out how to call your own script to reset this value to 0
+        Debug.Log("WE SLEEP NOW");
+    }
+    public void OnMouseDown()
+    {
+        Debug.Log("WHAT CHU WANT");
+
+
+        ButtonController controller = gameObject.GetComponent<ButtonController>();
+        if (controller != null)
+        {
+            controller.Deselected();
+            Debug.Log("ZUG ZUG");
+            transform.localScale += new Vector3(1, 0, 1);
+            ActiveObject = 1;
+        }
+    }
 
     //some random script that should really be it's own file
 
@@ -52,18 +71,18 @@ public class ButtonController : MonoBehaviour
     }
     //Dis shoots da bullet
 
-public GameObject projectilePrefab;
+    public GameObject projectilePrefab;
     void Launch()
     {
         Debug.Log("Ur a wizard arry");
 
         GameObject projectileObject = Instantiate(projectilePrefab);
 
-  //      projectilePrefab projectile = projectileObject.GetComponent<projectilePrefab>();
- //       projectile.Launch(lookDirection, 300);
-  
+        //      projectilePrefab projectile = projectileObject.GetComponent<projectilePrefab>();
+        //       projectile.Launch(lookDirection, 300);
+
     }
-    
+
 
 
     // Start is called before the first frame update
@@ -79,7 +98,7 @@ public GameObject projectilePrefab;
         Mana = Mathf.Clamp(Mana + ManaRegen, 0, ManaMax);
         UIMana.instance.SetValue(Mana / (float)ManaMax);
         //Multiply everything by time delta I guess because it's updated per frame for some janky reason
-        if (resting == 0)
+        if (resting == 0 && ActiveObject == 1)
         {
 
             //these make it move with the arrow keys       
@@ -114,7 +133,7 @@ public GameObject projectilePrefab;
         UIStam.instance.SetValue(Stamina / (float)StaminaMax);
 
 
-                if (Input.GetKeyDown(KeyCode.C))
+        if (Input.GetKeyDown(KeyCode.C))
         {
             Launch();
         }
