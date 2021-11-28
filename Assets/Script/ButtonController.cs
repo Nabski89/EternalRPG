@@ -55,10 +55,6 @@ public class ButtonController : MonoBehaviour
     }
 
 
-
-
-
-
     public void babymakeing(int babyamount)
     {
         if (babymake == 0)
@@ -158,7 +154,6 @@ public class ButtonController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        UIResources.instance.MEATY();
         //Multiply everything by time delta I guess because it's updated per frame for some janky reason
         if (resting == 0 && ActiveObject == 1)
         {
