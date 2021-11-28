@@ -36,9 +36,11 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets\Script\ResourceTracker.cs" />
      <Compile Include="Assets\Script\SkillUpScript.cs" />
      <Compile Include="Assets\Script\UIMana.cs" />
      <Compile Include="Assets\Script\CraftResearch.cs" />
+     <Compile Include="Assets\Script\UIResources.cs" />
      <Compile Include="Assets\Script\ButtonController.cs" />
      <Compile Include="Assets\Script\UIStam.cs" />
      <Compile Include="Assets\Script\projectilePrefab.cs" />
@@ -46,8 +48,7 @@
      <Compile Include="Assets\Script\Reproduce.cs" />
      <Compile Include="Assets\Script\UIHealth.cs" />
      <Compile Include="Assets\Script\VOID.cs" />
-     <Compile Include="Assets\Script\ResourceTracker.cs" />
-     <Compile Include="Assets\Script\UIResources.cs" />
+     <Compile Include="Assets\Script\ResourceMeat.cs" />
     <Reference Include="UnityEngine">
         <HintPath>C:/Program Files/Unity/Hub/Editor/2020.2.4f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>

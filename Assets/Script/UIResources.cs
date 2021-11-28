@@ -25,9 +25,8 @@ public class UIResources : MonoBehaviour
         UIMeatMax.text = MeatMaxnottext.ToString();
         UIMeat.text = Meatnottext.ToString();
     }
-    public void MEATY() //SetValue(float value)
+    public void ResourceUpdate(int Meatnottext, int MeatMaxnottext) //SetValue(float value)
     {
-        MeatMaxnottext += 1;
         UIMeat.text = Meatnottext.ToString();
         UIMeatMax.text = MeatMaxnottext.ToString();
     } 

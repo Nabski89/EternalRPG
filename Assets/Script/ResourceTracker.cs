@@ -10,16 +10,16 @@ public class ResourceTracker : MonoBehaviour
 
     //t1
     public int meat = 1;
-    public int meatMax = 1;
+    public int meatMax = 3;
 
     public int wheat = 1;
-    public int wheatMax = 1;
+    public int wheatMax = 3;
 
     public int ore = 1;
-    public int oreMax = 1;
+    public int oreMax = 3;
 
     public int wood = 1;
-    public int woodMax = 1;
+    public int woodMax = 3;
 
     //research 
     public int scrolls = 1;
@@ -42,23 +42,24 @@ public class ResourceTracker : MonoBehaviour
         Application.targetFrameRate = 30;
     }
 
-    // Update is called once per frame
+ /*   // Update is called once per frame
     void Update()
     {
 
     }
+*/
 
-
+    //checks if you've got below your max resources, and updates the UI
     public void ResourceGain(int number, int resource, int resourceMax)
     {
-
+        Debug.Log("Is it less than the max?");
+        Debug.Log("number" + number + " Resource" + resource + "max" + resourceMax);
         if (resource < resourceMax)
         {
             resource = Mathf.Min(resource + number, resourceMax);
+            meat = resource;
             Debug.Log("You gained" + number + " " + resource + "out of a maximum" + resourceMax);
+            UIResources.instance.ResourceUpdate(resource, resourceMax);
         }
-        //   ButtonController.instance.skill = scrolls;
     }
-
-
 }
