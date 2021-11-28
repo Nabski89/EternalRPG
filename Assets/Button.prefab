@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6146496856518080431}
   - component: {fileID: 1540885162274283651}
+  - component: {fileID: 8548410886725601511}
   m_Layer: 0
   m_Name: Button
   m_TagString: Untagged
@@ -82,3 +83,36 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &8548410886725601511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5399046941131522813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85136b4cedd7a924cb3e697e91db7448, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resting: 0
+  maxHealth: 10
+  currentHealth: 10
+  StaminaMax: 600
+  StaminaRegen: 4
+  Stamina: 600
+  ManaMax: 100
+  ManaRegen: 1
+  Mana: 1
+  skill: 0
+  skillUpReq: 10
+  skillUpProgress: 0
+  ActiveObject: 0
+  DNA1X: 0
+  DNA1Y: 0
+  DNA2X: 0
+  DNA2Y: 0
+  babymake: 0
+  babymakeCooldown: 1200
+  crafting: 100
+  projectilePrefab: {fileID: 5399046941131522813}

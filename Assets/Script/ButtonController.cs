@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ButtonController : MonoBehaviour
 {
-        public static ButtonController instance { get; set; }
+    public static ButtonController instance { get; set; }
     public int resting = 0;
     public int maxHealth = 10;
     public int currentHealth = 10;
@@ -46,12 +46,12 @@ public class ButtonController : MonoBehaviour
 
     void Start()
     {
- maxHealth = 10;
- currentHealth = 10;
- ActiveObject = 0;
+        maxHealth = 10;
+        currentHealth = 10;
+        ActiveObject = 0;
 
 
-             DNA1X = Reproduce.instance.DNA1X;
+   //     DNA1X = Reproduce.instance.DNA1X;
     }
 
 
@@ -74,21 +74,21 @@ public class ButtonController : MonoBehaviour
     }
     public void OnMouseDown()
     {
-//Deselect everything
-ActiveObject = 0;
+        //Deselect everything
+        ActiveObject = 0;
 
-//until the next 9 lines are about if you clicked on something             
-RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
-if(hit.collider != null)
-{
-    Debug.Log ("Target Position: " + hit.collider.gameObject.transform.position);
-    Debug.Log ("You hit this bitch");
-    ActiveObject = 1;
-}
-else{    Debug.Log ("Miss");};
-//end clicking on something             
+        //until the next 9 lines are about if you clicked on something             
+        RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+        if (hit.collider != null)
+        {
+            Debug.Log("Target Position: " + hit.collider.gameObject.transform.position);
+            Debug.Log("You hit this bitch");
+            ActiveObject = 1;
+        }
+        else { Debug.Log("Miss"); };
+        //end clicking on something             
 
-                    //           transform.localScale += new Vector3(1, 0, 1);
+        //           transform.localScale += new Vector3(1, 0, 1);
     }
 
     //some random script that should really be it's own file
@@ -158,6 +158,7 @@ else{    Debug.Log ("Miss");};
     // Update is called once per frame
     void Update()
     {
+        UIResources.instance.MEATY();
         //Multiply everything by time delta I guess because it's updated per frame for some janky reason
         if (resting == 0 && ActiveObject == 1)
         {
@@ -204,17 +205,17 @@ else{    Debug.Log ("Miss");};
 
         if (Input.GetKeyDown(KeyCode.V))
         {
-            ResourceTracker.instance.SetValue(skill);
+  //          ResourceTracker.instance.ResourceGain(skill, books);
         }
-        if (Input.GetKeyDown(KeyCode.X))
-        {
-            ResourceTracker.instance.books = 7;
-            ResourceTracker.instance.SetValue(skill);
+        /*      if (Input.GetKeyDown(KeyCode.X))
+              {
+                  ResourceTracker.instance.books = 7;
+                  ResourceTracker.instance.SetValue(skill, books);
 
-            skill = ResourceTracker.instance.books;
- 
-         Debug.Log("Skill incoming from the other function is " + skill);
-        }
+                  skill = ResourceTracker.instance.books;
+
+               Debug.Log("Skill incoming from the other function is " + skill);
+            }  */
     }
 
 

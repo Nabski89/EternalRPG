@@ -4,23 +4,31 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-/*
 public class UIResources : MonoBehaviour
 {
     //static means it's accessable from anything else using those same values and all uses the same memory space
-    public static UIMana instance { get; private set; }
-    public Text scrolls;
+    //    public static UIResources instance { get; private set; }
 
+    public static UIResources instance { get; set; }
 
+    //making these public lets you set them in the inspector
+    public Text UIMeat;
+    public Text UIMeatMax;
+    public static int Meatnottext = 60;
+    public static int MeatMaxnottext = 400;
+    void Awake()
+    {
+        instance = this;
+    }
     void Start()
     {
-                 scrolls = GetComponent<Text>();
+        UIMeatMax.text = MeatMaxnottext.ToString();
+        UIMeat.text = Meatnottext.ToString();
     }
-
-    public void SetValue(float value)
+    public void MEATY() //SetValue(float value)
     {
-                scrolls.text = "" + scrolls;
-    }
+        MeatMaxnottext += 1;
+        UIMeat.text = Meatnottext.ToString();
+        UIMeatMax.text = MeatMaxnottext.ToString();
+    } 
 }
-
-*/

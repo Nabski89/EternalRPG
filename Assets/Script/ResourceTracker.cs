@@ -8,7 +8,20 @@ public class ResourceTracker : MonoBehaviour
 {
     public static ResourceTracker instance { get; set; }
 
+    //t1
+    public int meat = 1;
+    public int meatMax = 1;
 
+    public int wheat = 1;
+    public int wheatMax = 1;
+
+    public int ore = 1;
+    public int oreMax = 1;
+
+    public int wood = 1;
+    public int woodMax = 1;
+
+    //research 
     public int scrolls = 1;
     public int books = 1;
     public int grimoire = 1;
@@ -36,14 +49,15 @@ public class ResourceTracker : MonoBehaviour
     }
 
 
-    public void SetValue(float number)
+    public void ResourceGain(int number, int resource, int resourceMax)
     {
-        scrolls = scrolls + 1;
 
-        Debug.Log("Something happened with " + scrolls + " and " + number);
-        Debug.Log("You've got this many books:" + books);
-
-     //   ButtonController.instance.skill = scrolls;
+        if (resource < resourceMax)
+        {
+            resource = Mathf.Min(resource + number, resourceMax);
+            Debug.Log("You gained" + number + " " + resource + "out of a maximum" + resourceMax);
+        }
+        //   ButtonController.instance.skill = scrolls;
     }
 
 
