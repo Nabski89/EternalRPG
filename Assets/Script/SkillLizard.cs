@@ -11,6 +11,7 @@ void OnTriggerEnter2D(Collider2D other)
     if (controller != null)
     {
         controller.ChangeHealth(1);
+                Debug.Log(controller.currentHealth);
     }
 }
 

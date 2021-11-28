@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ButtonController : MonoBehaviour
 {
+        public static ButtonController instance { get; set; }
     public int resting = 0;
     public int maxHealth = 10;
     public int currentHealth = 10;
@@ -27,30 +28,90 @@ public class ButtonController : MonoBehaviour
     public int skillUpProgress = 0;
     public int ActiveObject = 0;
 
-    public void Deselected()
+
+    //DNA things to pass down, should probably be an array
+    public int DNA1X;
+    public int DNA1Y;
+    public int DNA2X;
+    public int DNA2Y;
+
+    public int babymake = 0;
+    public int babymakeCooldown = 1200;
+
+    // Start is called before the first frame update
+    void awake()
     {
-        ActiveObject = 0;
-        //figure out how to call your own script to reset this value to 0
-        Debug.Log("WE SLEEP NOW");
+        instance = this;
+    }
+
+    void Start()
+    {
+ maxHealth = 10;
+ currentHealth = 10;
+ ActiveObject = 0;
+
+
+             DNA1X = Reproduce.instance.DNA1X;
+    }
+
+
+
+
+
+
+    public void babymakeing(int babyamount)
+    {
+        if (babymake == 0)
+        {
+            Debug.Log("SINGLE AND READY TO MINGLE");
+            if (babymakeCooldown == 0)
+            {
+                Debug.Log("Not on cooldown");
+                babymakeCooldown = 1200; babymake = babyamount;
+            }
+        }
+        else { Debug.Log("You've already got a kid in the oven"); }
     }
     public void OnMouseDown()
     {
-        Debug.Log("WHAT CHU WANT");
+//Deselect everything
+ActiveObject = 0;
 
+//until the next 9 lines are about if you clicked on something             
+RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+if(hit.collider != null)
+{
+    Debug.Log ("Target Position: " + hit.collider.gameObject.transform.position);
+    Debug.Log ("You hit this bitch");
+    ActiveObject = 1;
+}
+else{    Debug.Log ("Miss");};
+//end clicking on something             
 
-        ButtonController controller = gameObject.GetComponent<ButtonController>();
-        if (controller != null)
-        {
-            controller.Deselected();
-            Debug.Log("ZUG ZUG");
-            transform.localScale += new Vector3(1, 0, 1);
-            ActiveObject = 1;
-        }
+                    //           transform.localScale += new Vector3(1, 0, 1);
     }
 
     //some random script that should really be it's own file
 
 
+
+    public int crafting = 100;
+    public void CraftingTrigger(int CraftSpeed)
+    {
+        crafting = crafting - CraftSpeed;
+        if (0 >= crafting)
+        {
+            crafting = 100;
+
+            CraftResearch controller = GetComponent<CraftResearch>();
+
+            if (controller != null)
+            {
+                //         controller.due(1);
+            }
+
+        }
+    }
     //Do a //if Mana>Mana Cost first
     public void SpendMana(int ManaCost)
     {
@@ -82,21 +143,21 @@ public class ButtonController : MonoBehaviour
         //       projectile.Launch(lookDirection, 300);
 
     }
-
-
-
-    // Start is called before the first frame update
-    void Start()
+    //use this to update yourself every tick but not get it lost
+    public void UpdateSelf()
     {
-        QualitySettings.vSyncCount = 0;
-        Application.targetFrameRate = 30;
+
+        babymakeCooldown = Mathf.Max(babymakeCooldown - 1, 0);
+
+        UIMana.instance.SetValue(Mana / (float)ManaMax);
+        Mana = Mathf.Clamp(Mana + ManaRegen, 0, ManaMax);
     }
+
+
 
     // Update is called once per frame
     void Update()
     {
-        Mana = Mathf.Clamp(Mana + ManaRegen, 0, ManaMax);
-        UIMana.instance.SetValue(Mana / (float)ManaMax);
         //Multiply everything by time delta I guess because it's updated per frame for some janky reason
         if (resting == 0 && ActiveObject == 1)
         {
@@ -122,7 +183,7 @@ public class ButtonController : MonoBehaviour
         if (resting == 1)
         {
             Stamina = Stamina + StaminaRegen;
-            Mana = Mana + ManaRegen;
+
             if (Stamina >= 600)
             {
                 Stamina = StaminaMax;
@@ -132,10 +193,27 @@ public class ButtonController : MonoBehaviour
         //update our stamina bar
         UIStam.instance.SetValue(Stamina / (float)StaminaMax);
 
+        UpdateSelf();
+
+
 
         if (Input.GetKeyDown(KeyCode.C))
         {
             Launch();
+        }
+
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            ResourceTracker.instance.SetValue(skill);
+        }
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            ResourceTracker.instance.books = 7;
+            ResourceTracker.instance.SetValue(skill);
+
+            skill = ResourceTracker.instance.books;
+ 
+         Debug.Log("Skill incoming from the other function is " + skill);
         }
     }
 
