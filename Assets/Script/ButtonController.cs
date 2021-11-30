@@ -26,17 +26,20 @@ public class ButtonController : MonoBehaviour
     public int skill = 0;
     public int skillUpReq = 10;
     public int skillUpProgress = 0;
+    // Is this the moving object
     public int ActiveObject = 0;
 
 
     //DNA things to pass down, should probably be an array
-    public int DNA1X;
-    public int DNA1Y;
-    public int DNA2X;
-    public int DNA2Y;
+    public int DNA1X = 6; public int DNA1Y = 2;
+    public int DNA2X = 6; public int DNA2Y = 2;
+    public int DNA3X = 6; public int DNA3Y = 2;
+    public int DNA4X = 6; public int DNA4Y = 2;
+    public int DNA5X = 6; public int DNA5Y = 2;
 
-    public int babymake = 0;
-    public int babymakeCooldown = 1200;
+    //this controls if it inherits stats from the reproduce script and when it is able to make a new version
+    public int baby = 1;
+    public int babymakeCooldown = 60;
 
     // Start is called before the first frame update
     void awake()
@@ -50,23 +53,60 @@ public class ButtonController : MonoBehaviour
         currentHealth = 10;
         ActiveObject = 0;
 
+        //sets the stats based on our reproduce script
+        if (baby == 1)
+        {
+            DNA1X = Reproduce.instance.DNA1XBaby; DNA1Y = Reproduce.instance.DNA1YBaby;
+            DNA2X = Reproduce.instance.DNA2XBaby; DNA2Y = Reproduce.instance.DNA2YBaby;
+            DNA3X = Reproduce.instance.DNA3XBaby; DNA3Y = Reproduce.instance.DNA3YBaby;
+            DNA4X = Reproduce.instance.DNA4XBaby; DNA4Y = Reproduce.instance.DNA4YBaby;
+            DNA5X = Reproduce.instance.DNA5XBaby; DNA5Y = Reproduce.instance.DNA5YBaby;
 
-   //     DNA1X = Reproduce.instance.DNA1X;
+            baby = 0;
+        }
+
     }
 
 
-    public void babymakeing(int babyamount)
+    public void babymakeing(int Parent)
     {
-        if (babymake == 0)
+        if (babymakeCooldown == 0)
         {
-            Debug.Log("SINGLE AND READY TO MINGLE");
-            if (babymakeCooldown == 0)
+            if (Parent == 1)
             {
-                Debug.Log("Not on cooldown");
-                babymakeCooldown = 1200; babymake = babyamount;
+                babymakeCooldown = 60;
+                Reproduce.instance.SetDNA(DNA1X, DNA1Y);
+                Reproduce.instance.DNA1XBaby = Reproduce.instance.DNATEMP;
+                Reproduce.instance.SetDNA(DNA2X, DNA2Y);
+                Reproduce.instance.DNA2XBaby = Reproduce.instance.DNATEMP;
+                Reproduce.instance.SetDNA(DNA3X, DNA3Y);
+                Reproduce.instance.DNA3XBaby = Reproduce.instance.DNATEMP;
+                Reproduce.instance.SetDNA(DNA4X, DNA4Y);
+                Reproduce.instance.DNA4XBaby = Reproduce.instance.DNATEMP;
+                Reproduce.instance.SetDNA(DNA5X, DNA5Y);
+                Reproduce.instance.DNA5XBaby = Reproduce.instance.DNATEMP;
+                Reproduce.instance.NumberOfParents = 1;
+                Debug.Log("FIRST PARENT IS GO");
+            }
+            if (Parent == 2)
+            {
+                babymakeCooldown = 60;
+
+                Reproduce.instance.SetDNA(DNA1X, DNA1Y);
+                Reproduce.instance.DNA1YBaby = Reproduce.instance.DNATEMP;
+                Reproduce.instance.SetDNA(DNA2X, DNA2Y);
+                Reproduce.instance.DNA2YBaby = Reproduce.instance.DNATEMP;
+                Reproduce.instance.SetDNA(DNA3X, DNA3Y);
+                Reproduce.instance.DNA3YBaby = Reproduce.instance.DNATEMP;
+                Reproduce.instance.SetDNA(DNA4X, DNA4Y);
+                Reproduce.instance.DNA4YBaby = Reproduce.instance.DNATEMP;
+                Reproduce.instance.SetDNA(DNA5X, DNA5Y);
+                Reproduce.instance.DNA5YBaby = Reproduce.instance.DNATEMP;
+                Reproduce.instance.NumberOfParents = 2;
+                Debug.Log("TWO PARENTS IS GO");
             }
         }
-        else { Debug.Log("You've already got a kid in the oven"); }
+        else { Debug.Log("ON COOLDOWN"); }
     }
     public void OnMouseDown()
     {
@@ -77,8 +117,8 @@ public class ButtonController : MonoBehaviour
         RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
         if (hit.collider != null)
         {
-            Debug.Log("Target Position: " + hit.collider.gameObject.transform.position);
-            Debug.Log("You hit this bitch");
+            //         Debug.Log("Target Position: " + hit.collider.gameObject.transform.position);
+            Debug.Log("Character Active");
             ActiveObject = 1;
         }
         else { Debug.Log("Miss"); };
@@ -145,8 +185,15 @@ public class ButtonController : MonoBehaviour
 
         babymakeCooldown = Mathf.Max(babymakeCooldown - 1, 0);
 
-        UIMana.instance.SetValue(Mana / (float)ManaMax);
+
+        //update our stamina bar
+        UIStam.instance.SetValue(Stamina / (float)StaminaMax);
+
+        //and regen mana
         Mana = Mathf.Clamp(Mana + ManaRegen, 0, ManaMax);
+
+        //mana bar
+        UIMana.instance.SetValue(Mana / (float)ManaMax);
     }
 
 
@@ -186,12 +233,11 @@ public class ButtonController : MonoBehaviour
                 resting = 0;
             }
         }
-        //update our stamina bar
-        UIStam.instance.SetValue(Stamina / (float)StaminaMax);
+
 
         UpdateSelf();
 
-
+        //starting from here you can push buttons to activate abilities
 
         if (Input.GetKeyDown(KeyCode.C))
         {
@@ -200,7 +246,7 @@ public class ButtonController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.V))
         {
-  //          ResourceTracker.instance.ResourceGain(skill, books);
+            //          ResourceTracker.instance.ResourceGain(skill, books);
         }
         /*      if (Input.GetKeyDown(KeyCode.X))
               {
