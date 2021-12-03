@@ -18,8 +18,7 @@ void OnTriggerEnter2D(Collider2D other)
 
     if (controller != null)
     {
-        controller.ChangeHealth(1);
-                Debug.Log(controller.currentHealth);
+//This is just empty in case I decide I want to put something in it later as it is the template job
     }
 }
 
@@ -29,7 +28,7 @@ void OnTriggerStay2D(Collider2D other)
 
     if (controller != null)
     {
-        controller.SKILLTrigger(1);
+//        controller.SKILLTrigger(1); //this might be neat later?
     }
 
     ResourceProgress += 1;
@@ -38,7 +37,7 @@ void OnTriggerStay2D(Collider2D other)
         ResourceProgress = 0;
         //make sure to replace meat with whatever the resource type is
                             Debug.Log("GAIN 1");
-        ResourceTracker.instance.ResourceGain(1,ResourceTracker.instance.meat, ResourceTracker.instance.meatMax);
+        ResourceTracker.instance.ResourceGain(1,1);
     }
 }
 }

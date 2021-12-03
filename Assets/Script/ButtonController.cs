@@ -108,25 +108,24 @@ public class ButtonController : MonoBehaviour
         }
         else { Debug.Log("ON COOLDOWN"); }
     }
-    public void OnMouseDown()
-    {
-        //Deselect everything
-        ActiveObject = 0;
+    /*   public void OnMouseDown()
+       {
+           //Deselect everything
+           ActiveObject = 0;
 
-        //until the next 9 lines are about if you clicked on something             
-        RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
-        if (hit.collider != null)
-        {
-            //         Debug.Log("Target Position: " + hit.collider.gameObject.transform.position);
-            Debug.Log("Character Active");
-            ActiveObject = 1;
-        }
-        else { Debug.Log("Miss"); };
-        //end clicking on something             
-
-        //           transform.localScale += new Vector3(1, 0, 1);
-    }
-
+           //until the next 9 lines are about if you clicked on something             
+           RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+           if (hit.collider != null)
+           {
+               //         Debug.Log("Target Position: " + hit.collider.gameObject.transform.position);
+               Debug.Log("Character Active");
+               ActiveObject = 1;
+           }
+           else { Debug.Log("Miss"); };
+           //end clicking on something             
+           //           transform.localScale += new Vector3(1, 0, 1);
+       }
+   previous version of my click activation script */
     //some random script that should really be it's own file
 
 
@@ -201,6 +200,23 @@ public class ButtonController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetMouseButtonDown(0))
+        {
+            RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+            if (hit.collider != null)
+            {
+                //         Debug.Log("Target Position: " + hit.collider.gameObject.transform.position);
+                Debug.Log("Character Active");
+                ActiveObject = 1;
+            }
+            else
+            {
+                Debug.Log("Miss");
+                ActiveObject = 0;
+            };
+        }
+
+
         //Multiply everything by time delta I guess because it's updated per frame for some janky reason
         if (resting == 0 && ActiveObject == 1)
         {
@@ -278,6 +294,23 @@ public class ButtonController : MonoBehaviour
         }
     }
 
+    public void TeleportToArea(int Area, int CombatArea)
+    {
+                Debug.Log("BUTTON TELEPORT ACTIVATE");
+            Vector2 position = transform.position;
+            position.x = (CombatArea * 40) - 3;
+            if(CombatArea == 1)
+            {
+            position.y = 25;
+            }
+            else
+            {    
+            position.y = 0;
+            }
+            transform.position = position;
+       
+    }
+
 
 
 
@@ -285,5 +318,3 @@ public class ButtonController : MonoBehaviour
 
     //this is the last line
 }
-
-

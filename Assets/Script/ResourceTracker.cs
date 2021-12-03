@@ -10,7 +10,7 @@ public class ResourceTracker : MonoBehaviour
 
     //t1
     public int meat = 1;
-    public int meatMax = 3;
+    public int meatMax = 50;
 
     public int wheat = 1;
     public int wheatMax = 3;
@@ -32,34 +32,46 @@ public class ResourceTracker : MonoBehaviour
     void Awake()
     {
         instance = this;
+
+        QualitySettings.vSyncCount = 0;
+        Application.targetFrameRate = 30;
     }
 
     // Start is called before the first frame update
     void Start()
     {
         //these have no reason to be here but need to be SOMEWHERE
-        QualitySettings.vSyncCount = 0;
-        Application.targetFrameRate = 30;
+
+        UIResources.instance.ResourceUpdate(meat, meatMax);
     }
 
- /*   // Update is called once per frame
-    void Update()
-    {
+    /*   // Update is called once per frame
+       void Update()
+       {
 
-    }
-*/
+       }
+   */
 
     //checks if you've got below your max resources, and updates the UI
-    public void ResourceGain(int number, int resource, int resourceMax)
+    public void ResourceGain(int number, int resourcetype)
     {
-        Debug.Log("Is it less than the max?");
-        Debug.Log("number" + number + " Resource" + resource + "max" + resourceMax);
-        if (resource < resourceMax)
+        resourcetype = 0; //this will be used if we mana to set things into an enum list?
+        if (meat < meatMax)
         {
-            resource = Mathf.Min(resource + number, resourceMax);
-            meat = resource;
-            Debug.Log("You gained" + number + " " + resource + "out of a maximum" + resourceMax);
-            UIResources.instance.ResourceUpdate(resource, resourceMax);
+            meat = Mathf.Min(meat + number, meatMax);
         }
+        UIResources.instance.ResourceUpdate(meat, meatMax);
+
+    }
+
+    //For changing the max amount something can hold. Updates to max if needed.
+    public void ResourceMaxChange(int number, int resourcetype)
+    {
+        meatMax = meatMax + number;
+        if (meatMax < meat)
+        {
+            meat = meatMax;
+        }
+        UIResources.instance.ResourceUpdate(meat, meatMax);
     }
 }
