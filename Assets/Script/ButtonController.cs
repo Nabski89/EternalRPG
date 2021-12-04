@@ -296,19 +296,19 @@ public class ButtonController : MonoBehaviour
 
     public void TeleportToArea(int Area, int CombatArea)
     {
-                Debug.Log("BUTTON TELEPORT ACTIVATE");
-            Vector2 position = transform.position;
-            position.x = (CombatArea * 40) - 3;
-            if(CombatArea == 1)
-            {
+        Debug.Log("BUTTON TELEPORT ACTIVATE");
+        Vector2 position = transform.position;
+        position.x = (CombatArea * 40) - 3;
+        if (CombatArea == 1)
+        {
             position.y = 25;
-            }
-            else
-            {    
+        }
+        else
+        {
             position.y = 0;
-            }
-            transform.position = position;
-       
+        }
+        transform.position = position;
+
     }
 
 

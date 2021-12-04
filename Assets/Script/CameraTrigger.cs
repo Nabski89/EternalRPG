@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class CameraTrigger : MonoBehaviour
 {
-public CameraScript CameraScript;
-// GameObject objectWithScript;
- 
-// objectWithScript.TeleportToArea();
+    public CameraScript CameraScript;
+    // GameObject objectWithScript;
+
+    // objectWithScript.TeleportToArea();
 
     public int Area = 0;
     public int CombatArea = 1;
@@ -15,22 +15,22 @@ public CameraScript CameraScript;
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
-void OnTriggerEnter2D(Collider2D other)
-{
-    ButtonController controller = other.GetComponent<ButtonController>();
-
-    if (controller != null)
-
+    void OnTriggerEnter2D(Collider2D other)
     {
-                Debug.Log("You have entered the FIGHT ZONE");
+        ButtonController controller = other.GetComponent<ButtonController>();
 
+        if (controller != null)
+
+        {
+            Debug.Log("You have entered the FIGHT ZONE");
+
+        }
+        controller.TeleportToArea(Area, CombatArea);
+        CameraScript.TeleportToArea(Area, CombatArea);
     }
-            controller.TeleportToArea(Area, CombatArea);
-            CameraScript.TeleportToArea(Area, CombatArea);
-}
 }
 
 
