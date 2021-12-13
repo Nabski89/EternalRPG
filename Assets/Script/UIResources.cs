@@ -12,22 +12,29 @@ public class UIResources : MonoBehaviour
     public static UIResources instance { get; set; }
 
     //making these public lets you set them in the inspector
-    public Text UIMeat;
-    public Text UIMeatMax;
-    public static int Meatnottext = 60;
-    public static int MeatMaxnottext = 400;
-    void Awake()
-    {
-        instance = this;
-    }
+    public Text UIText;
+    public Text UITextMax;
+    public ResourceEnum.T1Resource ResourceType;
+    public static int ResourceValue = 2;
+    public static int ResourceValueMax = 3;
+    
+    //start goes AFTER awake
     void Start()
     {
-        UIMeatMax.text = MeatMaxnottext.ToString();
-        UIMeat.text = Meatnottext.ToString();
+        instance = this;
+
+        ResourceValue = ResourceEnum.T1Dic[ResourceType];
+        ResourceValueMax = ResourceEnum.T1MaxDic[ResourceType];
+
+        UIText.text = ResourceValue.ToString();
+        UITextMax.text = ResourceValueMax.ToString();
     }
-    public void ResourceUpdate(int Meatnottext, int MeatMaxnottext) //SetValue(float value)
+    public void ResourceUpdate() //SetValue(float value)
     {
-        UIMeat.text = Meatnottext.ToString();
-        UIMeatMax.text = MeatMaxnottext.ToString();
-    } 
+        ResourceValue = ResourceEnum.T1Dic[ResourceType];
+        ResourceValueMax = ResourceEnum.T1MaxDic[ResourceType];
+
+        UIText.text = ResourceValue.ToString();
+        UITextMax.text = ResourceValueMax.ToString();
+    }
 }

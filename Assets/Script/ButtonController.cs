@@ -5,21 +5,40 @@ using UnityEngine;
 public class ButtonController : MonoBehaviour
 {
     public static ButtonController instance { get; set; }
-    public int resting = 0;
-    public int maxHealth = 10;
-    public int currentHealth = 10;
+
+    //core stats, to be redefined by DNA
+    //the max is what we can gain up to
+    public int sanguine;
+    public int soul;
+    public int strong;
+    public int smart;
+    public int speed;
+
+    public int sanguineMax;
+    public int soulMax;
+    public int strongMax;
+    public int smartMax;
+    public int speedMax;
+
+    //sanguine stats 
+    //Age, Controls if you die, needs to be unnamed from stamina
 
     //Stamina, controls resting
-    public int StaminaMax = 600;
+    public int StaminaMax = 18000;
     public int StaminaRegen = 4;
-    public int Stamina = 600;
-
-    //Mana, controls casting spells
-    public int ManaMax = 100;
-    public int ManaRegen = 1;
+    public int Stamina = 18000;
+    public int maxHealth = 10;
+    public int currentHealth = 10;
+    //soul stats Mana, controls casting spells
     public int Mana = 1;
-
-    //Age, Controls if you die
+    public int ManaMax = 100;
+    //strong stats
+    public int PunchRegen = 1;
+    //smart stats
+    public int ManaRegen = 1;
+    //speed stats
+    public int moveMod;
+    public int atkCD;
 
 
     //some skills
@@ -27,19 +46,21 @@ public class ButtonController : MonoBehaviour
     public int skillUpReq = 10;
     public int skillUpProgress = 0;
     // Is this the moving object
-    public int ActiveObject = 0;
+    public int ActiveObject = 1;
 
 
     //DNA things to pass down, should probably be an array
-    public int DNA1X = 6; public int DNA1Y = 2;
-    public int DNA2X = 6; public int DNA2Y = 2;
-    public int DNA3X = 6; public int DNA3Y = 2;
-    public int DNA4X = 6; public int DNA4Y = 2;
-    public int DNA5X = 6; public int DNA5Y = 2;
+    public int DNA1X = 2; public int DNA1Y = 3;
+    public int DNA2X = 2; public int DNA2Y = 3;
+    public int DNA3X = 2; public int DNA3Y = 3;
+    public int DNA4X = 2; public int DNA4Y = 3;
+    public int DNA5X = 2; public int DNA5Y = 3;
 
     //this controls if it inherits stats from the reproduce script and when it is able to make a new version
     public int baby = 1;
     public int babymakeCooldown = 60;
+
+    public int resting = 0; // this needs to go away
 
     // Start is called before the first frame update
     void awake()
@@ -51,7 +72,7 @@ public class ButtonController : MonoBehaviour
     {
         maxHealth = 10;
         currentHealth = 10;
-        ActiveObject = 0;
+        ActiveObject = 1;
 
         //sets the stats based on our reproduce script
         if (baby == 1)
@@ -61,6 +82,18 @@ public class ButtonController : MonoBehaviour
             DNA3X = Reproduce.instance.DNA3XBaby; DNA3Y = Reproduce.instance.DNA3YBaby;
             DNA4X = Reproduce.instance.DNA4XBaby; DNA4Y = Reproduce.instance.DNA4YBaby;
             DNA5X = Reproduce.instance.DNA5XBaby; DNA5Y = Reproduce.instance.DNA5YBaby;
+
+            sanguine = DNA1X;
+            soul = DNA2X;
+            strong = DNA3X;
+            smart = DNA4X;
+            speed = DNA5X;
+
+            sanguineMax = sanguine + DNA1Y;
+            soulMax= soul + DNA2Y;
+            strongMax= strong + DNA3Y;
+            smartMax= smart + DNA4Y;
+            speedMax= speed + DNA5Y;
 
             baby = 0;
         }
@@ -125,7 +158,7 @@ public class ButtonController : MonoBehaviour
            //end clicking on something             
            //           transform.localScale += new Vector3(1, 0, 1);
        }
-   previous version of my click activation script */
+    previous version of my click activation script */
     //some random script that should really be it's own file
 
 
@@ -185,6 +218,7 @@ public class ButtonController : MonoBehaviour
         babymakeCooldown = Mathf.Max(babymakeCooldown - 1, 0);
 
 
+
         //update our stamina bar
         UIStam.instance.SetValue(Stamina / (float)StaminaMax);
 
@@ -202,18 +236,19 @@ public class ButtonController : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
-            if (hit.collider != null)
-            {
-                //         Debug.Log("Target Position: " + hit.collider.gameObject.transform.position);
-                Debug.Log("Character Active");
-                ActiveObject = 1;
-            }
-            else
-            {
-                Debug.Log("Miss");
-                ActiveObject = 0;
-            };
+            /*       RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+                   if (hit.collider != null)
+                   {
+                    //   Debug.Log("Target Position: " + hit.collider.gameObject.transform.position);
+                       Debug.Log("Character Active");
+                       ActiveObject = 1;
+                   }
+                   else
+                   {
+                       Debug.Log("Miss");
+                       ActiveObject = 0;
+                   };
+                   */
         }
 
 
@@ -221,7 +256,8 @@ public class ButtonController : MonoBehaviour
         if (resting == 0 && ActiveObject == 1)
         {
 
-            //these make it move with the arrow keys       
+            // this code allows you to move with the arrow keys
+
             float horizontal = Input.GetAxis("Horizontal");
             float vertical = Input.GetAxis("Vertical");
 
@@ -230,10 +266,12 @@ public class ButtonController : MonoBehaviour
             position.y = position.y + 1f * vertical * Time.deltaTime; ;
             transform.position = position;
 
+
             //this is some janky sleep system
             Stamina = Stamina - 1;
             if (Stamina <= 0)
             {
+                Debug.Log("You got old and died");
                 resting = 1;
             }
         }
@@ -310,11 +348,6 @@ public class ButtonController : MonoBehaviour
         transform.position = position;
 
     }
-
-
-
-
-
 
     //this is the last line
 }
