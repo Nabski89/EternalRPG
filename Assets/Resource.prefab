@@ -78,7 +78,7 @@ Rigidbody2D:
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
-  m_SleepingMode: 1
+  m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 0
 --- !u!212 &-6955090550079300279
@@ -145,4 +145,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ResourceProgress: 0
+  sanguineMod: 0
+  soulMod: 0
+  strongMod: 0
+  smartMod: 0
+  speedMod: 0
+  skillMod: 0
   ResourceType: 0

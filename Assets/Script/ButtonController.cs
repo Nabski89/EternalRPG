@@ -6,6 +6,10 @@ public class ButtonController : MonoBehaviour
 {
     public static ButtonController instance { get; set; }
 
+    public UIHealth HEALTHBAR;
+    public UIMana MANABAR;
+    public UIStam STAMINABAR;
+
     //core stats, to be redefined by DNA
     //the max is what we can gain up to
     public int sanguine;
@@ -46,8 +50,7 @@ public class ButtonController : MonoBehaviour
     public int skillUpReq = 10;
     public int skillUpProgress = 0;
     // Is this the moving object
-    public int ActiveObject = 1;
-
+    public int CharacterNumber = 1;
 
     //DNA things to pass down, should probably be an array
     public int DNA1X = 2; public int DNA1Y = 3;
@@ -72,7 +75,6 @@ public class ButtonController : MonoBehaviour
     {
         maxHealth = 10;
         currentHealth = 10;
-        ActiveObject = 1;
 
         //sets the stats based on our reproduce script
         if (baby == 1)
@@ -195,7 +197,7 @@ public class ButtonController : MonoBehaviour
     {
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
         //This sends it to the health UI
-        UIHealth.instance.SetValue(currentHealth / (float)maxHealth);
+        HEALTHBAR.SetValue(currentHealth / (float)maxHealth);
         Debug.Log(currentHealth + "/" + maxHealth);
     }
     //Dis shoots da bullet
@@ -220,13 +222,13 @@ public class ButtonController : MonoBehaviour
 
 
         //update our stamina bar
-        UIStam.instance.SetValue(Stamina / (float)StaminaMax);
+        STAMINABAR.SetValue(Stamina / (float)StaminaMax);
 
         //and regen mana
         Mana = Mathf.Clamp(Mana + ManaRegen, 0, ManaMax);
 
         //mana bar
-        UIMana.instance.SetValue(Mana / (float)ManaMax);
+        MANABAR.SetValue(Mana / (float)ManaMax);
     }
 
 
@@ -253,7 +255,7 @@ public class ButtonController : MonoBehaviour
 
 
         //Multiply everything by time delta I guess because it's updated per frame for some janky reason
-        if (resting == 0 && ActiveObject == 1)
+        if (resting == 0 && CharacterNumber == ActiveCharacterController.CurrentCharacter)
         {
 
             // this code allows you to move with the arrow keys

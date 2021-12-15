@@ -56,6 +56,8 @@
      <Compile Include="Assets\Script\ResourceCollide.cs" />
      <Compile Include="Assets\Script\UIHealth.cs" />
      <Compile Include="Assets\Script\VOID.cs" />
+     <Compile Include="Assets\Script\ActiveCharacterController.cs" />
+     <Compile Include="Assets\Script\ActiveCharacterControllerClickScript.cs" />
     <Reference Include="UnityEngine">
         <HintPath>C:/Program Files/Unity/Hub/Editor/2020.2.4f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>

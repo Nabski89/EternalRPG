@@ -6,15 +6,8 @@ using UnityEngine.UI;
 public class UIStam : MonoBehaviour
 {
     //static means it's accessable from anything else using those same values and all uses the same memory space
-    public static UIStam instance { get; private set; }
-
     public Image maskStam;
-    float originalSize;
-
-    void Awake()
-    {
-        instance = this;
-    }
+    private float originalSize;
 
     void Start()
     {

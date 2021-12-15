@@ -65,16 +65,4 @@ public class Reproduce : MonoBehaviour
             }
         }
     }
-
-
-
-    void Update()
-    {
-
-
-
-
-
-
-    }
 }

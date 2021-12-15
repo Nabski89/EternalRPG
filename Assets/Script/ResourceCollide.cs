@@ -5,14 +5,16 @@ using UnityEngine;
 public class ResourceCollide : MonoBehaviour
 {
     public float ResourceProgress = 0;
+    public UIResources target;
 
     //read in each stat, skill will need to turn into some kind of enum list most likely
-    public float sanguineValue;
-    public float soulValue;
-    public float strongValue;
-    public float smartValue;
-    public float speedValue;
-    public float skillValue;
+    //not public because they are basically ready only
+    float sanguineValue;
+    float soulValue;
+    float strongValue;
+    float smartValue;
+    float speedValue;
+    float skillValue;
     //the mod that goes along with each stat
     public float sanguineMod;
     public float soulMod;
@@ -59,30 +61,30 @@ public class ResourceCollide : MonoBehaviour
         {
 
             //        controller.SKILLTrigger(1); //this might be neat later?
+
+            ResourceProgress =
+            ResourceProgress
+            + 1
+            + sanguineValue * sanguineMod
+            + soulValue * sanguineMod
+            + strongValue * sanguineMod
+            + smartValue * sanguineMod
+            + speedValue * sanguineMod
+            + skillValue * skillMod
+            ;
+
         }
 
-        ResourceProgress =
-        ResourceProgress
-        + 1
-        + sanguineValue * sanguineMod
-        + soulValue * sanguineMod
-        + strongValue * sanguineMod
-        + smartValue * sanguineMod
-        + speedValue * sanguineMod
-        + skillValue * skillMod
-        ;
-        
         if (ResourceProgress > 300)
         {
             ResourceProgress = 0;
             //make sure to replace meat with whatever the resource type is
             Debug.Log("GAIN 1");
             //          ResourceTracker.instance.ResourceGain(1, 1);
+
+            ResourceEnum.T1Dic[ResourceType] = ResourceEnum.T1Dic[ResourceType] + 1;
+            target.ResourceUpdate();
         }
-
-        ResourceEnum.T1Dic[ResourceType] = ResourceEnum.T1Dic[ResourceType] + 1;
-        UIResources.instance.ResourceUpdate();
-
     }
 
     void OnMouseDown()

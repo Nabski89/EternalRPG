@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //this file isn't doing anything in particular, but holds inventory items that will be stored and accessed by multiple characters
+//
 
 public class ResourceTracker : MonoBehaviour
 {
@@ -40,8 +41,6 @@ public class ResourceTracker : MonoBehaviour
         {
             meat = Mathf.Min(meat + number, meatMax);
         }
-        UIResources.instance.ResourceUpdate();
-
     }
 
     //For changing the max amount something can hold. Updates to max if needed.
@@ -52,6 +51,5 @@ public class ResourceTracker : MonoBehaviour
         {
             meat = meatMax;
         }
-        UIResources.instance.ResourceUpdate();
     }
 }
