@@ -34,12 +34,12 @@ public class ButtonController : MonoBehaviour
     public int maxHealth = 10;
     public int currentHealth = 10;
     //soul stats Mana, controls casting spells
-    public int Mana = 1;
-    public int ManaMax = 100;
+    public float Mana = 1;
+    public float ManaMax = 100;
     //strong stats
-    public int PunchRegen = 1;
+    public float PunchRegen = 1;
     //smart stats
-    public int ManaRegen = 1;
+    public float ManaRegen = 1;
     //speed stats
     public int moveMod;
     public int atkCD;
@@ -92,10 +92,10 @@ public class ButtonController : MonoBehaviour
             speed = DNA5X;
 
             sanguineMax = sanguine + DNA1Y;
-            soulMax= soul + DNA2Y;
-            strongMax= strong + DNA3Y;
-            smartMax= smart + DNA4Y;
-            speedMax= speed + DNA5Y;
+            soulMax = soul + DNA2Y;
+            strongMax = strong + DNA3Y;
+            smartMax = smart + DNA4Y;
+            speedMax = speed + DNA5Y;
 
             baby = 0;
         }
@@ -199,6 +199,10 @@ public class ButtonController : MonoBehaviour
         //This sends it to the health UI
         HEALTHBAR.SetValue(currentHealth / (float)maxHealth);
         Debug.Log(currentHealth + "/" + maxHealth);
+        if (currentHealth < 1)
+        {
+            Stamina = Stamina - 1800;
+        }
     }
     //Dis shoots da bullet
 
@@ -214,12 +218,49 @@ public class ButtonController : MonoBehaviour
 
     }
     //use this to update yourself every tick but not get it lost
+
+    public int foodCounter = 1800;
+    public int hungry = 0;
+    void eat()
+    {
+        if (ResourceEnum.T1Dic[ResourceEnum.T1Resource.Meat] > 0)
+        {
+            ResourceEnum.T1Dic[ResourceEnum.T1Resource.Meat] = ResourceEnum.T1Dic[ResourceEnum.T1Resource.Meat] - 1;
+            hungry = hungry - 1;
+            ResourceEnum.ResourceChangeTargeted();
+            //maybe we should get something on the foodCounter as a bonus
+        }
+    }
+    void hunger()
+    {
+        foodCounter = foodCounter - 1;
+        if (foodCounter < 1)
+        {
+            hungry = hungry + 1;
+            foodCounter = 1800;
+        }
+        if (hungry > 0)
+        {
+            eat();
+        }
+    }
+    void stamina()
+    {
+        //this is some janky sleep system
+        Stamina = Stamina - (1 + hungry);
+        if (Stamina <= 0)
+        {
+            Debug.Log("You got old and died");
+            resting = 1;
+        }
+    }
     public void UpdateSelf()
     {
 
         babymakeCooldown = Mathf.Max(babymakeCooldown - 1, 0);
 
-
+        hunger();
+        stamina();
 
         //update our stamina bar
         STAMINABAR.SetValue(Stamina / (float)StaminaMax);
@@ -229,6 +270,7 @@ public class ButtonController : MonoBehaviour
 
         //mana bar
         MANABAR.SetValue(Mana / (float)ManaMax);
+
     }
 
 
@@ -267,28 +309,10 @@ public class ButtonController : MonoBehaviour
             position.x = position.x + 1f * horizontal * Time.deltaTime; ;
             position.y = position.y + 1f * vertical * Time.deltaTime; ;
             transform.position = position;
-
-
-            //this is some janky sleep system
-            Stamina = Stamina - 1;
-            if (Stamina <= 0)
-            {
-                Debug.Log("You got old and died");
-                resting = 1;
-            }
         }
 
         //Go to sleep and restore stamina
-        if (resting == 1)
-        {
-            Stamina = Stamina + StaminaRegen;
 
-            if (Stamina >= 600)
-            {
-                Stamina = StaminaMax;
-                resting = 0;
-            }
-        }
 
 
         UpdateSelf();

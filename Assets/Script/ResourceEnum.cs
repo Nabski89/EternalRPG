@@ -9,7 +9,7 @@ public class ResourceEnum : MonoBehaviour
     //Make a dictionary with that type, and a quantity
     public static Dictionary<T1Resource, int> T1Dic = new Dictionary<T1Resource, int>();
     public static Dictionary<T1Resource, int> T1MaxDic = new Dictionary<T1Resource, int>();
- 
+
     void Awake()
     {
         //add everything to the dictionary
@@ -26,22 +26,18 @@ public class ResourceEnum : MonoBehaviour
     int t1resourceTOBECHANGED = 2;
     int t1resourceTOBECHANGEDMAX = 2;
 
-/*    public void ResourceGain(T1Resource TYPE, T1ResourceMAX TYPEMAX, int number)
+    public void ResourceChange(T1Resource TYPE, int number)
     {
-//        t1resourceTOBECHANGED = TYPE;
-//      t1resourceTOBECHANGEDMAX = TYPEMAX;
-        if (t1resourceTOBECHANGED < t1resourceTOBECHANGEDMAX)
+        T1Dic[TYPE] = Mathf.Clamp(T1Dic[TYPE] + number, 0, T1MaxDic[TYPE]);
+        //      UIResources.ResourceUpdate();
+    }
+
+    public static void ResourceChangeTargeted()
+    {
+ //finds everything that has a UI resource script attached, and then runs the script on all of them
+        foreach (var resource in GameObject.FindObjectsOfType<UIResources>())
         {
-            t1resourceTOBECHANGED = Mathf.Min(t1resourceTOBECHANGED + number, t1resourceTOBECHANGEDMAX);
+            resource.ResourceUpdate();
         }
-        UIResources.instance.ResourceUpdate(t1resourceTOBECHANGED, t1resourceTOBECHANGEDMAX);
-
-    } */
-
-    void Update()
-    {
-        //    t1resource = t1resource + 1;
-
-        //     Input NEED TO FIGURE OUT DICTIONARIES
     }
 }

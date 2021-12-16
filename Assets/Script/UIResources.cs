@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-
 public class UIResources : MonoBehaviour
 {
     //static means it's accessable from anything else using those same values and all uses the same memory space
@@ -27,7 +26,7 @@ public class UIResources : MonoBehaviour
         UIText.text = ResourceValue.ToString();
         UITextMax.text = ResourceValueMax.ToString();
     }
-    public void ResourceUpdate() //SetValue(float value)
+    public void ResourceUpdate()
     {
         Debug.Log("Dictionary Value" + ResourceEnum.T1Dic[ResourceType]);
 

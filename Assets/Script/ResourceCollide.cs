@@ -5,6 +5,7 @@ using UnityEngine;
 public class ResourceCollide : MonoBehaviour
 {
     public float ResourceProgress = 0;
+    public float ResourceProgressReqd = 300;
     public UIResources target;
 
     //read in each stat, skill will need to turn into some kind of enum list most likely
@@ -16,12 +17,12 @@ public class ResourceCollide : MonoBehaviour
     float speedValue;
     float skillValue;
     //the mod that goes along with each stat
-    public float sanguineMod;
-    public float soulMod;
-    public float strongMod;
-    public float smartMod;
-    public float speedMod;
-    public float skillMod;
+    public float sanguineMod = 0.05f; //levels range from 1 to 20? so max level would double original speed
+    public float soulMod = 0.05f;
+    public float strongMod = 0.05f;
+    public float smartMod = 0.05f;
+    public float speedMod = 0.05f;
+    public float skillMod = 0.2f; //common max level is 5, which would double the speed
 
     public ResourceEnum.T1Resource ResourceType;
 
@@ -66,10 +67,10 @@ public class ResourceCollide : MonoBehaviour
             ResourceProgress
             + 1
             + sanguineValue * sanguineMod
-            + soulValue * sanguineMod
-            + strongValue * sanguineMod
-            + smartValue * sanguineMod
-            + speedValue * sanguineMod
+            + soulValue * soulMod
+            + strongValue * strongMod
+            + smartValue * smartMod
+            + speedValue * speedMod
             + skillValue * skillMod
             ;
 
@@ -83,7 +84,7 @@ public class ResourceCollide : MonoBehaviour
             //          ResourceTracker.instance.ResourceGain(1, 1);
 
             ResourceEnum.T1Dic[ResourceType] = ResourceEnum.T1Dic[ResourceType] + 1;
-            target.ResourceUpdate();
+            ResourceEnum.ResourceChangeTargeted();
         }
     }
 
