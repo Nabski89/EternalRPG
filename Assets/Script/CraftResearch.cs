@@ -12,7 +12,7 @@ public class CraftResearch : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        /*       ButtonController controller = other.GetComponent<ButtonController>();
+        /*       KoboldController controller = other.GetComponent<KoboldController>();
 
                if (controller != null)
                {
@@ -23,7 +23,7 @@ public class CraftResearch : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D other)
     {
-        ButtonController controller = other.GetComponent<ButtonController>();
+        KoboldController controller = other.GetComponent<KoboldController>();
 
         if (controller != null)
         {

@@ -32,7 +32,7 @@ public class ResourceEnum : MonoBehaviour
         //      UIResources.ResourceUpdate();
     }
 
-    public static void ResourceChangeTargeted()
+    public static void ResourceChange()
     {
  //finds everything that has a UI resource script attached, and then runs the script on all of them
         foreach (var resource in GameObject.FindObjectsOfType<UIResources>())

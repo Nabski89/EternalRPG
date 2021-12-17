@@ -17,7 +17,7 @@ public int damageValue;
     // Update is called once per frame
     void OnTriggerEnter2D(Collider2D other)
     {
-        ButtonController controller = other.GetComponent<ButtonController>();
+        KoboldController controller = other.GetComponent<KoboldController>();
 
         if (controller != null)
         {

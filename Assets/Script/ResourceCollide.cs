@@ -25,6 +25,7 @@ public class ResourceCollide : MonoBehaviour
     public float skillMod = 0.2f; //common max level is 5, which would double the speed
 
     public ResourceEnum.T1Resource ResourceType;
+    public KoboldSkillController.T1Skill SkillType;
 
     // not being used but we might want to access more than one type or resource from a file at a time
     //    public string ResourceType2 = "butter"
@@ -36,13 +37,15 @@ public class ResourceCollide : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D other)
     {
-        ButtonController controller = other.GetComponent<ButtonController>();
+        KoboldController controller = other.GetComponent<KoboldController>();
+        KoboldSkillController controllerSkill = other.GetComponent<KoboldSkillController>();
 
         if (controller != null)
         {
+            Debug.Log("Entered the " + ResourceEnum.T1Dic[ResourceType] + " zone");
+            Debug.Log("Character has " + controller.Stamina + " stamina");
+            Debug.Log("Character has " + controllerSkill.T1SkillDic[SkillType] + " Skill in " + SkillType); //CRASHES ON THIS LINE
 
-            Debug.Log("Entered the " + ResourceEnum.T1Dic[ResourceType] + "zone");
-            Debug.Log("Character has" + controller.Stamina + "stamina");
             //set our modifiers so we don't have to rereference it every time
 
             sanguineValue = controller.sanguine;
@@ -56,7 +59,9 @@ public class ResourceCollide : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D other)
     {
-        ButtonController controller = other.GetComponent<ButtonController>();
+        //these really don't need to be called every frame but WHATEVER
+        KoboldController controller = other.GetComponent<KoboldController>();
+        KoboldSkillController controllerSkill = other.GetComponent<KoboldSkillController>();
 
         if (controller != null)
         {
@@ -74,18 +79,18 @@ public class ResourceCollide : MonoBehaviour
             + skillValue * skillMod
             ;
 
+            if (ResourceProgress > ResourceProgressReqd)
+            {
+                ResourceProgress = 0;
+                Debug.Log("GAIN 1 RESOURCE");
+                ResourceEnum.T1Dic[ResourceType] = ResourceEnum.T1Dic[ResourceType] + 1;
+                ResourceEnum.ResourceChange();
+                Debug.Log("GAIN 1 RESOURCE");
+                controllerSkill.GainSkill(SkillType);
+            }
         }
 
-        if (ResourceProgress > 300)
-        {
-            ResourceProgress = 0;
-            //make sure to replace meat with whatever the resource type is
-            Debug.Log("GAIN 1");
-            //          ResourceTracker.instance.ResourceGain(1, 1);
 
-            ResourceEnum.T1Dic[ResourceType] = ResourceEnum.T1Dic[ResourceType] + 1;
-            ResourceEnum.ResourceChangeTargeted();
-        }
     }
 
     void OnMouseDown()
