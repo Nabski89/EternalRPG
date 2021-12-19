@@ -8,6 +8,7 @@ public class UISkills : MonoBehaviour
 {
 
     public Text UIText;
+    public Text UITextSkillPoint;
     public KoboldSkillController Character;
     public KoboldSkillController.T1Skill SkillType;
     public static float SkillValue = 2;
@@ -19,7 +20,8 @@ public class UISkills : MonoBehaviour
     {
         SkillValue = Character.T1SkillDic[SkillType];
         SkillValueMax = Character.T1SkillMaxDic[SkillType];
-        UIText.text = SkillType.ToString()+": " + SkillValue.ToString() + " / " + SkillValueMax.ToString();
+        //"\n" makes a new text line
+        UIText.text = SkillType.ToString() + "\n" + SkillValue.ToString() + " / " + SkillValueMax.ToString();
     }
 
     // Update is called once per frame
@@ -32,6 +34,6 @@ public class UISkills : MonoBehaviour
     {
         SkillValue = Character.T1SkillDic[SkillType];
         SkillValueMax = Character.T1SkillMaxDic[SkillType];
-        UIText.text = SkillType.ToString()+": " + SkillValue.ToString() + " / " + SkillValueMax.ToString();
+        UIText.text = SkillType.ToString() + "\n" + SkillValue.ToString() + " / " + SkillValueMax.ToString();
     }
 }

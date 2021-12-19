@@ -14,16 +14,18 @@ public class ResourceMeatStorage : MonoBehaviour
 
     void Start()
     {
-        ResourceTracker.instance.ResourceMaxChange(MaxIncrease, 1);
+//        ResourceTracker.instance.ResourceMaxChange(MaxIncrease, 1);
     }
     void Update()
     {
         if (Input.GetMouseButtonDown(0) && Input.GetKey(KeyCode.LeftControl))
         {
             Debug.Log("Pressed primary button.");
-            ResourceTracker.instance.ResourceMaxChange(-MaxIncrease, 1);
+   //         ResourceTracker.instance.ResourceMaxChange(-MaxIncrease, 1);
             Destroy(gameObject);
         }
     }
 
 }
+
+//this needs to be rebuilt with the enum stuff

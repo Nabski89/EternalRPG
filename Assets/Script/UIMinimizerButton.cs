@@ -19,12 +19,16 @@ public class UIMinimizerButton : MonoBehaviour
     {
         if (toggle == 1)
         {
-            UIElement.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, originalSize * 0);
+            Vector2 position = transform.position;
+            position.y = position.y + 50;
+            transform.position = position;
             toggle = 0;
         }
         else
         {
-            UIElement.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, originalSize);
+            Vector2 position = transform.position;
+            position.y = position.y - 50;
+            transform.position = position;
             toggle = 1;
         }
     }

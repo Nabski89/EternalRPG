@@ -41,11 +41,16 @@
      <Compile Include="Assets\Script\UIMana.cs" />
      <Compile Include="Assets\Script\World Environment\CameraScript.cs" />
      <Compile Include="Assets\Script\CraftResearch.cs" />
+     <Compile Include="Assets\Script\ButtonSkillPoints.cs" />
      <Compile Include="Assets\Script\UIResources.cs" />
      <Compile Include="Assets\Script\KoboldController.cs" />
      <Compile Include="Assets\Script\ActiveCharacterController.cs" />
+     <Compile Include="Assets\Script\UIMinimizerButton.cs" />
+     <Compile Include="Assets\Script\KoboldBodyController.cs" />
      <Compile Include="Assets\Script\UIStam.cs" />
+     <Compile Include="Assets\Script\UISkills.cs" />
      <Compile Include="Assets\Script\UIResourceBuilding.cs" />
+     <Compile Include="Assets\Script\UISkillPoints.cs" />
      <Compile Include="Assets\Script\projectilePrefab.cs" />
      <Compile Include="Assets\Script\EnemyController.cs" />
      <Compile Include="Assets\Script\CombatProjectile.cs" />
@@ -55,10 +60,9 @@
      <Compile Include="Assets\Script\World Environment\CameraTrigger.cs" />
      <Compile Include="Assets\Script\ResourceCollide.cs" />
      <Compile Include="Assets\Script\UIHealth.cs" />
-     <Compile Include="Assets\Script\VOID.cs" />
      <Compile Include="Assets\Script\KoboldSkillController.cs" />
-     <Compile Include="Assets\Script\UISkills.cs" />
-     <Compile Include="Assets\Script\UIMinimizerButton.cs" />
+     <Compile Include="Assets\Script\VOID.cs" />
+     <Compile Include="Assets\Script\KoboldDNA.cs" />
     <Reference Include="UnityEngine">
         <HintPath>C:/Program Files/Unity/Hub/Editor/2020.2.4f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>

@@ -9,10 +9,6 @@ public class ResourceTracker : MonoBehaviour
 {
     public static ResourceTracker instance { get; set; }
 
-    //t1
-    public int meat = 1;
-    public int meatMax = 50;
-
     void Awake()
     {
         instance = this;
@@ -25,31 +21,5 @@ public class ResourceTracker : MonoBehaviour
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = 30;
 
-    }
-
-    /*   // Update is called once per frame
-       void Update()
-       {
-
-       }
-   */
-
-    //checks if you've got below your max resources, and updates the UI
-    public void ResourceGain(int number)
-    {
-        if (meat < meatMax)
-        {
-            meat = Mathf.Min(meat + number, meatMax);
-        }
-    }
-
-    //For changing the max amount something can hold. Updates to max if needed.
-    public void ResourceMaxChange(int number, int resourcetype)
-    {
-        meatMax = meatMax + number;
-        if (meatMax < meat)
-        {
-            meat = meatMax;
-        }
     }
 }

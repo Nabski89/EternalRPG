@@ -4,10 +4,21 @@ using UnityEngine;
 
 public class KoboldController : MonoBehaviour
 {
-
+    public KoboldDNA DNATarget;
+    public KoboldBodyController Body1Target;
+    /* for once we have all the variable body parts
+    public KoboldBodyController Body2Target;
+    public KoboldBodyController Body3Target;
+    public KoboldBodyController Body4Target;
+    public KoboldBodyController Body5Target;
+    public KoboldBodyController Body6Target;
+*/
+    public KoboldSkillController SkillTarget;
     public UIHealth HEALTHBAR;
     public UIMana MANABAR;
     public UIStam STAMINABAR;
+
+    public bool Dead = false;
 
     //core stats, to be redefined by DNA
     //the max is what we can gain up to
@@ -26,7 +37,7 @@ public class KoboldController : MonoBehaviour
     //sanguine stats 
     //Age, Controls if you die, needs to be unnamed from stamina
 
-    //Stamina, controls resting
+    //Stamina, controls how long someone lives
     public int StaminaMax = 18000;
     public int StaminaRegen = 4;
     public int Stamina = 18000;
@@ -51,18 +62,8 @@ public class KoboldController : MonoBehaviour
     // Is this the moving object
     public int CharacterNumber = 1;
 
-    //DNA things to pass down, should probably be an array
-    public int DNA1X = 2; public int DNA1Y = 3;
-    public int DNA2X = 2; public int DNA2Y = 3;
-    public int DNA3X = 2; public int DNA3Y = 3;
-    public int DNA4X = 2; public int DNA4Y = 3;
-    public int DNA5X = 2; public int DNA5Y = 3;
-
     //this controls if it inherits stats from the reproduce script and when it is able to make a new version
-    public int baby = 1;
     public int babymakeCooldown = 60;
-
-    public int resting = 0; // this needs to go away
 
     // Start is called before the first frame update
     void awake()
@@ -73,74 +74,8 @@ public class KoboldController : MonoBehaviour
     {
         maxHealth = 10;
         currentHealth = 10;
-
-        //sets the stats based on our reproduce script
-        if (baby == 1)
-        {
-            DNA1X = Reproduce.instance.DNA1XBaby; DNA1Y = Reproduce.instance.DNA1YBaby;
-            DNA2X = Reproduce.instance.DNA2XBaby; DNA2Y = Reproduce.instance.DNA2YBaby;
-            DNA3X = Reproduce.instance.DNA3XBaby; DNA3Y = Reproduce.instance.DNA3YBaby;
-            DNA4X = Reproduce.instance.DNA4XBaby; DNA4Y = Reproduce.instance.DNA4YBaby;
-            DNA5X = Reproduce.instance.DNA5XBaby; DNA5Y = Reproduce.instance.DNA5YBaby;
-
-            sanguine = DNA1X;
-            soul = DNA2X;
-            strong = DNA3X;
-            smart = DNA4X;
-            speed = DNA5X;
-
-            sanguineMax = sanguine + DNA1Y;
-            soulMax = soul + DNA2Y;
-            strongMax = strong + DNA3Y;
-            smartMax = smart + DNA4Y;
-            speedMax = speed + DNA5Y;
-
-            baby = 0;
-        }
-
     }
 
-
-    public void babymakeing(int Parent)
-    {
-        if (babymakeCooldown == 0)
-        {
-            if (Parent == 1)
-            {
-                babymakeCooldown = 60;
-                Reproduce.instance.SetDNA(DNA1X, DNA1Y);
-                Reproduce.instance.DNA1XBaby = Reproduce.instance.DNATEMP;
-                Reproduce.instance.SetDNA(DNA2X, DNA2Y);
-                Reproduce.instance.DNA2XBaby = Reproduce.instance.DNATEMP;
-                Reproduce.instance.SetDNA(DNA3X, DNA3Y);
-                Reproduce.instance.DNA3XBaby = Reproduce.instance.DNATEMP;
-                Reproduce.instance.SetDNA(DNA4X, DNA4Y);
-                Reproduce.instance.DNA4XBaby = Reproduce.instance.DNATEMP;
-                Reproduce.instance.SetDNA(DNA5X, DNA5Y);
-                Reproduce.instance.DNA5XBaby = Reproduce.instance.DNATEMP;
-                Reproduce.instance.NumberOfParents = 1;
-                Debug.Log("FIRST PARENT IS GO");
-            }
-            if (Parent == 2)
-            {
-                babymakeCooldown = 60;
-
-                Reproduce.instance.SetDNA(DNA1X, DNA1Y);
-                Reproduce.instance.DNA1YBaby = Reproduce.instance.DNATEMP;
-                Reproduce.instance.SetDNA(DNA2X, DNA2Y);
-                Reproduce.instance.DNA2YBaby = Reproduce.instance.DNATEMP;
-                Reproduce.instance.SetDNA(DNA3X, DNA3Y);
-                Reproduce.instance.DNA3YBaby = Reproduce.instance.DNATEMP;
-                Reproduce.instance.SetDNA(DNA4X, DNA4Y);
-                Reproduce.instance.DNA4YBaby = Reproduce.instance.DNATEMP;
-                Reproduce.instance.SetDNA(DNA5X, DNA5Y);
-                Reproduce.instance.DNA5YBaby = Reproduce.instance.DNATEMP;
-                Reproduce.instance.NumberOfParents = 2;
-                Debug.Log("TWO PARENTS IS GO");
-            }
-        }
-        else { Debug.Log("ON COOLDOWN"); }
-    }
     /*   public void OnMouseDown()
        {
            //Deselect everything
@@ -249,7 +184,12 @@ public class KoboldController : MonoBehaviour
         if (Stamina <= 0)
         {
             Debug.Log("You got old and died");
-            resting = 1;
+            Dead = true;
+
+            foreach (var resource in GameObject.FindObjectsOfType<KoboldSkillController>())
+            {
+                resource.ResetSkills(CharacterNumber);
+            }
         }
     }
     public void UpdateSelf()
@@ -295,7 +235,7 @@ public class KoboldController : MonoBehaviour
 
 
         //Multiply everything by time delta I guess because it's updated per frame for some janky reason
-        if (resting == 0 && CharacterNumber == ActiveCharacterController.CurrentCharacter)
+        if (CharacterNumber == ActiveCharacterController.CurrentCharacter)
         {
 
             // this code allows you to move with the arrow keys
@@ -339,23 +279,6 @@ public class KoboldController : MonoBehaviour
 
 
     //Here's some things that happen to this unit, in other places
-
-    public void SKILLTrigger(int amount)
-    {
-        skillUpProgress = skillUpProgress + amount;
-        if (skillUpProgress >= skillUpReq)
-        {
-            skill = skill + 1;
-            skillUpReq = 10 + skill * skill;
-            skillUpProgress = 0;
-        }
-        if (skill == 10 && skillUpProgress == 0)
-        {
-            Debug.Log("Ur a wizard arry");
-            //       GameObject ButtonController2 = Instantiate(Object);
-        }
-    }
-
     public void TeleportToArea(int Area, int CombatArea)
     {
         Debug.Log("BUTTON TELEPORT ACTIVATE");
@@ -372,6 +295,18 @@ public class KoboldController : MonoBehaviour
         transform.position = position;
 
     }
-
+    public void rebirth()
+    {
+        DNATarget.rebirthDNA();
+        Body1Target.RefreshBody();
+        /* these are waiting until I make the rest of the body
+        Body2Target.RefreshBody();
+        Body3Target.RefreshBody();
+        Body4Target.RefreshBody();
+        Body5Target.RefreshBody();
+        Body6Target.RefreshBody();
+        */
+        //skill refresh is handled in the DNA rebirth section
+    }
     //this is the last line
 }
