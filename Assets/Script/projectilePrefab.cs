@@ -5,6 +5,7 @@ using UnityEngine;
 public class projectilePrefab : MonoBehaviour
 {
     //makes it a viable rigid 2d body
+        //Wait why did I do this?
     Rigidbody2D rigidbody2d;
 
     int damage = 1;
@@ -12,6 +13,8 @@ public class projectilePrefab : MonoBehaviour
     void Start()
     {
         rigidbody2d = GetComponent<Rigidbody2D>();
+
+
     }
 
 

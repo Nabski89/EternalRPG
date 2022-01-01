@@ -41,8 +41,8 @@ public class KoboldController : MonoBehaviour
     public int StaminaMax = 18000;
     public int StaminaRegen = 4;
     public int Stamina = 18000;
-    public int maxHealth = 10;
-    public int currentHealth = 10;
+    public float maxHealth = 10;
+    public float currentHealth = 10;
     //soul stats Mana, controls casting spells
     public float Mana = 1;
     public float ManaMax = 100;
@@ -54,16 +54,18 @@ public class KoboldController : MonoBehaviour
     public int moveMod;
     public int atkCD;
 
-
-    //some skills
-    public int skill = 0;
-    public int skillUpReq = 10;
-    public int skillUpProgress = 0;
     // Is this the moving object
     public int CharacterNumber = 1;
 
-    //this controls if it inherits stats from the reproduce script and when it is able to make a new version
-    public int babymakeCooldown = 60;
+    public float targetX = 5;
+    public float targetY = 5;
+    public int NeedsToMove = 1;
+
+    public int foodCounter = 1800;
+    public int hungry = 0;
+
+    //used for the mouse click commander
+    public Vector3 worldPosition;
 
     // Start is called before the first frame update
     void awake()
@@ -75,28 +77,6 @@ public class KoboldController : MonoBehaviour
         maxHealth = 10;
         currentHealth = 10;
     }
-
-    /*   public void OnMouseDown()
-       {
-           //Deselect everything
-           ActiveObject = 0;
-
-           //until the next 9 lines are about if you clicked on something             
-           RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
-           if (hit.collider != null)
-           {
-               //         Debug.Log("Target Position: " + hit.collider.gameObject.transform.position);
-               Debug.Log("Character Active");
-               ActiveObject = 1;
-           }
-           else { Debug.Log("Miss"); };
-           //end clicking on something             
-           //           transform.localScale += new Vector3(1, 0, 1);
-       }
-    previous version of my click activation script */
-    //some random script that should really be it's own file
-
-
 
     public int crafting = 100;
     public void CraftingTrigger(int CraftSpeed)
@@ -126,7 +106,7 @@ public class KoboldController : MonoBehaviour
              skillUpProgress = 0;
            }  */
     }
-    public void ChangeHealth(int amount)
+    public void ChangeHealth(float amount)
     {
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
         //This sends it to the health UI
@@ -135,6 +115,14 @@ public class KoboldController : MonoBehaviour
         if (currentHealth < 1)
         {
             Stamina = Stamina - 1800;
+            Vector2 position = transform.position;
+            if (position.y > 18)
+            {
+                position.x = position.x - 5;
+                position.y = 25 + 1;
+            }
+            //should probably figure out a better location to place it
+            transform.position = position;
         }
     }
     //Dis shoots da bullet
@@ -152,13 +140,12 @@ public class KoboldController : MonoBehaviour
     }
     //use this to update yourself every tick but not get it lost
 
-    public int foodCounter = 1800;
-    public int hungry = 0;
+
     void eat()
     {
-        if (ResourceEnum.T1Dic[ResourceEnum.T1Resource.Meat] > 0)
+        if (ResourceEnum.ResourceDic[ResourceEnum.Resource.Meat] > 0)
         {
-            ResourceEnum.T1Dic[ResourceEnum.T1Resource.Meat] = ResourceEnum.T1Dic[ResourceEnum.T1Resource.Meat] - 1;
+            ResourceEnum.ResourceDic[ResourceEnum.Resource.Meat] = ResourceEnum.ResourceDic[ResourceEnum.Resource.Meat] - 1;
             hungry = hungry - 1;
             ResourceEnum.ResourceChange();
             //maybe we should get something on the foodCounter as a bonus
@@ -190,12 +177,11 @@ public class KoboldController : MonoBehaviour
             {
                 resource.ResetSkills(CharacterNumber);
             }
+            TeleportToCoordinate(-100, -100);
         }
     }
     public void UpdateSelf()
     {
-
-        babymakeCooldown = Mathf.Max(babymakeCooldown - 1, 0);
 
         hunger();
         stamina();
@@ -212,41 +198,43 @@ public class KoboldController : MonoBehaviour
     }
 
 
-
+    public float MouseDistance = 50f;
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            /*       RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
-                   if (hit.collider != null)
-                   {
-                    //   Debug.Log("Target Position: " + hit.collider.gameObject.transform.position);
-                       Debug.Log("Character Active");
-                       ActiveObject = 1;
-                   }
-                   else
-                   {
-                       Debug.Log("Miss");
-                       ActiveObject = 0;
-                   };
-                   */
-        }
-
-
-        //Multiply everything by time delta I guess because it's updated per frame for some janky reason
         if (CharacterNumber == ActiveCharacterController.CurrentCharacter)
         {
+            if (Input.GetMouseButtonDown(0))
+            {
+                Vector3 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
+                Vector2 worldPoint2d = new Vector2(worldPoint.x, worldPoint.y);
+                targetX = worldPoint2d.x;
+                targetY = worldPoint2d.y;
+                NeedsToMove = 1;
+            }
+        }
+
+        if (NeedsToMove == 1)
+        {
             // this code allows you to move with the arrow keys
-
-            float horizontal = Input.GetAxis("Horizontal");
-            float vertical = Input.GetAxis("Vertical");
+            // the math bit decides if it goes right or left
 
             Vector2 position = transform.position;
-            position.x = position.x + 1f * horizontal * Time.deltaTime; ;
-            position.y = position.y + 1f * vertical * Time.deltaTime; ;
+            position.x = position.x + 1f * Time.deltaTime * Mathf.Clamp(targetX - position.x, -1, 1);
+            position.y = position.y + 1f * Time.deltaTime * Mathf.Clamp(targetY - position.y, -1, 1);
             transform.position = position;
+            //            Debug.Log("x: " + position.x);
+            //            Debug.Log("Y: " + position.y);
+
+            if (Mathf.Abs(targetY - position.y) < .05 && Mathf.Abs(targetX - position.x) < 0.5)
+            {
+                NeedsToMove = 0;
+            }
+            //Multiply everything by time delta I guess because it's updated per frame for some janky reason
+            if (CharacterNumber == ActiveCharacterController.CurrentCharacter)
+            {
+            }
         }
 
         //Go to sleep and restore stamina
@@ -283,22 +271,37 @@ public class KoboldController : MonoBehaviour
     {
         Debug.Log("BUTTON TELEPORT ACTIVATE");
         Vector2 position = transform.position;
-        position.x = (CombatArea * 40) - 3;
+        position.x = (CombatArea * 50) + 10 + CharacterNumber;
         if (CombatArea == 1)
         {
-            position.y = 25;
+            position.y = 30;
         }
         else
         {
             position.y = 0;
         }
         transform.position = position;
-
     }
-    public void rebirth()
+    public void TeleportToCoordinate(float X, float Y)
+    {
+        Debug.Log("BUTTON TELEPORT ACTIVATE");
+        Vector2 position = transform.position;
+        position.x = X;
+        position.y = Y;
+        transform.position = position;
+    }
+
+    public void rebirth(float x, float y)
     {
         DNATarget.rebirthDNA();
         Body1Target.RefreshBody();
+        maxHealth = 10;
+        currentHealth = 10;
+        Stamina = StaminaMax;
+        foodCounter = 1800;
+        hungry = 0;
+        Dead = false;
+        TeleportToCoordinate(x, y);
         /* these are waiting until I make the rest of the body
         Body2Target.RefreshBody();
         Body3Target.RefreshBody();
@@ -308,5 +311,4 @@ public class KoboldController : MonoBehaviour
         */
         //skill refresh is handled in the DNA rebirth section
     }
-    //this is the last line
 }

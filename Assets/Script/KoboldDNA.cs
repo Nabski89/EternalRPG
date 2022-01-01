@@ -6,14 +6,15 @@ public class KoboldDNA : MonoBehaviour
 {
     public KoboldController TargetKobold;
     public KoboldSkillController TargetSkill;
-    public Reproduce Reproduce;
+
 
     public enum DNA { Block1, Block2, Block3, Block4, Block5, Block6 };
 
     public Dictionary<DNA, int> DNADicX = new Dictionary<DNA, int>();
     public Dictionary<DNA, int> DNADicY = new Dictionary<DNA, int>();
     // Start is called before the first frame update
-    void Start()
+    public bool ValidParent = true;
+    void Awake()
     {
         DNADicX[DNA.Block1] = Random.Range(0, 2);
         DNADicX[DNA.Block2] = Random.Range(0, 2);
@@ -29,25 +30,6 @@ public class KoboldDNA : MonoBehaviour
         DNADicY[DNA.Block5] = Random.Range(0, 2);
         DNADicY[DNA.Block6] = Random.Range(0, 2);
     }
-
-    void awake()
-    {
-        DNADicX[DNA.Block1] = Random.Range(0, 2);
-        DNADicX[DNA.Block2] = Random.Range(0, 2);
-        DNADicX[DNA.Block3] = Random.Range(0, 2);
-        DNADicX[DNA.Block4] = Random.Range(0, 2);
-        DNADicX[DNA.Block5] = Random.Range(0, 2);
-        DNADicX[DNA.Block6] = Random.Range(0, 2);
-
-        DNADicY[DNA.Block1] = Random.Range(0, 2);
-        DNADicY[DNA.Block2] = Random.Range(0, 2);
-        DNADicY[DNA.Block3] = Random.Range(0, 2);
-        DNADicY[DNA.Block4] = Random.Range(0, 2);
-        DNADicY[DNA.Block5] = Random.Range(0, 2);
-        DNADicY[DNA.Block6] = Random.Range(0, 2);
-    }
-
-
     int RandomNUMBER;
     int DNATEMP;
     public void SetDNA(DNA EnumDNA)
@@ -68,33 +50,35 @@ public class KoboldDNA : MonoBehaviour
         if (parentNumber == 1)
         {
             SetDNA(DNA.Block1);
-            Reproduce.instance.DNA1XBaby = DNATEMP;
+            Reproduce.DNA1XBaby = DNATEMP;
             SetDNA(DNA.Block2);
-            Reproduce.instance.DNA2XBaby = DNATEMP;
+            Reproduce.DNA2XBaby = DNATEMP;
             SetDNA(DNA.Block3);
-            Reproduce.instance.DNA3XBaby = DNATEMP;
+            Reproduce.DNA3XBaby = DNATEMP;
             SetDNA(DNA.Block4);
-            Reproduce.instance.DNA4XBaby = DNATEMP;
+            Reproduce.DNA4XBaby = DNATEMP;
             SetDNA(DNA.Block5);
-            Reproduce.instance.DNA5XBaby = DNATEMP;
+            Reproduce.DNA5XBaby = DNATEMP;
             SetDNA(DNA.Block6);
             Debug.Log("FIRST PARENT IS GO");
         }
         if (parentNumber == 2)
         {
             SetDNA(DNA.Block1);
-            Reproduce.instance.DNA1YBaby = DNATEMP;
+            Reproduce.DNA1YBaby = DNATEMP;
             SetDNA(DNA.Block2);
-            Reproduce.instance.DNA2YBaby = DNATEMP;
+            Reproduce.DNA2YBaby = DNATEMP;
             SetDNA(DNA.Block3);
-            Reproduce.instance.DNA3YBaby = DNATEMP;
+            Reproduce.DNA3YBaby = DNATEMP;
             SetDNA(DNA.Block4);
-            Reproduce.instance.DNA4YBaby = DNATEMP;
+            Reproduce.DNA4YBaby = DNATEMP;
             SetDNA(DNA.Block5);
-            Reproduce.instance.DNA5YBaby = DNATEMP;
+            Reproduce.DNA5YBaby = DNATEMP;
             SetDNA(DNA.Block6);
             Debug.Log("TWO PARENTS IS GO");
+            rebirthDNA();
         }
+        ValidParent = false;
     }
     int rebirthTo1;
     int rebirthTo2;
@@ -116,18 +100,17 @@ public class KoboldDNA : MonoBehaviour
                     (1 - DNADicX[DNA.Block4]) + (1 - DNADicY[DNA.Block4]) +
                     DNADicX[DNA.Block5] + DNADicY[DNA.Block5];
 
-
         rebirthTo2 = (1 - DNADicX[DNA.Block1]) + (1 - DNADicY[DNA.Block1]) +
-                     DNADicX[DNA.Block2] + DNADicY[DNA.Block2] +
-                     DNADicX[DNA.Block6] + DNADicY[DNA.Block6];
+                    DNADicX[DNA.Block2] + DNADicY[DNA.Block2] +
+                    DNADicX[DNA.Block6] + DNADicY[DNA.Block6];
 
         rebirthTo3 = (1 - DNADicX[DNA.Block2]) + (1 - DNADicY[DNA.Block2]) +
-                     DNADicX[DNA.Block3] + DNADicY[DNA.Block3] +
-                     (1 - DNADicX[DNA.Block5]) + (1 - DNADicY[DNA.Block5]);
+                    DNADicX[DNA.Block3] + DNADicY[DNA.Block3] +
+                    (1 - DNADicX[DNA.Block5]) + (1 - DNADicY[DNA.Block5]);
 
         rebirthTo4 = (1 - DNADicX[DNA.Block3]) + (1 - DNADicY[DNA.Block3]) +
-                        DNADicX[DNA.Block4] + DNADicY[DNA.Block4] +
-                        (1 - DNADicX[DNA.Block6]) + (1 - DNADicY[DNA.Block6]);
+                    DNADicX[DNA.Block4] + DNADicY[DNA.Block4] +
+                    (1 - DNADicX[DNA.Block6]) + (1 - DNADicY[DNA.Block6]);
 
         TargetSkill.RefreshSkills(rebirthTo1, rebirthTo2, rebirthTo3, rebirthTo4);
     }

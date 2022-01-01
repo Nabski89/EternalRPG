@@ -97,25 +97,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85136b4cedd7a924cb3e697e91db7448, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resting: 0
-  maxHealth: 10
-  currentHealth: 10
+  DNATarget: {fileID: 0}
+  Body1Target: {fileID: 0}
+  SkillTarget: {fileID: 0}
+  HEALTHBAR: {fileID: 0}
+  MANABAR: {fileID: 0}
+  STAMINABAR: {fileID: 0}
+  Dead: 0
+  sanguine: 0
+  soul: 0
+  strong: 0
+  smart: 0
+  speed: 0
+  sanguineMax: 0
+  soulMax: 0
+  strongMax: 0
+  smartMax: 0
+  speedMax: 0
   StaminaMax: 600
   StaminaRegen: 4
   Stamina: 600
-  ManaMax: 100
-  ManaRegen: 1
+  maxHealth: 10
+  currentHealth: 10
   Mana: 1
+  ManaMax: 100
+  PunchRegen: 1
+  ManaRegen: 1
+  moveMod: 0
+  atkCD: 0
   skill: 0
   skillUpReq: 10
   skillUpProgress: 0
-  ActiveObject: 0
-  DNA1X: 0
-  DNA1Y: 0
-  DNA2X: 0
-  DNA2Y: 0
-  babymake: 0
-  babymakeCooldown: 1200
+  CharacterNumber: 1
+  foodCounter: 1800
+  hungry: 0
   crafting: 100
   projectilePrefab: {fileID: 5399046941131522813}
 --- !u!50 &872216245992761587
@@ -149,7 +164,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

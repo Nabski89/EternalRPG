@@ -12,26 +12,26 @@ public class UIResources : MonoBehaviour
 
     //making these public lets you set them in the inspector
     public Text UIText;
-    public ResourceEnum.T1Resource ResourceType;
+    public ResourceEnum.Resource ResourceType;
     public static int ResourceValue = 2;
     public static int ResourceValueMax = 3;
 
     //start goes AFTER awake
     void Start()
     {
-        ResourceValue = ResourceEnum.T1Dic[ResourceType];
-        ResourceValueMax = ResourceEnum.T1MaxDic[ResourceType];
+        ResourceValue = ResourceEnum.ResourceDic[ResourceType];
+        ResourceValueMax = ResourceEnum.ResourceMaxDic[ResourceType];
 
         UIText.text = ResourceValue.ToString() + " / "+ ResourceValueMax.ToString();
     }
     public void ResourceUpdate()
     {
-//        Debug.Log("Dictionary Value" + ResourceEnum.T1Dic[ResourceType]);
+//        Debug.Log("Dictionary Value" + ResourceEnum.ResourceDic[ResourceType]);
 
-        ResourceValue = ResourceEnum.T1Dic[ResourceType];
+        ResourceValue = ResourceEnum.ResourceDic[ResourceType];
 //        Debug.Log("Resource value " + ResourceValue);
 
-        ResourceValueMax = ResourceEnum.T1MaxDic[ResourceType];
+        ResourceValueMax = ResourceEnum.ResourceMaxDic[ResourceType];
 
         UIText.text = ResourceValue.ToString() + " / "+ ResourceValueMax.ToString();
     }

@@ -24,7 +24,7 @@ public class ResourceCollide : MonoBehaviour
     public float speedMod = 0.05f;
     public float skillMod = 0.2f; //common max level is 5, which would double the speed
 
-    public ResourceEnum.T1Resource ResourceType;
+    public ResourceEnum.Resource ResourceType;
     public KoboldSkillController.T1Skill SkillType;
 
     // not being used but we might want to access more than one type or resource from a file at a time
@@ -42,7 +42,7 @@ public class ResourceCollide : MonoBehaviour
 
         if (controller != null)
         {
-            Debug.Log("Entered the " + ResourceEnum.T1Dic[ResourceType] + " zone");
+            Debug.Log("Entered the " + ResourceEnum.ResourceDic[ResourceType] + " zone");
             Debug.Log("Character has " + controller.Stamina + " stamina");
             Debug.Log("Character has " + controllerSkill.T1SkillDic[SkillType] + " Skill in " + SkillType); //CRASHES ON THIS LINE
 
@@ -83,7 +83,7 @@ public class ResourceCollide : MonoBehaviour
             {
                 ResourceProgress = 0;
                 Debug.Log("GAIN 1 RESOURCE");
-                ResourceEnum.T1Dic[ResourceType] = ResourceEnum.T1Dic[ResourceType] + 1;
+                ResourceEnum.ResourceDic[ResourceType] = ResourceEnum.ResourceDic[ResourceType] + 1;
                 ResourceEnum.ResourceChange();
                 Debug.Log("GAIN 1 RESOURCE");
                 controllerSkill.GainSkill(SkillType);

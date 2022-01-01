@@ -6,17 +6,29 @@ public class EnemyController : MonoBehaviour
 {
     public int stall = 60;
     int RandomNUMBER;
+    //we need this to make something a child on spawn
     int attack = 0;
     int block = 0;
     public GameObject AttackPrefab;
     public GameObject BlockPrefab;
+
+    public SpriteRenderer m_SpriteRenderer;
     // Start is called before the first frame update
     void Start()
     {
-
     }
 
     // Update is called once per frame
+
+    public void CreateEnemy()
+    {
+        //select the sprite
+        //select the location based on how many enemies we have
+        //seed the loot pool?
+        //set the stats
+    }
+
+
     void Update()
     {
         stall = stall - 1;
@@ -40,13 +52,16 @@ public class EnemyController : MonoBehaviour
             if (attack == 1)
             {
                 attack = 0;
-                GameObject AttackObject = Instantiate(AttackPrefab);
+
+                GameObject childGameObject = Instantiate(AttackPrefab, this.transform);
+                childGameObject.name = "Attack";
                 stall = 60;
             }
             if (block == 1)
             {
                 block = 0;
-                GameObject BlockObject = Instantiate(BlockPrefab);
+                GameObject childGameObject = Instantiate(BlockPrefab, this.transform);
+                childGameObject.name = "Block";
                 stall = 60;
             }
         }

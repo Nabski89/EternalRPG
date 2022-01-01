@@ -7,23 +7,25 @@ public class Reproduce : MonoBehaviour
     //I know variables normally get their own lines but FUCK this should really be an array. First line is X, Second is Y. Alternating Mom/Dad/Baby
 
     //Health
-    public int DNA1XBaby = 1;
-    public int DNA1YBaby = 1;
+    public static int DNA1XBaby = 1;
+    public static int DNA1YBaby = 1;
     //Mana
-    public int DNA2XBaby = 1;
-    public int DNA2YBaby = 1;
+    public static int DNA2XBaby = 1;
+    public static int DNA2YBaby = 1;
     //Physical Skills
-    public int DNA3XBaby = 1;
-    public int DNA3YBaby = 1;
+    public static int DNA3XBaby = 1;
+    public static int DNA3YBaby = 1;
     //Magical Skills
-    public int DNA4XBaby = 1;
-    public int DNA4YBaby = 1;
+    public static int DNA4XBaby = 1;
+    public static int DNA4YBaby = 1;
     //Lifespan
-    public int DNA5XBaby = 1;
-    public int DNA5YBaby = 1;
+    public static int DNA5XBaby = 1;
+    public static int DNA5YBaby = 1;
 
-    public int DNA6XBaby = 1;
-    public int DNA6YBaby = 1;
+    public static int DNA6XBaby = 1;
+    public static int DNA6YBaby = 1;
+
+    public bool EggReady = false;
 
     public static Reproduce instance { get; set; }
     // Start is called before the first frame update
@@ -60,53 +62,35 @@ public KoboldController Kobold7;
         }
     }
     bool babyready = false;
-    void rebirth(KoboldController KoboldNumber)
-    {
-        if (babyready == true)
-        {
-            if (KoboldNumber.Dead == true)
-            {
-                KoboldNumber.rebirth();
-                babyready = false;
-            }
-
-        }
-    }
-
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        KoboldDNA controller = other.GetComponent<KoboldDNA>();
-        if (controller != null)
+        KoboldDNA controllerDNA = other.GetComponent<KoboldDNA>();
+        if (controllerDNA != null)
         {
-            if (NumberOfParents == 1)
+            if (NumberOfParents == 1 && controllerDNA.ValidParent == true)
             {
                 Debug.Log("Second Parent");
-                controller.DNAtoBaby(2);
+                controllerDNA.DNAtoBaby(2);
+                EggReady = true;
                 //THIS IS WHERE YOU WOULD SPAWN THE BABY, but we are reworking it so that it revives a dead kobold instead
-                rebirth(Kobold1);
-                rebirth(Kobold2);
-                rebirth(Kobold3);
-                rebirth(Kobold4);
-                rebirth(Kobold5);
-                /* need to do a check to make sure these are unlocked
-                if()
-                rebirth(Kobold6);
-                rebirth(Kobold7);
-*/
-
+                CreateEgg();
                 NumberOfParents = 0;
             }
-            if (NumberOfParents == 0)
+            if (NumberOfParents == 0 && controllerDNA.ValidParent == true)
             {
-                Debug.Log("First Parent");
-                controller.DNAtoBaby(1);
+
+                controllerDNA.DNAtoBaby(1);
+                NumberOfParents = 1;
+                Debug.Log("First Parent Complete");
             }
         }
-
-
     }
-
+    public GameObject eggPrefab;
+    void CreateEgg()
+    {
+        GameObject KOBOLDEGG = Instantiate(eggPrefab);
+    }
 
 
 }
