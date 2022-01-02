@@ -206,12 +206,18 @@ public class KoboldController : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
-                Vector3 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                //check to make sure we didn't click on the UI
 
-                Vector2 worldPoint2d = new Vector2(worldPoint.x, worldPoint.y);
-                targetX = worldPoint2d.x;
-                targetY = worldPoint2d.y;
-                NeedsToMove = 1;
+                Vector3 mousePos = Input.mousePosition;
+                if (mousePos.x > 230 && mousePos.y > 220)
+                {
+                    //the coordinates for the actual world
+                    Vector3 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                    Vector2 worldPoint2d = new Vector2(worldPoint.x, worldPoint.y);
+                    targetX = Mathf.Clamp(0, worldPoint2d.x, CameraScript.WorldSize);
+                    targetY = Mathf.Clamp(0, worldPoint2d.y, CameraScript.WorldSize);
+                    NeedsToMove = 1;
+                }
             }
         }
 
@@ -249,7 +255,6 @@ public class KoboldController : MonoBehaviour
         {
             Launch();
         }
-
         if (Input.GetKeyDown(KeyCode.V))
         {
             //          ResourceTracker.instance.ResourceGain(skill, books);

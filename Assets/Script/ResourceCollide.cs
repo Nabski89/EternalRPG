@@ -39,7 +39,13 @@ public class ResourceCollide : MonoBehaviour
     {
         KoboldController controller = other.GetComponent<KoboldController>();
         KoboldSkillController controllerSkill = other.GetComponent<KoboldSkillController>();
+        BuildSpace controllerBuildBlock = other.GetComponent<BuildSpace>();
 
+        if (controllerBuildBlock != null)
+        {
+            //blocks building
+            controllerBuildBlock.blocked = 1;
+        }
         if (controller != null)
         {
             Debug.Log("Entered the " + ResourceEnum.ResourceDic[ResourceType] + " zone");
@@ -47,6 +53,12 @@ public class ResourceCollide : MonoBehaviour
             Debug.Log("Character has " + controllerSkill.T1SkillDic[SkillType] + " Skill in " + SkillType); //CRASHES ON THIS LINE
 
             //set our modifiers so we don't have to rereference it every time
+
+            //force the character to go to the center of this resource, so you can't do two at once
+            Vector2 position = transform.position;
+            controller.targetX = position.x;
+            controller.targetY = position.y;
+
 
             sanguineValue = controller.sanguine;
             soulValue = controller.soul;
@@ -63,9 +75,8 @@ public class ResourceCollide : MonoBehaviour
         KoboldController controller = other.GetComponent<KoboldController>();
         KoboldSkillController controllerSkill = other.GetComponent<KoboldSkillController>();
 
-        if (controller != null)
+        if (controller != null && controllerSkill != null)
         {
-
             //        controller.SKILLTrigger(1); //this might be neat later?
 
             ResourceProgress =
@@ -89,8 +100,18 @@ public class ResourceCollide : MonoBehaviour
                 controllerSkill.GainSkill(SkillType);
             }
         }
+    }
 
 
+    void OnTriggerExit2D(Collider2D other)
+    {
+        BuildSpace controllerBuildBlock = other.GetComponent<BuildSpace>();
+
+        if (controllerBuildBlock != null)
+        {
+            //unblocks building
+            controllerBuildBlock.blocked = 0;
+        }
     }
 
     void OnMouseDown()

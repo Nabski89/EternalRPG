@@ -5,30 +5,19 @@ using UnityEngine.UI;
 
 public class UIMinimizerButton : MonoBehaviour
 {
-    public Image UIElement;
-    float originalSize;
-    int toggle = 1;
-    // Start is called before the first frame update
-    void Start()
-    {
-        originalSize = UIElement.rectTransform.rect.width;
-    }
+    public GameObject ToggleObject;
+    private int toggle = 1;
 
-    // Update is called once per frame
     public void Toggle()
     {
         if (toggle == 1)
         {
-            Vector2 position = transform.position;
-            position.y = position.y + 50;
-            transform.position = position;
+            ToggleObject.SetActive(true);
             toggle = 0;
         }
         else
         {
-            Vector2 position = transform.position;
-            position.y = position.y - 50;
-            transform.position = position;
+            ToggleObject.SetActive(false);
             toggle = 1;
         }
     }

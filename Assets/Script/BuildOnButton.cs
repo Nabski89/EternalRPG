@@ -13,7 +13,7 @@ public class BuildOnButton : MonoBehaviour
     public int BuildSize = 1;
     public float targetX;
     public float targetY;
-    private bool buildready = false;
+    bool buildready = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,24 +24,27 @@ public class BuildOnButton : MonoBehaviour
     public void BUILD()
     {
         buildready = true;
-        Debug.Log("The button was pushed");
-
-
-        if (BuildSize == 1) ;
+        foreach (var BuildSpace in GameObject.FindObjectsOfType<BuildSpace>())
         {
-            Instantiate(Small);
+            BuildSpace.KillAllExistingOutlines();
         }
-        if (BuildSize == 2) ;
+        if (BuildSize == 1)
         {
-            Instantiate(Medium);
+            Instantiate(Small, new Vector3(-25, -25, 0), Quaternion.identity);
+            Debug.Log("Made a small");
         }
-        if (BuildSize == 3) ;
+        if (BuildSize == 2)
         {
-            Instantiate(Large);
+            Instantiate(Medium, new Vector3(-25, -25, 0), Quaternion.identity);
+            Debug.Log("Made a medium");
         }
-        if (BuildSize == 4) ;
+        if (BuildSize == 3)
         {
-            Instantiate(XLarge);
+            Instantiate(Large, new Vector3(-25, -25, 0), Quaternion.identity);
+        }
+        if (BuildSize == 4)
+        {
+            Instantiate(XLarge, new Vector3(-25, -25, 0), Quaternion.identity);
         }
     }
 
@@ -64,10 +67,19 @@ public class BuildOnButton : MonoBehaviour
 
                 if (targetX < CameraScript.WorldSize && targetX > 0 && targetY < CameraScript.WorldSize && targetY > 0)
                 {
-                    GameObject childGameObject = Instantiate(ObjectToSpawn, new Vector3(targetX, targetY, 0), Quaternion.identity);
+                    foreach (var BuildSpace in GameObject.FindObjectsOfType<BuildSpace>())
+                    {
+                        if (BuildSpace.blocked == 0)
+                        {
+                            BuildSpace.KillAllExistingOutlines();
+                            GameObject childGameObject = Instantiate(ObjectToSpawn, new Vector3(targetX, targetY, 0), Quaternion.identity);
 
-                    buildready = false;
-                    Debug.Log("Can we build it, yes we can");
+                            buildready = false;
+
+                            Debug.Log("Can we build it, yes we can");
+                        }
+                        else { Debug.Log("CAN'T DO THAT BOSS"); }
+                    }
                 }
             }
         }

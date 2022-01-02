@@ -8,6 +8,7 @@ public class BuildSpace : MonoBehaviour
     public float targetY;
 
     public int buildSize = 1;
+    public int blocked = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,14 +34,6 @@ public class BuildSpace : MonoBehaviour
         if (buildSize == 3)
         {
             MoveLarge();
-        }
-
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            CheckBuildViability();
-            Destroy(gameObject);
-
         }
     }
 
@@ -113,9 +106,9 @@ public class BuildSpace : MonoBehaviour
         }
     }
 
-    //checks if we will be able to build a building in that location, probably with some kind of collider
-    void CheckBuildViability()
+    public void KillAllExistingOutlines()
     {
-
+        Destroy(gameObject);
     }
+
 }
