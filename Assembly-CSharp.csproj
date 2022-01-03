@@ -47,7 +47,7 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets\Script\ResourceMeatStorage.cs" />
+     <Compile Include="Assets\Script\ResourceStorage.cs" />
      <Compile Include="Assets\Script\EnemyBulkController.cs" />
      <Compile Include="Assets\Script\Build\BuildButton.cs" />
      <Compile Include="Assets\Script\EGG.cs" />

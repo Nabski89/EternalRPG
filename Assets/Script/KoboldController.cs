@@ -143,9 +143,9 @@ public class KoboldController : MonoBehaviour
 
     void eat()
     {
-        if (ResourceEnum.ResourceDic[ResourceEnum.Resource.Meat] > 0)
+        if (ResourceEnum.ResourceDic[ResourceEnum.Resource.MeatP1] > 0)
         {
-            ResourceEnum.ResourceDic[ResourceEnum.Resource.Meat] = ResourceEnum.ResourceDic[ResourceEnum.Resource.Meat] - 1;
+            ResourceEnum.ResourceDic[ResourceEnum.Resource.MeatP1] = ResourceEnum.ResourceDic[ResourceEnum.Resource.MeatP1] - 1;
             hungry = hungry - 1;
             ResourceEnum.ResourceChange();
             //maybe we should get something on the foodCounter as a bonus
