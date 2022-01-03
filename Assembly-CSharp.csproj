@@ -73,6 +73,7 @@
      <Compile Include="Assets\Script\UISkillPoints.cs" />
      <Compile Include="Assets\Script\BuildOnBuild.cs" />
      <Compile Include="Assets\Script\projectilePrefab.cs" />
+     <Compile Include="Assets\Script\BuildShopButtons.cs" />
      <Compile Include="Assets\Script\KoboldCombatController.cs" />
      <Compile Include="Assets\Script\EnemyController.cs" />
      <Compile Include="Assets\Script\WorldPopulate.cs" />

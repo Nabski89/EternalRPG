@@ -17,19 +17,16 @@ public class BuildShopButtons : MonoBehaviour
     {
         ToggleAll(MediumRef);
     }
-
     public void Large()
     {
         ToggleAll(LargeRef);
     }
-
     public void XL()
     {
         ToggleAll(XLRef);
     }
     void ToggleAll(GameObject TheOneWeWant)
     {
-
         SmallRef.SetActive(false);
         MediumRef.SetActive(false);
         LargeRef.SetActive(false);
@@ -37,7 +34,4 @@ public class BuildShopButtons : MonoBehaviour
 
         TheOneWeWant.SetActive(true);
     }
-
-
-
 }

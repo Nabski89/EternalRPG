@@ -5,7 +5,7 @@ using UnityEngine;
 public class ResourceEnum : MonoBehaviour
 {
     //the point of enum is just to make sure we spell things correctly
-    public enum Resource { Meat, Wheat, Stone, Wood, Ore2, Gold2, Herbs2, Knowledge };
+    public enum Resource { Gold, Knowledge, Meat, Stone, Wood, Herb, Scroll, Ore, Extract, Gem, Codex, MagicOre, Crystal };
     //Make a dictionary with that type, and a quantity
     public static Dictionary<Resource, int> ResourceDic = new Dictionary<Resource, int>();
     public static Dictionary<Resource, int> ResourceMaxDic = new Dictionary<Resource, int>();
@@ -22,14 +22,35 @@ public class ResourceEnum : MonoBehaviour
         ResourceMaxDic.Add(Resource.Wheat, 20);
         ResourceMaxDic.Add(Resource.Stone, 25);
         ResourceMaxDic.Add(Resource.Wood, 30);
-    }
-    int ResourceETOBECHANGED = 2;
-    int ResourceETOBECHANGEDMAX = 2;
 
-    public void ResourceChange(Resource TYPE, int number)
+        ResourceDic.Add(Resource.Gold, 0);
+        ResourceMaxDic.Add(Resource.Gold, 50);
+
+        ResourceDic.Add(Resource.Knowledge, 0);
+        ResourceMaxDic.Add(Resource.Knowledge, 50);
+
+        ResourceMaxDic.Add(Resource.Stone, 25);
+        ResourceMaxDic.Add(Resource.Wood, 30);
+
+        ResourceMaxDic.Add(Resource.Stone, 25);
+        ResourceMaxDic.Add(Resource.Wood, 30);
+
+        ResourceMaxDic.Add(Resource.Stone, 25);
+        ResourceMaxDic.Add(Resource.Wood, 30);
+        
+        
+    }
+    public static void ResourceChange(Resource TYPE, int number)
     {
         ResourceDic[TYPE] = Mathf.Clamp(ResourceDic[TYPE] + number, 0, ResourceMaxDic[TYPE]);
-        //      UIResources.ResourceUpdate();
+        ResourceChange();
+    }
+
+    public static void ResourceChangeMax(Resource TYPE, int number)
+    {
+        ResourceMaxDic[TYPE] = Mathf.Clamp((ResourceMaxDic[TYPE] + number), 0, 999);
+        ResourceDic[TYPE] = Mathf.Clamp(ResourceDic[TYPE], 0, ResourceMaxDic[TYPE]);
+        ResourceChange();
     }
 
     public static void ResourceChange()
