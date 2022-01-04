@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ResourceCollide : MonoBehaviour
 {
+    private int MouseOverTiming;
+    public string MouseOverText = "Error";
     public float ResourceProgress = 0;
     public float ResourceProgressReqd = 300;
     public int Degrade = 0;
@@ -108,6 +110,27 @@ public class ResourceCollide : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void OnMouseOver()
+    {
+        MouseOverTiming += 1;
+        if (MouseOverTiming == 30)
+        {
+            Debug.Log("We Hovered over this thing");
+            MouseOverText = "This structure creates " + ResourceType;
+            MouseOverText = MouseOverText.Remove(MouseOverText.Length - 2, 2);
+            MouseOverText += "\n You will improve at " + SkillType;
+            foreach (var UIMouseOverBox in GameObject.FindObjectsOfType<UIInfoBox>())
+            {
+                UIMouseOverBox.signaltotheworldthatIhavedonesomething(MouseOverText);
+            }
+        }
+    }
+
+    void OnMouseExit()
+    {
+        MouseOverTiming = 0;
     }
 
     void Exhaust()

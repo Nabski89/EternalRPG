@@ -25,10 +25,11 @@ public class UIInfoBox : MonoBehaviour
     }
 
 
-    public void signaltotheworldthatIhavedonesomething()
+    public void signaltotheworldthatIhavedonesomething(string MouseOverText)
     {
-        gameObject.GetComponent<Text>().text = "I hate it here";
+        gameObject.GetComponent<Text>().text = MouseOverText;
     }
+
     void update()
     {
 

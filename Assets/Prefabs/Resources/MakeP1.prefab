@@ -20,6 +20,14 @@ PrefabInstance:
       value: MakeP1
       objectReference: {fileID: 0}
     - target: {fileID: 2804290498160390838, guid: 3774d51257c098b41b471fd05caefbee, type: 3}
+      propertyPath: m_Size.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2804290498160390838, guid: 3774d51257c098b41b471fd05caefbee, type: 3}
+      propertyPath: m_Size.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2804290498160390838, guid: 3774d51257c098b41b471fd05caefbee, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
       value: 10.24
       objectReference: {fileID: 0}

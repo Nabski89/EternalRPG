@@ -85,6 +85,7 @@
      <Compile Include="Assets\Script\Reproduce.cs" />
      <Compile Include="Assets\Script\World Environment\CameraTrigger.cs" />
      <Compile Include="Assets\Script\Build\BuildOnButton.cs" />
+     <Compile Include="Assets\Script\ResourceCollideCAVE.cs" />
      <Compile Include="Assets\Script\Build\BuildDestroy.cs" />
      <Compile Include="Assets\Script\ResourceCollide.cs" />
      <Compile Include="Assets\Script\UIHealth.cs" />

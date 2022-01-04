@@ -31,12 +31,10 @@ public class BuildOnButton : MonoBehaviour
         if (BuildSize == 1)
         {
             Instantiate(Small, new Vector3(-25, -25, 0), Quaternion.identity);
-            Debug.Log("Made a small");
         }
         if (BuildSize == 2)
         {
             Instantiate(Medium, new Vector3(-25, -25, 0), Quaternion.identity);
-            Debug.Log("Made a medium");
         }
         if (BuildSize == 3)
         {

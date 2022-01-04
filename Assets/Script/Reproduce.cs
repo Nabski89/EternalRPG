@@ -89,7 +89,7 @@ public KoboldController Kobold7;
     public GameObject eggPrefab;
     void CreateEgg()
     {
-        GameObject KOBOLDEGG = Instantiate(eggPrefab);
+        GameObject KOBOLDEGG = Instantiate(eggPrefab, this.transform);
     }
 
 
