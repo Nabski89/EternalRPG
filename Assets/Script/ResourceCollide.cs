@@ -6,7 +6,8 @@ public class ResourceCollide : MonoBehaviour
 {
     public float ResourceProgress = 0;
     public float ResourceProgressReqd = 300;
-    public UIResources target;
+    public int Degrade = 0;
+    public int Uses = 10;
 
     //read in each stat, skill will need to turn into some kind of enum list most likely
     //not public because they are basically ready only
@@ -39,18 +40,12 @@ public class ResourceCollide : MonoBehaviour
     {
         KoboldController controller = other.GetComponent<KoboldController>();
         KoboldSkillController controllerSkill = other.GetComponent<KoboldSkillController>();
-        BuildSpace controllerBuildBlock = other.GetComponent<BuildSpace>();
 
-        if (controllerBuildBlock != null)
-        {
-            //blocks building
-            controllerBuildBlock.blocked = 1;
-        }
         if (controller != null)
         {
             Debug.Log("Entered the " + ResourceEnum.ResourceDic[ResourceType] + " zone");
             Debug.Log("Character has " + controller.Stamina + " stamina");
-            Debug.Log("Character has " + controllerSkill.T1SkillDic[SkillType] + " Skill in " + SkillType); //CRASHES ON THIS LINE
+            Debug.Log("Character has " + controllerSkill.T1SkillDic[SkillType] + " Skill in " + SkillType);
 
             //set our modifiers so we don't have to rereference it every time
 
@@ -94,37 +89,25 @@ public class ResourceCollide : MonoBehaviour
             {
                 ResourceProgress = 0;
                 Debug.Log("GAIN 1 RESOURCE");
-                ResourceEnum.ResourceDic[ResourceType] = ResourceEnum.ResourceDic[ResourceType] + 1;
+                ResourceEnum.ResourceDic[ResourceType] = Mathf.Clamp(ResourceEnum.ResourceDic[ResourceType] + 1, 0, ResourceEnum.ResourceMaxDic[ResourceType]);
                 ResourceEnum.ResourceChange();
                 Debug.Log("GAIN 1 RESOURCE");
                 controllerSkill.GainSkill(SkillType);
+                Degrade += 1;
+                if (Degrade > Uses)
+                {
+                    Exhaust();
+                    Debug.Log("Degraded");
+                    Degrade = 0;
+                }
             }
         }
     }
 
-
-    void OnTriggerExit2D(Collider2D other)
+    void Exhaust()
     {
-        BuildSpace controllerBuildBlock = other.GetComponent<BuildSpace>();
-
-        if (controllerBuildBlock != null)
-        {
-            //unblocks building
-            controllerBuildBlock.blocked = 0;
-        }
+        var rendererer = GetComponent<Renderer>();
+        rendererer.material.SetColor("_Color", Color.red);
+        ResourceProgressReqd = ResourceProgressReqd * 5;
     }
-
-    void OnMouseDown()
-    {
-        RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
-        Debug.Log("You Clicked the meat");
-        Debug.Log("Target Position: " + transform.position.x);
-        Debug.Log("Target Position: " + transform.position.y);
-    }
-
-    void update()
-    {
-
-    }
-    //        void TravelTo(transform.position.x, transform.position.y);
 }

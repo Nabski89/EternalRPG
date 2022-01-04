@@ -16,14 +16,5 @@ public class ResourceStorage : MonoBehaviour
     {
         ResourceEnum.ResourceChangeMax(ResourceType, MaxIncrease);
     }
-    void Update()
-    {
-        if (Input.GetMouseButtonDown(0) && Input.GetKey(KeyCode.LeftControl))
-        {
-            Debug.Log("Pressed primary button.");
-            ResourceEnum.ResourceChangeMax(ResourceType, -MaxIncrease);
 
-            Destroy(gameObject);
-        }
-    }
 }

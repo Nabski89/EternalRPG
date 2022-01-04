@@ -16,48 +16,48 @@ public class ResourceEnum : MonoBehaviour
     {
         //add everything to the dictionary
         //Group Knowledge Resources
-        ResourceDic[Resource.KnowledgeG1] = 3;
-        ResourceDic.Add(Resource.PictureG2, 4);
-        ResourceDic.Add(Resource.ScrollG3, 5);
-        ResourceDic.Add(Resource.BookG4, 6);
+        ResourceDic[Resource.KnowledgeG1] = 0;
+        ResourceDic.Add(Resource.PictureG2, 0);
+        ResourceDic.Add(Resource.ScrollG3, 0);
+        ResourceDic.Add(Resource.BookG4, 0);
 
-        ResourceMaxDic.Add(Resource.KnowledgeG1, 50);
-        ResourceMaxDic.Add(Resource.PictureG2, 20);
-        ResourceMaxDic.Add(Resource.ScrollG3, 25);
-        ResourceMaxDic.Add(Resource.BookG4, 30);
+        ResourceMaxDic.Add(Resource.KnowledgeG1, 5);
+        ResourceMaxDic.Add(Resource.PictureG2, 0);
+        ResourceMaxDic.Add(Resource.ScrollG3, 0);
+        ResourceMaxDic.Add(Resource.BookG4, 0);
 
         //Potion Resources
-        ResourceDic[Resource.MeatP1] = 3;
-        ResourceDic.Add(Resource.VinesP2, 4);
-        ResourceDic.Add(Resource.HerbP3, 5);
-        ResourceDic.Add(Resource.ExtractP4, 6);
+        ResourceDic[Resource.MeatP1] = 2;
+        ResourceDic.Add(Resource.VinesP2, 0);
+        ResourceDic.Add(Resource.HerbP3, 0);
+        ResourceDic.Add(Resource.ExtractP4, 0);
 
-        ResourceMaxDic.Add(Resource.MeatP1, 50);
-        ResourceMaxDic.Add(Resource.VinesP2, 20);
-        ResourceMaxDic.Add(Resource.HerbP3, 25);
-        ResourceMaxDic.Add(Resource.ExtractP4, 30);
+        ResourceMaxDic.Add(Resource.MeatP1, 2);
+        ResourceMaxDic.Add(Resource.VinesP2, 0);
+        ResourceMaxDic.Add(Resource.HerbP3, 0);
+        ResourceMaxDic.Add(Resource.ExtractP4, 0);
 
         //Magical Resources, Names and theming are currently WEAK
-        ResourceDic[Resource.BigManaM1] = 3;
-        ResourceDic.Add(Resource.InkM2, 4);
-        ResourceDic.Add(Resource.OrbM3, 5);
-        ResourceDic.Add(Resource.ArcanaM4, 6);
+        ResourceDic[Resource.BigManaM1] = 2;
+        ResourceDic.Add(Resource.InkM2, 0);
+        ResourceDic.Add(Resource.OrbM3, 0);
+        ResourceDic.Add(Resource.ArcanaM4, 0);
 
-        ResourceMaxDic.Add(Resource.BigManaM1, 50);
-        ResourceMaxDic.Add(Resource.InkM2, 20);
-        ResourceMaxDic.Add(Resource.OrbM3, 25);
-        ResourceMaxDic.Add(Resource.ArcanaM4, 30);
+        ResourceMaxDic.Add(Resource.BigManaM1, 5);
+        ResourceMaxDic.Add(Resource.InkM2, 0);
+        ResourceMaxDic.Add(Resource.OrbM3, 0);
+        ResourceMaxDic.Add(Resource.ArcanaM4, 0);
 
         //Ore Resources
         ResourceDic[Resource.StoneC1] = 3;
-        ResourceDic.Add(Resource.GoldC2, 4);
-        ResourceDic.Add(Resource.OreC3, 5);
-        ResourceDic.Add(Resource.CrystalC4, 6);
+        ResourceDic.Add(Resource.GoldC2, 0);
+        ResourceDic.Add(Resource.OreC3, 0);
+        ResourceDic.Add(Resource.CrystalC4, 0);
 
         ResourceMaxDic.Add(Resource.StoneC1, 50);
-        ResourceMaxDic.Add(Resource.GoldC2, 20);
-        ResourceMaxDic.Add(Resource.OreC3, 25);
-        ResourceMaxDic.Add(Resource.CrystalC4, 30);
+        ResourceMaxDic.Add(Resource.GoldC2, 0);
+        ResourceMaxDic.Add(Resource.OreC3, 0);
+        ResourceMaxDic.Add(Resource.CrystalC4, 0);
     }
 
     public static void ResourceChange(Resource TYPE, int number)

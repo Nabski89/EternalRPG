@@ -5,7 +5,6 @@ using UnityEngine.UI;
 //include UnityEngine.UI to resize things (access the image line)
 public class UIStam : MonoBehaviour
 {
-    //static means it's accessable from anything else using those same values and all uses the same memory space
     public Image maskStam;
     private float originalSize;
 
