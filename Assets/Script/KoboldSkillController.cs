@@ -6,6 +6,11 @@ public class KoboldSkillController : MonoBehaviour
 {
     public int ValueToRead = 3;
     public float SkillPoints = 3;
+
+//for use to update a progress bar when performing an action
+    public GameObject ProgressBar;
+    public GameObject ProgressMeter;
+
     // Start is called before the first frame update
     public enum T1Skill { Tending, Mining, Harvesting, Planning };
 

@@ -51,7 +51,7 @@ public class CameraScript : MonoBehaviour
 
     public void GrowWorld(bool DoWeGrow)
     {
-        if (DoWeGrow = true)
+        if (DoWeGrow == true)
         {
             WorldSizeX += .8f;
             WorldSizeY += .6f;

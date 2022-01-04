@@ -60,6 +60,10 @@ public class ResourceCollide : MonoBehaviour
             strongValue = controller.strong;
             smartValue = controller.smart;
             speedValue = controller.speed;
+
+
+            controller.ProgressBar.SetActive(true);
+            controller.ProgressIdle = 0;
             //            skillValue = controller.WHATEVER THE ENUM SKILL IS DEFINED AS
         }
     }
@@ -84,6 +88,8 @@ public class ResourceCollide : MonoBehaviour
             + speedValue * speedMod
             + skillValue * skillMod
             ;
+
+            controller.ProgressBarUpdate(ResourceProgress / ResourceProgressReqd);
 
             if (ResourceProgress > ResourceProgressReqd)
             {

@@ -18,6 +18,13 @@ public class KoboldController : MonoBehaviour
     public UIMana MANABAR;
     public UIStam STAMINABAR;
 
+    //for updating progress based skills
+    public GameObject ProgressBar;
+    public GameObject ProgressMeter;
+    private float ProgressPercent = 0;
+    private float ProgressPreviousPercent = 0;
+    public int ProgressIdle = 0;
+
     public bool Dead = false;
 
     //core stats, to be redefined by DNA
@@ -70,6 +77,9 @@ public class KoboldController : MonoBehaviour
     // Start is called before the first frame update
     void awake()
     {
+        //We need to know what our progress bar is up to
+        Vector2 ProgressMeterScale = ProgressMeter.transform.position;
+        Vector2 ProgressMeterPosition = ProgressMeter.transform.position;
     }
 
     void Start()
@@ -78,6 +88,8 @@ public class KoboldController : MonoBehaviour
         currentHealth = 10;
     }
 
+
+    //This currently is not in use
     public int crafting = 100;
     public void CraftingTrigger(int CraftSpeed)
     {
@@ -125,22 +137,6 @@ public class KoboldController : MonoBehaviour
             transform.position = position;
         }
     }
-    //Dis shoots da bullet
-
-    public GameObject projectilePrefab;
-    void Launch()
-    {
-        Debug.Log("Ur a wizard arry");
-
-        GameObject projectileObject = Instantiate(projectilePrefab);
-
-        //      projectilePrefab projectile = projectileObject.GetComponent<projectilePrefab>();
-        //       projectile.Launch(lookDirection, 300);
-
-    }
-    //use this to update yourself every tick but not get it lost
-
-
     void eat()
     {
         if (ResourceEnum.ResourceDic[ResourceEnum.Resource.MeatP1] > 0)
@@ -166,7 +162,7 @@ public class KoboldController : MonoBehaviour
     }
     void stamina()
     {
-        //this is some janky sleep system
+        //this was some janky sleep system, that turned into a hunger system
         Stamina = Stamina - (1 + hungry);
         if (Stamina <= 0)
         {
@@ -180,11 +176,33 @@ public class KoboldController : MonoBehaviour
             TeleportToCoordinate(-100, -100);
         }
     }
+
+    void ProgressBarUpdate()
+    {
+        if (ProgressPreviousPercent == ProgressPercent)
+        {
+            ProgressIdle += 1;
+            if (ProgressIdle >= 45)
+            {
+                ProgressBar.SetActive(false);
+            }
+        }
+    }
+
+    public void ProgressBarUpdate(float PERCENT)
+    {
+        //update the little meter below the character
+        ProgressMeter.transform.localScale = new Vector3(PERCENT * 1.6f, 1, 1);
+        ProgressMeter.transform.position = ProgressBar.transform.position + new Vector3(PERCENT - 1, 0, 0);
+        //keep it from going away
+        ProgressIdle = 0;
+    }
     public void UpdateSelf()
     {
 
         hunger();
         stamina();
+        ProgressBarUpdate();
 
         //update our stamina bar
         STAMINABAR.SetValue(Stamina / (float)StaminaMax);
@@ -223,51 +241,36 @@ public class KoboldController : MonoBehaviour
 
         if (NeedsToMove == 1)
         {
-            // this code allows you to move with the arrow keys
+            // this code moves us
             // the math bit decides if it goes right or left
 
             Vector2 position = transform.position;
             position.x = position.x + 1f * Time.deltaTime * Mathf.Clamp(targetX - position.x, -1, 1);
             position.y = position.y + 1f * Time.deltaTime * Mathf.Clamp(targetY - position.y, -1, 1);
             transform.position = position;
-            //            Debug.Log("x: " + position.x);
-            //            Debug.Log("Y: " + position.y);
 
+            //Are we there yet?
             if (Mathf.Abs(targetY - position.y) < .05 && Mathf.Abs(targetX - position.x) < 0.5)
             {
                 NeedsToMove = 0;
             }
             //Multiply everything by time delta I guess because it's updated per frame for some janky reason
-            if (CharacterNumber == ActiveCharacterController.CurrentCharacter)
-            {
-            }
         }
-
-        //Go to sleep and restore stamina
-
-
 
         UpdateSelf();
 
         //starting from here you can push buttons to activate abilities
+        /*
+                if (Input.GetKeyDown(KeyCode.C))
+                {
+                    Launch();
+                }
+                if (Input.GetKeyDown(KeyCode.V))
+                {
 
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            Launch();
-        }
-        if (Input.GetKeyDown(KeyCode.V))
-        {
-            //          ResourceTracker.instance.ResourceGain(skill, books);
-        }
-        /*      if (Input.GetKeyDown(KeyCode.X))
-              {
-                  ResourceTracker.instance.books = 7;
-                  ResourceTracker.instance.SetValue(skill, books);
-
-                  skill = ResourceTracker.instance.books;
-
-               Debug.Log("Skill incoming from the other function is " + skill);
-            }  */
+                }
+                      if (Input.GetKeyDown(KeyCode.X))
+                }  */
     }
 
 
