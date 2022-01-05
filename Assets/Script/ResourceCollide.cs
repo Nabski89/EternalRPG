@@ -115,7 +115,7 @@ public class ResourceCollide : MonoBehaviour
     public void OnMouseOver()
     {
         MouseOverTiming += 1;
-        if (MouseOverTiming == 30)
+        if (MouseOverTiming == 15)
         {
             Debug.Log("We Hovered over this thing");
             MouseOverText = "This structure creates " + ResourceType;

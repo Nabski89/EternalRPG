@@ -14,6 +14,8 @@ public class BuildOnButton : MonoBehaviour
     public float targetX;
     public float targetY;
     bool buildready = false;
+    //for the info box
+    public string MouseOverText = "Error";
     // Start is called before the first frame update
     void Start()
     {
@@ -46,10 +48,31 @@ public class BuildOnButton : MonoBehaviour
         }
     }
 
+/*    public void OnPointerEnter(PointerEventData eventData)
+    {
+        {
+            Debug.Log("We Hovered over this thing");
+            MouseOverText = "This structure creates " + ObjectToSpawn.ResourceType1;
+            MouseOverText = MouseOverText.Remove(MouseOverText.Length - 2, 2);
+            MouseOverText += "\n You will improve at ";
+            foreach (var UIMouseOverBox in GameObject.FindObjectsOfType<UIInfoBox>())
+            {
+                UIMouseOverBox.signaltotheworldthatIhavedonesomething(MouseOverText);
+            }
+        }
+    }
+
+     public void OnPointerEnter(PointerEventData eventData)
+     {
+         Debug.Log("Mouse enter");
+     }
+ */
+
     public void Update()
     {
         if (buildready == true)
         {
+
 
             if (Input.GetMouseButtonDown(0))
             {
@@ -63,6 +86,7 @@ public class BuildOnButton : MonoBehaviour
                 //yes, even the "build resource"
                 //destroy a building you clicked on???
 
+                if (BuildSize == 2) { targetX += .5f; targetY += .5f; }
                 if (targetX < CameraScript.WorldSizeX && targetX > 0 && targetY < CameraScript.WorldSizeY && targetY > 0)
                 {
                     foreach (var BuildSpace in GameObject.FindObjectsOfType<BuildSpace>())

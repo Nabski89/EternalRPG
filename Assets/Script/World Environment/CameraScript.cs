@@ -51,20 +51,26 @@ public class CameraScript : MonoBehaviour
 
     public void GrowWorld(bool DoWeGrow)
     {
+        Debug.Log("TRYING TO CHANGE WORLD SIZE");
         if (DoWeGrow == true)
         {
             WorldSizeX += .8f;
             WorldSizeY += .6f;
 
-        //    MOVE OUR OBJECTS
-        //TopObject
-
-        //RightObject
+            foreach (var edge in GameObject.FindObjectsOfType<WorldEdgeMove>())
+            {
+                edge.move(.8f, .6f);
+            }
         }
         else
         {
             WorldSizeX += -.8f;
             WorldSizeY += -.6f;
+
+            foreach (var edge in GameObject.FindObjectsOfType<WorldEdgeMove>())
+            {
+                edge.move(-.8f, -.6f);
+            }
         }
 
     }
