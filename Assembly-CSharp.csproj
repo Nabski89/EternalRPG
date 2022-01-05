@@ -56,6 +56,7 @@
      <Compile Include="Assets\Script\KoboldDNA.cs" />
      <Compile Include="Assets\Script\CombatAbilityUpdate.cs" />
      <Compile Include="Assets\Script\World Environment\CameraScript.cs" />
+     <Compile Include="Assets\Script\WorldBorderStorage.cs" />
      <Compile Include="Assets\Script\CraftResearch.cs" />
      <Compile Include="Assets\Script\Build\BuildBlocker.cs" />
      <Compile Include="Assets\Script\Build\UIBuildCost.cs" />
@@ -86,6 +87,7 @@
      <Compile Include="Assets\Script\World Environment\CameraTrigger.cs" />
      <Compile Include="Assets\Script\Build\BuildOnButton.cs" />
      <Compile Include="Assets\Script\ResourceCollideCAVE.cs" />
+     <Compile Include="Assets\Script\WorldEdgeMove.cs" />
      <Compile Include="Assets\Script\Build\BuildDestroy.cs" />
      <Compile Include="Assets\Script\ResourceCollide.cs" />
      <Compile Include="Assets\Script\UIHealth.cs" />

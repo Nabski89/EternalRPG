@@ -23,6 +23,26 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.30293703
       objectReference: {fileID: 0}
+    - target: {fileID: -5283593212235430389, guid: 0d463c0eba9ceb940b8fce9125687734, type: 3}
+      propertyPath: ResourceCost1
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -5283593212235430389, guid: 0d463c0eba9ceb940b8fce9125687734, type: 3}
+      propertyPath: ResourceCost2
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -5283593212235430389, guid: 0d463c0eba9ceb940b8fce9125687734, type: 3}
+      propertyPath: ResourceType1
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: -5283593212235430389, guid: 0d463c0eba9ceb940b8fce9125687734, type: 3}
+      propertyPath: ResourceType2
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: -2683490669046879853, guid: 0d463c0eba9ceb940b8fce9125687734, type: 3}
+      propertyPath: MaxIncrease
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -2683490669046879853, guid: 0d463c0eba9ceb940b8fce9125687734, type: 3}
       propertyPath: ResourceType
       value: 4

@@ -22,9 +22,9 @@ public class ResourceEnum : MonoBehaviour
         ResourceDic.Add(Resource.BookG4, 0);
 
         ResourceMaxDic.Add(Resource.KnowledgeG1, 5);
-        ResourceMaxDic.Add(Resource.PictureG2, 0);
-        ResourceMaxDic.Add(Resource.ScrollG3, 0);
-        ResourceMaxDic.Add(Resource.BookG4, 0);
+        ResourceMaxDic.Add(Resource.PictureG2, 4);
+        ResourceMaxDic.Add(Resource.ScrollG3, 3);
+        ResourceMaxDic.Add(Resource.BookG4, 2);
 
         //Potion Resources
         ResourceDic[Resource.MeatP1] = 2;
@@ -32,10 +32,10 @@ public class ResourceEnum : MonoBehaviour
         ResourceDic.Add(Resource.HerbP3, 0);
         ResourceDic.Add(Resource.ExtractP4, 0);
 
-        ResourceMaxDic.Add(Resource.MeatP1, 2);
-        ResourceMaxDic.Add(Resource.VinesP2, 0);
-        ResourceMaxDic.Add(Resource.HerbP3, 0);
-        ResourceMaxDic.Add(Resource.ExtractP4, 0);
+        ResourceMaxDic.Add(Resource.MeatP1, 6);
+        ResourceMaxDic.Add(Resource.VinesP2, 3);
+        ResourceMaxDic.Add(Resource.HerbP3, 1);
+        ResourceMaxDic.Add(Resource.ExtractP4, 1);
 
         //Magical Resources, Names and theming are currently WEAK
         ResourceDic[Resource.BigManaM1] = 2;
@@ -49,12 +49,12 @@ public class ResourceEnum : MonoBehaviour
         ResourceMaxDic.Add(Resource.ArcanaM4, 0);
 
         //Ore Resources
-        ResourceDic[Resource.StoneC1] = 3;
+        ResourceDic[Resource.StoneC1] = 0;
         ResourceDic.Add(Resource.GoldC2, 0);
         ResourceDic.Add(Resource.OreC3, 0);
         ResourceDic.Add(Resource.CrystalC4, 0);
 
-        ResourceMaxDic.Add(Resource.StoneC1, 50);
+        ResourceMaxDic.Add(Resource.StoneC1, 0);
         ResourceMaxDic.Add(Resource.GoldC2, 0);
         ResourceMaxDic.Add(Resource.OreC3, 0);
         ResourceMaxDic.Add(Resource.CrystalC4, 0);

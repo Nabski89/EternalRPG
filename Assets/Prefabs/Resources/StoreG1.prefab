@@ -19,6 +19,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.62116
       objectReference: {fileID: 0}
+    - target: {fileID: -2683490669046879853, guid: 0d463c0eba9ceb940b8fce9125687734, type: 3}
+      propertyPath: MaxIncrease
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1283572735717207960, guid: 0d463c0eba9ceb940b8fce9125687734, type: 3}
       propertyPath: m_Name
       value: StoreG1

@@ -15,6 +15,14 @@ PrefabInstance:
       propertyPath: ResourceType
       value: 12
       objectReference: {fileID: 0}
+    - target: {fileID: -4510630329090437188, guid: 3774d51257c098b41b471fd05caefbee, type: 3}
+      propertyPath: ResourceCost1
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -4510630329090437188, guid: 3774d51257c098b41b471fd05caefbee, type: 3}
+      propertyPath: ResourceType1
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 2151608385516608519, guid: 3774d51257c098b41b471fd05caefbee, type: 3}
       propertyPath: m_Name
       value: Make-C1

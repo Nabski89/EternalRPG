@@ -9,11 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5080644487404349539}
+  - component: {fileID: -4634326025119511866}
+  - component: {fileID: -4510630329090437188}
   - component: {fileID: 2804290498160390838}
   - component: {fileID: 2505233581219918435}
   - component: {fileID: -6955090550079300279}
-  - component: {fileID: -4634326025119511866}
-  - component: {fileID: -4510630329090437188}
   m_Layer: 0
   m_Name: Make-Base
   m_TagString: Untagged
@@ -35,6 +35,55 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-4634326025119511866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2151608385516608519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc92a8e799fa75745b0bf6c8c0efc04d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MouseOverText: Error
+  ResourceProgress: 0
+  ResourceProgressReqd: 300
+  Degrade: 0
+  Uses: 10
+  sanguineMod: 0
+  soulMod: 0
+  strongMod: 0
+  smartMod: 0
+  speedMod: 0
+  skillMod: 0
+  ResourceType: 0
+  SkillType: 0
+--- !u!114 &-4510630329090437188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2151608385516608519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ec5c84f8c681d64d9f9b25ac31532b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ResourceType1: 0
+  ResourceType2: 0
+  ResourceType3: 0
+  ResourceType4: 0
+  ResourceType5: 0
+  ResourceCost1: 0
+  ResourceCost2: 0
+  ResourceCost3: 0
+  ResourceCost4: 0
+  ResourceCost5: 0
+  BUILDINGSIZE: 0
+  buildable: 1
 --- !u!61 &2804290498160390838
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -133,51 +182,3 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-4634326025119511866
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2151608385516608519}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc92a8e799fa75745b0bf6c8c0efc04d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ResourceProgress: 0
-  ResourceProgressReqd: 300
-  Degrade: 0
-  Uses: 10
-  sanguineMod: 0
-  soulMod: 0
-  strongMod: 0
-  smartMod: 0
-  speedMod: 0
-  skillMod: 0
-  ResourceType: 0
-  SkillType: 0
---- !u!114 &-4510630329090437188
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2151608385516608519}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ec5c84f8c681d64d9f9b25ac31532b9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ResourceType1: 0
-  ResourceType2: 0
-  ResourceType3: 0
-  ResourceType4: 0
-  ResourceType5: 0
-  ResourceCost1: 0
-  ResourceCost2: 0
-  ResourceCost3: 0
-  ResourceCost4: 0
-  ResourceCost5: 0
-  BUILDINGSIZE: 0
-  buildable: 1
