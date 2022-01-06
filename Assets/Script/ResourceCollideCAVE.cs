@@ -33,7 +33,7 @@ public class ResourceCollideCAVE : MonoBehaviour
     public float skillMod = 0.2f; //common max level is 5, which would double the speed
 
     public ResourceEnum.Resource ResourceType;
-    public KoboldSkillController.T1Skill SkillType;
+    public KoboldSkillController.Skill SkillType;
 
     // not being used but we might want to access more than one type or resource from a file at a time
     //    public string ResourceType2 = "butter"
@@ -52,7 +52,7 @@ public class ResourceCollideCAVE : MonoBehaviour
         {
             Debug.Log("Entered the " + ResourceEnum.ResourceDic[ResourceType] + " zone");
             Debug.Log("Character has " + controller.Stamina + " stamina");
-            Debug.Log("Character has " + controllerSkill.T1SkillDic[SkillType] + " Skill in " + SkillType);
+            Debug.Log("Character has " + controllerSkill.SkillDic[SkillType] + " Skill in " + SkillType);
 
             //set our modifiers so we don't have to rereference it every time
 

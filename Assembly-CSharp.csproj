@@ -62,7 +62,6 @@
      <Compile Include="Assets\Script\Build\UIBuildCost.cs" />
      <Compile Include="Assets\Script\ButtonSkillPoints.cs" />
      <Compile Include="Assets\Script\UIResources.cs" />
-     <Compile Include="Assets\Script\Build\BuildingEnum.cs" />
      <Compile Include="Assets\Script\KoboldController.cs" />
      <Compile Include="Assets\Script\EnemyUIBarController.cs" />
      <Compile Include="Assets\Script\ActiveCharacterController.cs" />

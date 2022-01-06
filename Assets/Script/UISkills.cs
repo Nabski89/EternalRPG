@@ -10,7 +10,7 @@ public class UISkills : MonoBehaviour
     public Text UIText;
     public Text UITextSkillPoint;
     public KoboldSkillController Character;
-    public KoboldSkillController.T1Skill SkillType;
+    public KoboldSkillController.Skill SkillType;
     public static float SkillValue = 2;
     public static float SkillValueMax = 3;
     // Start is called before the first frame update
@@ -18,8 +18,8 @@ public class UISkills : MonoBehaviour
     //we want to have an xp bar, and a text for level
     void Start()
     {
-        SkillValue = Character.T1SkillDic[SkillType];
-        SkillValueMax = Character.T1SkillMaxDic[SkillType];
+        SkillValue = Character.SkillDic[SkillType];
+        SkillValueMax = Character.SkillMaxDic[SkillType];
         //"\n" makes a new text line
         UIText.text = SkillType.ToString() + "\n" + SkillValue.ToString() + " / " + SkillValueMax.ToString();
     }
@@ -32,8 +32,8 @@ public class UISkills : MonoBehaviour
 
     public void SkillUpdate()
     {
-        SkillValue = Character.T1SkillDic[SkillType];
-        SkillValueMax = Character.T1SkillMaxDic[SkillType];
+        SkillValue = Character.SkillDic[SkillType];
+        SkillValueMax = Character.SkillMaxDic[SkillType];
         UIText.text = SkillType.ToString() + "\n" + SkillValue.ToString() + " / " + SkillValueMax.ToString();
     }
 }

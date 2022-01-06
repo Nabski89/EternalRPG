@@ -7,35 +7,82 @@ public class KoboldSkillController : MonoBehaviour
     public int ValueToRead = 3;
     public float SkillPoints = 3;
 
-//for use to update a progress bar when performing an action
+    //for use to update a progress bar when performing an action
     public GameObject ProgressBar;
     public GameObject ProgressMeter;
 
     // Start is called before the first frame update
-    public enum T1Skill { Tending, Mining, Harvesting, Planning };
+    public enum Skill { G1, G2, G3, G4, G5, P1, P2, P3, P4, P5, M1, M2, M3, M4, M5, C1, C2, C3, C4, C5 };
 
-    public Dictionary<T1Skill, float> T1SkillDic = new Dictionary<T1Skill, float>();
-    public Dictionary<T1Skill, float> T1SkillExpDic = new Dictionary<T1Skill, float>();
-    public Dictionary<T1Skill, float> T1SkillMaxDic = new Dictionary<T1Skill, float>();
+    public Dictionary<Skill, float> SkillDic = new Dictionary<Skill, float>();
+    public Dictionary<Skill, string> SkillNameDic = new Dictionary<Skill, string>();
+    public Dictionary<Skill, float> SkillExpDic = new Dictionary<Skill, float>();
+    public Dictionary<Skill, float> SkillMaxDic = new Dictionary<Skill, float>();
 
     public KoboldController TargetController;
     void Awake()
     {
-        T1SkillDic[T1Skill.Tending] = 0;
-        T1SkillDic.Add(T1Skill.Mining, 0);
-        T1SkillDic.Add(T1Skill.Harvesting, 0);
-        T1SkillDic.Add(T1Skill.Planning, 0);
 
-        T1SkillExpDic[T1Skill.Tending] = 0;
-        T1SkillExpDic.Add(T1Skill.Mining, 0);
-        T1SkillExpDic.Add(T1Skill.Harvesting, 0);
-        T1SkillExpDic.Add(T1Skill.Planning, 0);
 
-        T1SkillMaxDic[T1Skill.Tending] = 5;
-        T1SkillMaxDic.Add(T1Skill.Mining, 5);
-        T1SkillMaxDic.Add(T1Skill.Harvesting, 5);
-        T1SkillMaxDic.Add(T1Skill.Planning, 5);
+        assignDic(Skill.G1, Skill.G2, Skill.G3, Skill.G4, Skill.G5);
+        assignDic(Skill.P1, Skill.P2, Skill.P3, Skill.P4, Skill.P5);
+        assignDic(Skill.M1, Skill.M2, Skill.M3, Skill.M4, Skill.M5);
+        assignDic(Skill.C1, Skill.C2, Skill.C3, Skill.C4, Skill.C5);
+
+        SkillNameDic[Skill.G1] = "Study";
+        SkillNameDic[Skill.G2] = "Planning";
+        SkillNameDic[Skill.G3] = "Writing";
+        SkillNameDic[Skill.G4] = "Leadership";
+        SkillNameDic[Skill.G5] = "Inspiration";
+
+        SkillNameDic[Skill.G1] = "Harvesting";
+        SkillNameDic[Skill.G2] = "Green Claw";
+        SkillNameDic[Skill.G3] = "Brewing";
+        SkillNameDic[Skill.G4] = "Alchemy";
+        SkillNameDic[Skill.G5] = "Infusion";
+
+        SkillNameDic[Skill.G1] = "Spawk";
+        SkillNameDic[Skill.G2] = "Concentration";
+        SkillNameDic[Skill.G3] = "Conjuration";
+        SkillNameDic[Skill.G4] = "Binding";
+        SkillNameDic[Skill.G5] = "Mastery";
+
+        SkillNameDic[Skill.G1] = "Strength";
+        SkillNameDic[Skill.G2] = "Crafting";
+        SkillNameDic[Skill.G3] = "Prospecting";
+        SkillNameDic[Skill.G4] = "Smithing";
+        SkillNameDic[Skill.G5] = "Armor Trimming"; //One of the only two named well, game currently needs soul
     }
+
+
+    void assignDic(Skill S1, Skill S2, Skill S3, Skill S4, Skill S5)
+    {
+        SkillDic[Skill.G1] = 0;
+        SkillDic[Skill.G2] = 0;
+        SkillDic[Skill.G3] = 0;
+        SkillDic[Skill.G4] = 0;
+        SkillDic[Skill.G5] = 0;
+    }
+
+        void assignExpDic(Skill S1, Skill S2, Skill S3, Skill S4, Skill S5)
+    {
+        SkillDic[Skill.G1] = 0;
+        SkillDic[Skill.G2] = 0;
+        SkillDic[Skill.G3] = 0;
+        SkillDic[Skill.G4] = 0;
+        SkillDic[Skill.G5] = 0;
+    }
+
+
+    void assignMaxDic(Skill S1, Skill S2, Skill S3, Skill S4, Skill S5)
+    {
+        SkillDic[Skill.G1] = 0;
+        SkillDic[Skill.G2] = 0;
+        SkillDic[Skill.G3] = 0;
+        SkillDic[Skill.G4] = 0;
+        SkillDic[Skill.G5] = 0;
+    }
+
 
     void Start()
     {
@@ -61,18 +108,18 @@ public class KoboldSkillController : MonoBehaviour
     }
 
     // Update is called once per frame
-    public void GainSkill(T1Skill Skill)
+    public void GainSkill(Skill Skill)
     {
         Debug.Log("GAINSKILL");
 
-        if (T1SkillDic[Skill] < T1SkillMaxDic[Skill])
+        if (SkillDic[Skill] < SkillMaxDic[Skill])
         {
-            T1SkillExpDic[Skill] += 1;
+            SkillExpDic[Skill] += 1;
 
             //check if we have enough XP to level up, this formula will 100% need to be revisited
-            if (T1SkillExpDic[Skill] > T1SkillDic[Skill] * 2)
+            if (SkillExpDic[Skill] > SkillDic[Skill] * 2)
             {
-                T1SkillDic[Skill] += 1;
+                SkillDic[Skill] += 1;
 
                 Debug.Log("LEVEL UP");
 
@@ -86,20 +133,21 @@ public class KoboldSkillController : MonoBehaviour
     {
         if (PlayerNumber == TargetController.CharacterNumber)
         {
-            T1SkillDic[T1Skill.Tending] = 0;
-            T1SkillDic[T1Skill.Mining] = 0;
-            T1SkillDic[T1Skill.Harvesting] = 0;
-            T1SkillDic[T1Skill.Planning] = 0;
+        assignDic(Skill.G1, Skill.G2, Skill.G3, Skill.G4, Skill.G5);
+        assignDic(Skill.P1, Skill.P2, Skill.P3, Skill.P4, Skill.P5);
+        assignDic(Skill.M1, Skill.M2, Skill.M3, Skill.M4, Skill.M5);
+        assignDic(Skill.C1, Skill.C2, Skill.C3, Skill.C4, Skill.C5);
 
-            T1SkillExpDic[T1Skill.Tending] = 0;
-            T1SkillExpDic[T1Skill.Mining] = 0;
-            T1SkillExpDic[T1Skill.Harvesting] = 0;
-            T1SkillExpDic[T1Skill.Planning] = 0;
 
-            T1SkillMaxDic[T1Skill.Tending] = 0;
-            T1SkillMaxDic[T1Skill.Mining] = 0;
-            T1SkillMaxDic[T1Skill.Harvesting] = 0;
-            T1SkillMaxDic[T1Skill.Planning] = 0;
+                    assignExpDic(Skill.G1, Skill.G2, Skill.G3, Skill.G4, Skill.G5);
+        assignExpDic(Skill.P1, Skill.P2, Skill.P3, Skill.P4, Skill.P5);
+        assignExpDic(Skill.M1, Skill.M2, Skill.M3, Skill.M4, Skill.M5);
+        assignExpDic(Skill.C1, Skill.C2, Skill.C3, Skill.C4, Skill.C5);
+
+                    assignDic(Skill.G1, Skill.G2, Skill.G3, Skill.G4, Skill.G5);
+        assignMaxDic(Skill.P1, Skill.P2, Skill.P3, Skill.P4, Skill.P5);
+        assignMaxDic(Skill.M1, Skill.M2, Skill.M3, Skill.M4, Skill.M5);
+        assignMaxDic(Skill.C1, Skill.C2, Skill.C3, Skill.C4, Skill.C5);
 
             SkillPoints = 3;
         }
@@ -108,21 +156,21 @@ public class KoboldSkillController : MonoBehaviour
     {
         SkillPoints = 3;
 
-        T1SkillDic[T1Skill.Tending] = refresh1;
-        T1SkillDic[T1Skill.Mining] = refresh2;
-        T1SkillDic[T1Skill.Harvesting] = refresh3;
-        T1SkillDic[T1Skill.Planning] = refresh4;
+        SkillDic[Skill.M1] = refresh1;
+        SkillDic[Skill.C1] = refresh2;
+        SkillDic[Skill.G1] = refresh3;
+        SkillDic[Skill.P1] = refresh4;
 
         SkillPointUpdate();
         SkillUpdate();
     }
 
 
-    public void SkillPointUse(T1Skill Skill)
+    public void SkillPointUse(Skill Skill)
     {
         //      if(SkillPoints >= 1){
         SkillPoints -= 1;
-        T1SkillMaxDic[Skill] += 5;
+        SkillMaxDic[Skill] += 5;
         SkillPointUpdate();
         SkillUpdate();
         //    }
