@@ -10,10 +10,13 @@ public class ResourceEnum : MonoBehaviour
     public static Dictionary<Resource, int> ResourceDic = new Dictionary<Resource, int>();
     public static Dictionary<Resource, int> ResourceMaxDic = new Dictionary<Resource, int>();
 
-    public GameObject ManaUI;
+    public UIResources ManaUI;
+    public int ManaDecay = 60;
+    public int ManaDecayCounter = 0;
 
     void Awake()
     {
+        
         //add everything to the dictionary
         //Group Knowledge Resources
         ResourceDic[Resource.KnowledgeG1] = 0;
@@ -80,9 +83,19 @@ public class ResourceEnum : MonoBehaviour
             resource.ResourceUpdate();
         }
     }
+    void Update()
+    {
+        ManaDecayCounter += 1;
+        if (ManaDecayCounter >= ManaDecay)
+        {
+            ResourceDic[Resource.BigManaM1] = Mathf.Max((ResourceDic[Resource.BigManaM1] - 1), 0);
+            ManaDecayCounter = 0;
+            ManaUI.ResourceUpdate();
+        }
+    }
     // Mana is special because it is going to be changing every frame and we don't want to update EVERYTHING every frame
-//    public void ManaChange()
-//    {
-//        ManaUI.ResourceUpdate();
-//    }
+    //    public void ManaChange()
+    //    {
+    //        ManaUI.ResourceUpdate();
+    //    }
 }

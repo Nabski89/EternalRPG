@@ -29,13 +29,20 @@ public class ResourceCollide : MonoBehaviour
 
     public ResourceEnum.Resource ResourceType;
     public KoboldSkillController.Skill SkillType;
+    public string SkillName;
+
 
     // not being used but we might want to access more than one type or resource from a file at a time
     //    public string ResourceType2 = "butter"
 
     public static ResourceCollide instance { get; set; }
-    void Awake()
+    void Start()
     {
+        foreach (var koboldSkill in GameObject.FindObjectsOfType<KoboldSkillController>())
+        {
+            SkillName = koboldSkill.SkillNameDic[SkillType];
+        }
+
         instance = this;
     }
     void OnTriggerEnter2D(Collider2D other)
@@ -120,7 +127,7 @@ public class ResourceCollide : MonoBehaviour
             Debug.Log("We Hovered over this thing");
             MouseOverText = "This structure creates " + ResourceType;
             MouseOverText = MouseOverText.Remove(MouseOverText.Length - 2, 2);
-            MouseOverText += "\n You will improve at " + SkillType;
+            MouseOverText += "\n You will improve at " + SkillName;
             foreach (var UIMouseOverBox in GameObject.FindObjectsOfType<UIInfoBox>())
             {
                 UIMouseOverBox.signaltotheworldthatIhavedonesomething(MouseOverText);

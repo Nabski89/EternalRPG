@@ -29,58 +29,68 @@ public class KoboldSkillController : MonoBehaviour
         assignDic(Skill.M1, Skill.M2, Skill.M3, Skill.M4, Skill.M5);
         assignDic(Skill.C1, Skill.C2, Skill.C3, Skill.C4, Skill.C5);
 
+        assignExpDic(Skill.G1, Skill.G2, Skill.G3, Skill.G4, Skill.G5);
+        assignExpDic(Skill.P1, Skill.P2, Skill.P3, Skill.P4, Skill.P5);
+        assignExpDic(Skill.M1, Skill.M2, Skill.M3, Skill.M4, Skill.M5);
+        assignExpDic(Skill.C1, Skill.C2, Skill.C3, Skill.C4, Skill.C5);
+
+        assignMaxDic(Skill.G1, Skill.G2, Skill.G3, Skill.G4, Skill.G5);
+        assignMaxDic(Skill.P1, Skill.P2, Skill.P3, Skill.P4, Skill.P5);
+        assignMaxDic(Skill.M1, Skill.M2, Skill.M3, Skill.M4, Skill.M5);
+        assignMaxDic(Skill.C1, Skill.C2, Skill.C3, Skill.C4, Skill.C5);
+
         SkillNameDic[Skill.G1] = "Study";
         SkillNameDic[Skill.G2] = "Planning";
         SkillNameDic[Skill.G3] = "Writing";
         SkillNameDic[Skill.G4] = "Leadership";
         SkillNameDic[Skill.G5] = "Inspiration";
 
-        SkillNameDic[Skill.G1] = "Harvesting";
-        SkillNameDic[Skill.G2] = "Green Claw";
-        SkillNameDic[Skill.G3] = "Brewing";
-        SkillNameDic[Skill.G4] = "Alchemy";
-        SkillNameDic[Skill.G5] = "Infusion";
+        SkillNameDic[Skill.P1] = "Harvesting";
+        SkillNameDic[Skill.P2] = "Green Claw";
+        SkillNameDic[Skill.P3] = "Brewing";
+        SkillNameDic[Skill.P4] = "Alchemy";
+        SkillNameDic[Skill.P5] = "Infusion";
 
-        SkillNameDic[Skill.G1] = "Spawk";
-        SkillNameDic[Skill.G2] = "Concentration";
-        SkillNameDic[Skill.G3] = "Conjuration";
-        SkillNameDic[Skill.G4] = "Binding";
-        SkillNameDic[Skill.G5] = "Mastery";
+        SkillNameDic[Skill.M1] = "Spawk";
+        SkillNameDic[Skill.M2] = "Concentration";
+        SkillNameDic[Skill.M3] = "Conjuration";
+        SkillNameDic[Skill.M4] = "Binding";
+        SkillNameDic[Skill.M5] = "Mastery";
 
-        SkillNameDic[Skill.G1] = "Strength";
-        SkillNameDic[Skill.G2] = "Crafting";
-        SkillNameDic[Skill.G3] = "Prospecting";
-        SkillNameDic[Skill.G4] = "Smithing";
-        SkillNameDic[Skill.G5] = "Armor Trimming"; //One of the only two named well, game currently needs soul
+        SkillNameDic[Skill.C1] = "Strength";
+        SkillNameDic[Skill.C2] = "Crafting";
+        SkillNameDic[Skill.C3] = "Prospecting";
+        SkillNameDic[Skill.C4] = "Smithing";
+        SkillNameDic[Skill.C5] = "Armor Trimming"; //One of the only two named well, game currently needs soul
     }
 
 
     void assignDic(Skill S1, Skill S2, Skill S3, Skill S4, Skill S5)
     {
-        SkillDic[Skill.G1] = 0;
-        SkillDic[Skill.G2] = 0;
-        SkillDic[Skill.G3] = 0;
-        SkillDic[Skill.G4] = 0;
-        SkillDic[Skill.G5] = 0;
+        SkillDic[S1] = 0;
+        SkillDic[S2] = 0;
+        SkillDic[S3] = 0;
+        SkillDic[S4] = 0;
+        SkillDic[S5] = 0;
     }
 
-        void assignExpDic(Skill S1, Skill S2, Skill S3, Skill S4, Skill S5)
+    void assignExpDic(Skill S1, Skill S2, Skill S3, Skill S4, Skill S5)
     {
-        SkillDic[Skill.G1] = 0;
-        SkillDic[Skill.G2] = 0;
-        SkillDic[Skill.G3] = 0;
-        SkillDic[Skill.G4] = 0;
-        SkillDic[Skill.G5] = 0;
+        SkillExpDic[S1] = 0;
+        SkillExpDic[S2] = 0;
+        SkillExpDic[S3] = 0;
+        SkillExpDic[S4] = 0;
+        SkillExpDic[S5] = 0;
     }
 
 
     void assignMaxDic(Skill S1, Skill S2, Skill S3, Skill S4, Skill S5)
     {
-        SkillDic[Skill.G1] = 0;
-        SkillDic[Skill.G2] = 0;
-        SkillDic[Skill.G3] = 0;
-        SkillDic[Skill.G4] = 0;
-        SkillDic[Skill.G5] = 0;
+        SkillMaxDic[S1] = 0;
+        SkillMaxDic[S2] = 0;
+        SkillMaxDic[S3] = 0;
+        SkillMaxDic[S4] = 0;
+        SkillMaxDic[S5] = 0;
     }
 
 
@@ -133,21 +143,21 @@ public class KoboldSkillController : MonoBehaviour
     {
         if (PlayerNumber == TargetController.CharacterNumber)
         {
-        assignDic(Skill.G1, Skill.G2, Skill.G3, Skill.G4, Skill.G5);
-        assignDic(Skill.P1, Skill.P2, Skill.P3, Skill.P4, Skill.P5);
-        assignDic(Skill.M1, Skill.M2, Skill.M3, Skill.M4, Skill.M5);
-        assignDic(Skill.C1, Skill.C2, Skill.C3, Skill.C4, Skill.C5);
+            assignDic(Skill.G1, Skill.G2, Skill.G3, Skill.G4, Skill.G5);
+            assignDic(Skill.P1, Skill.P2, Skill.P3, Skill.P4, Skill.P5);
+            assignDic(Skill.M1, Skill.M2, Skill.M3, Skill.M4, Skill.M5);
+            assignDic(Skill.C1, Skill.C2, Skill.C3, Skill.C4, Skill.C5);
 
 
-                    assignExpDic(Skill.G1, Skill.G2, Skill.G3, Skill.G4, Skill.G5);
-        assignExpDic(Skill.P1, Skill.P2, Skill.P3, Skill.P4, Skill.P5);
-        assignExpDic(Skill.M1, Skill.M2, Skill.M3, Skill.M4, Skill.M5);
-        assignExpDic(Skill.C1, Skill.C2, Skill.C3, Skill.C4, Skill.C5);
+            assignExpDic(Skill.G1, Skill.G2, Skill.G3, Skill.G4, Skill.G5);
+            assignExpDic(Skill.P1, Skill.P2, Skill.P3, Skill.P4, Skill.P5);
+            assignExpDic(Skill.M1, Skill.M2, Skill.M3, Skill.M4, Skill.M5);
+            assignExpDic(Skill.C1, Skill.C2, Skill.C3, Skill.C4, Skill.C5);
 
-                    assignDic(Skill.G1, Skill.G2, Skill.G3, Skill.G4, Skill.G5);
-        assignMaxDic(Skill.P1, Skill.P2, Skill.P3, Skill.P4, Skill.P5);
-        assignMaxDic(Skill.M1, Skill.M2, Skill.M3, Skill.M4, Skill.M5);
-        assignMaxDic(Skill.C1, Skill.C2, Skill.C3, Skill.C4, Skill.C5);
+            assignDic(Skill.G1, Skill.G2, Skill.G3, Skill.G4, Skill.G5);
+            assignMaxDic(Skill.P1, Skill.P2, Skill.P3, Skill.P4, Skill.P5);
+            assignMaxDic(Skill.M1, Skill.M2, Skill.M3, Skill.M4, Skill.M5);
+            assignMaxDic(Skill.C1, Skill.C2, Skill.C3, Skill.C4, Skill.C5);
 
             SkillPoints = 3;
         }

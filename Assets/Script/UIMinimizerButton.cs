@@ -6,7 +6,9 @@ using UnityEngine.UI;
 public class UIMinimizerButton : MonoBehaviour
 {
     public GameObject ToggleObject;
-    private int toggle = 1;
+    public int toggle = 1;
+
+    // 0 if the thing is starting "on"
 
     public void Toggle()
     {

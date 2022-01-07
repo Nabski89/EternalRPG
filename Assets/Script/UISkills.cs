@@ -6,8 +6,6 @@ using UnityEngine.UI; //Make sure you use this or UI stuff won't be there
 public class UISkills : MonoBehaviour
 
 {
-
-    public Text UIText;
     public Text UITextSkillPoint;
     public KoboldSkillController Character;
     public KoboldSkillController.Skill SkillType;
@@ -21,19 +19,15 @@ public class UISkills : MonoBehaviour
         SkillValue = Character.SkillDic[SkillType];
         SkillValueMax = Character.SkillMaxDic[SkillType];
         //"\n" makes a new text line
-        UIText.text = SkillType.ToString() + "\n" + SkillValue.ToString() + " / " + SkillValueMax.ToString();
+        gameObject.GetComponent<Text>().text = Character.SkillNameDic[SkillType] + "\n" + SkillValue.ToString() + " / " + SkillValueMax.ToString();
     }
 
     // Update is called once per frame
-    void Update()
-    {
-
-    }
-
+    //    void Update()    {    }
     public void SkillUpdate()
     {
         SkillValue = Character.SkillDic[SkillType];
         SkillValueMax = Character.SkillMaxDic[SkillType];
-        UIText.text = SkillType.ToString() + "\n" + SkillValue.ToString() + " / " + SkillValueMax.ToString();
+        gameObject.GetComponent<Text>().text = Character.SkillNameDic[SkillType] + "\n" + SkillValue.ToString() + " / " + SkillValueMax.ToString();
     }
 }

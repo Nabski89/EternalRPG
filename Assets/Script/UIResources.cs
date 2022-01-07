@@ -11,7 +11,6 @@ public class UIResources : MonoBehaviour
 
 
     //making these public lets you set them in the inspector
-    public Text UIText;
     public ResourceEnum.Resource ResourceType;
     public static int ResourceValue = 2;
     public static int ResourceValueMax = 3;
@@ -22,7 +21,7 @@ public class UIResources : MonoBehaviour
         ResourceValue = ResourceEnum.ResourceDic[ResourceType];
         ResourceValueMax = ResourceEnum.ResourceMaxDic[ResourceType];
 
-        UIText.text = ResourceValue.ToString() + " / "+ ResourceValueMax.ToString();
+        gameObject.GetComponent<Text>().text = ResourceValue.ToString() + " / "+ ResourceValueMax.ToString();
     }
     public void ResourceUpdate()
     {
@@ -33,6 +32,6 @@ public class UIResources : MonoBehaviour
 
         ResourceValueMax = ResourceEnum.ResourceMaxDic[ResourceType];
 
-        UIText.text = ResourceValue.ToString() + " / "+ ResourceValueMax.ToString();
+        gameObject.GetComponent<Text>().text = ResourceValue.ToString() + " / "+ ResourceValueMax.ToString();
     }
 }
