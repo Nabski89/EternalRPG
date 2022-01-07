@@ -11,6 +11,10 @@ PrefabInstance:
       propertyPath: buildSize
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: -70712205251825650, guid: ef1e730ed5fbbe046a7a563348f23f67, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1399937078920858610, guid: ef1e730ed5fbbe046a7a563348f23f67, type: 3}
       propertyPath: m_Name
       value: BuildingOutline Medium

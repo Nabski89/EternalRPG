@@ -111,29 +111,29 @@ public class KoboldSkillController : MonoBehaviour
 
     public void SkillPointUpdate()
     {
-        foreach (var SkillType in GameObject.FindObjectsOfType<UISkillPoints>())
+        foreach (var SkillPoints in GameObject.FindObjectsOfType<UISkillPoints>())
         {
-            SkillType.SkillPointUpdate();
+            SkillPoints.SkillPointUpdate();
         }
     }
 
-    // Update is called once per frame
     public void GainSkill(Skill Skill)
     {
         Debug.Log("GAINSKILL");
+        Debug.Log(SkillDic[Skill]);
+        Debug.Log(SkillMaxDic[Skill]);
 
         if (SkillDic[Skill] < SkillMaxDic[Skill])
         {
             SkillExpDic[Skill] += 1;
 
             //check if we have enough XP to level up, this formula will 100% need to be revisited
-            if (SkillExpDic[Skill] > SkillDic[Skill] * 2)
+            if (SkillExpDic[Skill] > SkillDic[Skill])
             {
+                SkillExpDic[Skill] = 0;
                 SkillDic[Skill] += 1;
-
-                Debug.Log("LEVEL UP");
-
                 SkillPoints += 0.1f;
+                SkillPointUpdate();
             }
 
             SkillUpdate();
@@ -178,11 +178,11 @@ public class KoboldSkillController : MonoBehaviour
 
     public void SkillPointUse(Skill Skill)
     {
-        //      if(SkillPoints >= 1){
+        if(SkillPoints >= 1){
         SkillPoints -= 1;
         SkillMaxDic[Skill] += 5;
         SkillPointUpdate();
         SkillUpdate();
-        //    }
+        }
     }
 }
