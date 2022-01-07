@@ -18,8 +18,6 @@ public class ResourceTracker : MonoBehaviour
     void Start()
     {
         //these have no reason to be here but need to be SOMEWHERE
-        QualitySettings.vSyncCount = 0;
-        Application.targetFrameRate = 30;
 
     }
 }
