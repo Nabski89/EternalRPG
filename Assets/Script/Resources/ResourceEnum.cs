@@ -63,7 +63,7 @@ public class ResourceEnum : MonoBehaviour
         ResourceMaxDic.Add(Resource.CrystalC4, 0);
     }
 
-    public static void ResourceChange(Resource TYPE, int number)
+    public static void ResourceChangeAmount(Resource TYPE, int number)
     {
         ResourceDic[TYPE] = Mathf.Clamp(ResourceDic[TYPE] + number, 0, ResourceMaxDic[TYPE]);
         ResourceChange();

@@ -29,7 +29,8 @@ public class ResourceCollide : MonoBehaviour
 
     public ResourceEnum.Resource ResourceType;
     public KoboldSkillController.Skill SkillType;
-    public string SkillName;
+    string SkillName;
+    public bool IsThisTheKnowledgeBuilding = false;
 
 
     // not being used but we might want to access more than one type or resource from a file at a time
@@ -53,7 +54,6 @@ public class ResourceCollide : MonoBehaviour
         if (controller != null)
         {
             Debug.Log("Entered the " + ResourceEnum.ResourceDic[ResourceType] + " zone");
-            Debug.Log("Character has " + controller.Stamina + " stamina");
             Debug.Log("Character has " + controllerSkill.SkillDic[SkillType] + " Skill in " + SkillType);
 
             //set our modifiers so we don't have to rereference it every time
@@ -104,9 +104,25 @@ public class ResourceCollide : MonoBehaviour
             {
                 ResourceProgress = 0;
                 Debug.Log("GAIN 1 RESOURCE");
-                ResourceEnum.ResourceDic[ResourceType] = Mathf.Clamp(ResourceEnum.ResourceDic[ResourceType] + 1, 0, ResourceEnum.ResourceMaxDic[ResourceType]);
+
+                //knowledge gain is weird and based on our stored type 2, 3, 4 resources
+                if (IsThisTheKnowledgeBuilding == true)
+                {
+                    //call these out
+                    int G2Multiplier = ResourceEnum.ResourceDic[ResourceEnum.Resource.PictureG2];
+                    int G3Multiplier = ResourceEnum.ResourceDic[ResourceEnum.Resource.ScrollG3];
+                    int G4Multiplier = ResourceEnum.ResourceDic[ResourceEnum.Resource.BookG4];
+                    //then gain it, t2 gets 1, t3 2, t4 3 
+                    ResourceEnum.ResourceDic[ResourceType] = Mathf.Clamp(ResourceEnum.ResourceDic[ResourceType] + 1 * G2Multiplier + 2 * G3Multiplier + 3 * G4Multiplier, 0, ResourceEnum.ResourceMaxDic[ResourceType]);
+                }
+                else
+                {
+                    ResourceEnum.ResourceDic[ResourceType] = Mathf.Clamp(ResourceEnum.ResourceDic[ResourceType] + 1, 0, ResourceEnum.ResourceMaxDic[ResourceType]);
+                }
+
+                //resource change updates our resource trackers
                 ResourceEnum.ResourceChange();
-                Debug.Log("GAIN 1 RESOURCE");
+                Debug.Log("GAIN RESOURCE");
                 controllerSkill.GainSkill(SkillType);
                 Degrade += 1;
                 if (Degrade > Uses)
