@@ -25,6 +25,7 @@ int CraftProgressReqd = 300; //we may want to do something to set this based on 
     {
         KoboldController controller = other.GetComponent<KoboldController>();
         KoboldSkillController controllerSkill = other.GetComponent<KoboldSkillController>();
+        KoboldEquipment EquipmentController = other.GetComponent<KoboldEquipment>();
         // need to include the one should be the equipment controller
 
         if (controller != null)
