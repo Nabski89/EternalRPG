@@ -88,6 +88,7 @@
      <Compile Include="Assets\Script\Build\BuildOnButton.cs" />
      <Compile Include="Assets\Script\Resources\ResourceCollideCAVE.cs" />
      <Compile Include="Assets\Script\WorldEdgeMove.cs" />
+     <Compile Include="Assets\Script\Character\KoboldEquipment.cs" />
      <Compile Include="Assets\Script\Build\BuildDestroy.cs" />
      <Compile Include="Assets\Script\Resources\ResourceCollide.cs" />
      <Compile Include="Assets\Script\UIHealth.cs" />
