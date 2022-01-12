@@ -17,24 +17,54 @@ public class KoboldEquipment : MonoBehaviour
     //yeah I do
 
     public enum Tools { PenValue, HerbValue, WandValue, PickValue, HammerValue }; //craft better book, craft potion types, magic improvements, improve chances of what you get out of mine, change what you will craft
-    public enum Gear { Amulet, Hat, Backpack } //I have no idea what these are going to do
+    public enum Gear { Amulet, Hat, Backpack } //I have no idea what these are going to do, they are for non crafting things.
 
-    public bool HaveWeapon = false;
-    public bool HaveArmor = false;
+    public Dictionary<Tools, float> ToolDic = new Dictionary<Tools, float>();
+    public Dictionary<Gear, float> GearDic = new Dictionary<Gear, float>();
+
+    public bool HaveTool = false;
+    public bool HaveGear = false;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        ZeroEquipTool();
+        ZeroEquipGear();
+    }
 
+    void ZeroEquipTool()
+    {
+        ToolDic[Tools.PenValue] = 0;
+        ToolDic[Tools.HerbValue] = 0;
+        ToolDic[Tools.WandValue] = 0;
+        ToolDic[Tools.PickValue] = 0;
+        ToolDic[Tools.HammerValue] = 0;
+    }
+
+    void ZeroEquipGear()
+    {
+        GearDic[Gear.Amulet] = 0;
+        GearDic[Gear.Hat] = 0;
+        GearDic[Gear.Backpack] = 0;
+    }
+    void EquipTool()
+    {
+        HaveTool = true;
+    }
+    void EqipGear()
+    {
+        HaveGear = true;
     }
     void UnequipTool()
     {
-
+        HaveTool = false;
+        //set values to 0
     }
     void UnequipGear()
     {
-
+        HaveGear = false;
+        //set values to 0
     }
 
     //    https://www.c-sharpcorner.com/article/loop-through-enum-values-in-c-sharp/

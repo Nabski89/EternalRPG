@@ -52,11 +52,11 @@ public class KoboldController : MonoBehaviour
     public float currentHealth = 10;
     //soul stats Mana, controls casting spells
     public float Mana = 1;
-    public float ManaMax = 100;
+    public float ManaMax = 20;
     //strong stats
     public float PunchRegen = 1;
     //smart stats
-    public float ManaRegen = 1;
+    public float ManaRegen = 1 / 30;
     //speed stats
     public int moveMod;
     public int atkCD;
@@ -108,7 +108,7 @@ public class KoboldController : MonoBehaviour
         }
     }
     //Do a //if Mana>Mana Cost first
-    public void SpendMana(int ManaCost)
+    public void SpendMana(float ManaCost)
     {
         Mana = Mana - ManaCost;
         /*   if (skillUpProgress >= skillUpReq)
@@ -236,6 +236,14 @@ public class KoboldController : MonoBehaviour
                     targetY = Mathf.Clamp(0, worldPoint2d.y, CameraScript.WorldSizeY);
                     NeedsToMove = 1;
                 }
+            }
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                Debug.Log("Drop Armor");
+            }
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                Debug.Log("Drop Tool");
             }
         }
 

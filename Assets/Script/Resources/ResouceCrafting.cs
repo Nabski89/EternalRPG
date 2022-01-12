@@ -4,13 +4,23 @@ using UnityEngine;
 
 public class ResouceCrafting : MonoBehaviour
 {
-int CraftProgress = 0;
-int CraftProgressReqd = 300; //we may want to do something to set this based on the value of the equipment, that would be cool
+    public int CraftProgress = 0;
+    public int CraftProgressReqd = 300; //we may want to do something to set this based on the value of the equipment, that would be cool
 
-    public ResourceEnum.Resource ResourceType;
-    public KoboldSkillController.Skill SkillType;
+    public KoboldEquipment.Tools ToolType;
 
-        string SkillName = "ERROR";
+    public ResourceEnum.Resource ResourceMake1;
+    public ResourceEnum.Resource ResourceCost1;
+    public KoboldSkillController.Skill SkillType1;
+    public ResourceEnum.Resource ResourceMake2;
+    public ResourceEnum.Resource ResourceCost2;
+    public KoboldSkillController.Skill SkillType2;
+    public ResourceEnum.Resource ResourceMake3;
+    public ResourceEnum.Resource ResourceCost3;
+
+
+    public KoboldSkillController.Skill SkillType3;
+    string SkillName = "ERROR";
 
 
     public static ResouceCrafting instance { get; set; }
@@ -30,9 +40,7 @@ int CraftProgressReqd = 300; //we may want to do something to set this based on 
 
         if (controller != null)
         {
-            Debug.Log("Entered the " + ResourceEnum.ResourceDic[ResourceType] + " zone");
-            Debug.Log("Character has " + controllerSkill.SkillDic[SkillType] + " Skill in " + SkillType);
-
+            Debug.Log(" It's time to try to craft");
             //set our modifiers so we don't have to rereference it every time
 
             //force the character to go to the center of this resource, so you can't do two at once
@@ -52,6 +60,7 @@ int CraftProgressReqd = 300; //we may want to do something to set this based on 
         //these really don't need to be called every frame but WHATEVER
         KoboldController controller = other.GetComponent<KoboldController>();
         KoboldSkillController controllerSkill = other.GetComponent<KoboldSkillController>();
+        KoboldEquipment EquipmentController = other.GetComponent<KoboldEquipment>();
         // again include the bloody equipment one to make sure we craft the right thing
 
         if (controller != null && controllerSkill != null)
@@ -66,9 +75,48 @@ int CraftProgressReqd = 300; //we may want to do something to set this based on 
 
             if (CraftProgress > CraftProgressReqd)
             {
+                Debug.Log("You got no tool");
                 CraftProgress = 0;
-                Debug.Log("GAIN 1 RESOURCE");
+                if (Mathf.Floor(EquipmentController.ToolDic[ToolType]) == 0)
+                {
+                    //if we have no tool we won't craft it but we can train a skill?
+                    Debug.Log("You got no tool");
+                }
+                if (Mathf.Floor(EquipmentController.ToolDic[ToolType]) == 1
+                    && ResourceEnum.ResourceDic[ResourceCost1] > 5
+                    && controller.Mana > (20 + (EquipmentController.ToolDic[ToolType]) - Mathf.Floor(EquipmentController.ToolDic[ToolType]) * 10)
+                    )
 
+                {
+
+                    ResourceEnum.ResourceDic[ResourceMake1] = Mathf.Clamp(ResourceEnum.ResourceDic[ResourceMake1] - 5, 0, ResourceEnum.ResourceMaxDic[ResourceMake1]);
+                    controller.SpendMana(20 + ((EquipmentController.ToolDic[ToolType]) - Mathf.Floor(EquipmentController.ToolDic[ToolType]) * 10));
+                    ResourceEnum.ResourceDic[ResourceMake1] = Mathf.Clamp(ResourceEnum.ResourceDic[ResourceMake1] + 1, 0, ResourceEnum.ResourceMaxDic[ResourceMake1]);
+                    controllerSkill.GainSkill(SkillType1);
+                    Debug.Log("We Made Something");
+                }
+                if (Mathf.Floor(EquipmentController.ToolDic[ToolType]) == 1
+                    && ResourceEnum.ResourceDic[ResourceCost2] > 4
+                    && controller.Mana > (30 + ((EquipmentController.ToolDic[ToolType]) - Mathf.Floor(EquipmentController.ToolDic[ToolType]) * 10))
+                    )
+                {
+                    ResourceEnum.ResourceDic[ResourceMake2] = Mathf.Clamp(ResourceEnum.ResourceDic[ResourceMake2] - 4, 0, ResourceEnum.ResourceMaxDic[ResourceMake2]);
+                    controller.SpendMana(30 + ((EquipmentController.ToolDic[ToolType]) - Mathf.Floor(EquipmentController.ToolDic[ToolType]) * 10));
+                    ResourceEnum.ResourceDic[ResourceMake2] = Mathf.Clamp(ResourceEnum.ResourceDic[ResourceMake2] + 1, 0, ResourceEnum.ResourceMaxDic[ResourceMake2]);
+                    controllerSkill.GainSkill(SkillType2);
+                    CraftProgress = 0;
+                }
+                if (Mathf.Floor(EquipmentController.ToolDic[ToolType]) == 1
+                    && ResourceEnum.ResourceDic[ResourceCost3] > 3
+                    && controller.Mana > (50 + ((EquipmentController.ToolDic[ToolType]) - Mathf.Floor(EquipmentController.ToolDic[ToolType]) * 10))
+                    )
+                {
+                    ResourceEnum.ResourceDic[ResourceMake3] = Mathf.Clamp(ResourceEnum.ResourceDic[ResourceMake3] - 3, 0, ResourceEnum.ResourceMaxDic[ResourceMake3]);
+                    controller.SpendMana(50 + ((EquipmentController.ToolDic[ToolType]) - Mathf.Floor(EquipmentController.ToolDic[ToolType]) * 10));
+                    ResourceEnum.ResourceDic[ResourceMake3] = Mathf.Clamp(ResourceEnum.ResourceDic[ResourceMake3] + 1, 0, ResourceEnum.ResourceMaxDic[ResourceMake3]);
+                    controllerSkill.GainSkill(SkillType3);
+                    CraftProgress = 0;
+                }
                 //either instantiate the thing we need
                 //ORRRRR
                 //create the equipment
@@ -76,7 +124,8 @@ int CraftProgressReqd = 300; //we may want to do something to set this based on 
                 //then give them the skill update they earned
 
                 //resource change updates our resource trackers
-                controllerSkill.GainSkill(SkillType);
+                ResourceEnum.ResourceChange();
+
             }
         }
     }
@@ -91,7 +140,7 @@ int CraftProgressReqd = 300; //we may want to do something to set this based on 
         if (MouseOverTiming == 15)
         {
             Debug.Log("We Hovered over this thing");
-            MouseOverText = "This structure creates " + ResourceType;
+            MouseOverText = "This structure creates " + ResourceMake1;
             MouseOverText = MouseOverText.Remove(MouseOverText.Length - 2, 2);
             MouseOverText += "\n You will improve at " + SkillName;
             foreach (var UIMouseOverBox in GameObject.FindObjectsOfType<UIInfoBox>())
