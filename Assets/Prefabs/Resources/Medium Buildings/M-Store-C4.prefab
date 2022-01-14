@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -3946868204622772787, guid: 726de723ab700fb4fbcdcc6d5bf8a54d, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6beec5a3884a2464d8a999fb144df69e, type: 3}
     - target: {fileID: 154069786032473576, guid: 726de723ab700fb4fbcdcc6d5bf8a54d, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -53,7 +57,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1216866780217228142, guid: 726de723ab700fb4fbcdcc6d5bf8a54d, type: 3}
       propertyPath: m_Name
-      value: M-Store
+      value: M-Store-C4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 726de723ab700fb4fbcdcc6d5bf8a54d, type: 3}

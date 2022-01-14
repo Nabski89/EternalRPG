@@ -21,7 +21,10 @@ public class BuildOnBuild : MonoBehaviour
     public int BUILDINGSIZE;
 
     public bool buildable = true;
+    public bool storageBuilding = false;
 
+    public int StorageMaxIncrease = 3;
+    public ResourceEnum.Resource StorageType;
     // Start is called before the first frame update
     void Start()
     {
@@ -54,9 +57,30 @@ public class BuildOnBuild : MonoBehaviour
             ResourceEnum.ResourceDic[ResourceType3] -= ResourceCost3;
             ResourceEnum.ResourceDic[ResourceType4] -= ResourceCost4;
             ResourceEnum.ResourceDic[ResourceType5] -= ResourceCost5;
+
+            if (storageBuilding == true)
+            {
+                ResourceEnum.ResourceChangeMax(StorageType, StorageMaxIncrease);
+            }
         }
         if (buildable == false)
         {
+            Destroy(gameObject);
+        }
+    }
+
+
+    void Update()
+    {
+        if (Input.GetMouseButtonDown(0) && Input.GetKey(KeyCode.LeftControl))
+        {
+            Debug.Log("Destroyed an object");
+
+
+            if (storageBuilding == true)
+            {
+                ResourceEnum.ResourceChangeMax(StorageType, -StorageMaxIncrease);
+            }
             Destroy(gameObject);
         }
     }

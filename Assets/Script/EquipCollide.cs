@@ -31,7 +31,7 @@ public class EquipCollide : MonoBehaviour
 
             if (gear == true)
             {
-                if (EquipController.HaveGear = false)
+                if (EquipController.HaveGear == false)
                 {
                     EquipController.HaveGear = true;
                     EquipController.GearDic[GearType] = GearScore;
@@ -41,7 +41,7 @@ public class EquipCollide : MonoBehaviour
 
             if (tool == true)
             {
-                if (EquipController.HaveTool = false)
+                if (EquipController.HaveTool == false)
                 {
                     EquipController.HaveTool = true;
                     EquipController.ToolDic[ToolType] = GearScore;

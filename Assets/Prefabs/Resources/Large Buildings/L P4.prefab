@@ -7,9 +7,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -3418668071220789348, guid: 1ef27f8c8766256489a18cdce0f68e43, type: 3}
+      propertyPath: ResourceType
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 4888318524784378976, guid: 1ef27f8c8766256489a18cdce0f68e43, type: 3}
       propertyPath: m_Name
-      value: Large
+      value: L P4
       objectReference: {fileID: 0}
     - target: {fileID: 5380162955842072523, guid: 1ef27f8c8766256489a18cdce0f68e43, type: 3}
       propertyPath: m_RootOrder

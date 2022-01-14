@@ -76,6 +76,7 @@
      <Compile Include="Assets\Script\UIInfoBox.cs" />
      <Compile Include="Assets\Script\Build\BuildOnBuild.cs" />
      <Compile Include="Assets\Script\projectilePrefab.cs" />
+     <Compile Include="Assets\Script\EquipCollide.cs" />
      <Compile Include="Assets\Script\Build\BuildShopButtons.cs" />
      <Compile Include="Assets\Script\Character\KoboldCombatController.cs" />
      <Compile Include="Assets\Script\EnemyController.cs" />

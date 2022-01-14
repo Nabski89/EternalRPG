@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: -7061074238889317326}
   - component: {fileID: 5708209297603927865}
   - component: {fileID: 6389536088005180648}
+  - component: {fileID: -3418668071220789348}
   m_Layer: 0
   m_Name: Large
   m_TagString: Untagged
@@ -108,6 +109,9 @@ MonoBehaviour:
   ResourceCost5: 0
   BUILDINGSIZE: 0
   buildable: 1
+  storageBuilding: 0
+  StorageMaxIncrease: 3
+  StorageType: 0
 --- !u!61 &6389536088005180648
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -134,3 +138,29 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.0001, y: 0.0001}
   m_EdgeRadius: 0
+--- !u!114 &-3418668071220789348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4888318524784378976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc92a8e799fa75745b0bf6c8c0efc04d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MouseOverText: Error
+  ResourceProgress: 0
+  ResourceProgressReqd: 300
+  Degrade: 0
+  Uses: 10
+  sanguineMod: 0.05
+  soulMod: 0.05
+  strongMod: 0.05
+  smartMod: 0.05
+  speedMod: 0.05
+  skillMod: 0.2
+  ResourceType: 0
+  SkillType: 0
+  IsThisTheKnowledgeBuilding: 0

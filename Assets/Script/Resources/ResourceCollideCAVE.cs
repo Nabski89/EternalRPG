@@ -32,11 +32,12 @@ public class ResourceCollideCAVE : MonoBehaviour
     public float speedMod = 0.05f;
     public float skillMod = 0.2f; //common max level is 5, which would double the speed
 
-    public ResourceEnum.Resource ResourceType;
     public KoboldSkillController.Skill SkillType;
 
+    public int RNGOre;
+    public int RNGDDamage;
+
     // not being used but we might want to access more than one type or resource from a file at a time
-    //    public string ResourceType2 = "butter"
 
     public static ResourceCollideCAVE instance { get; set; }
     void Awake()
@@ -50,7 +51,6 @@ public class ResourceCollideCAVE : MonoBehaviour
 
         if (controller != null)
         {
-            Debug.Log("Entered the " + ResourceEnum.ResourceDic[ResourceType] + " zone");
             Debug.Log("Character has " + controller.Stamina + " stamina");
             Debug.Log("Character has " + controllerSkill.SkillDic[SkillType] + " Skill in " + SkillType);
 
@@ -103,7 +103,7 @@ public class ResourceCollideCAVE : MonoBehaviour
                 DigCave();
                 ResourceProgress = 0;
                 Debug.Log("GAIN 1 RESOURCE");
-                ResourceEnum.ResourceDic[ResourceType] = Mathf.Clamp(ResourceEnum.ResourceDic[ResourceType] + 1, 0, ResourceEnum.ResourceMaxDic[ResourceType]);
+                GainOre();
                 ResourceEnum.ResourceChange();
                 Debug.Log("GAIN 1 RESOURCE");
 
@@ -126,7 +126,7 @@ public class ResourceCollideCAVE : MonoBehaviour
         if (MouseOverTiming == 15)
         {
             Debug.Log("We Hovered over this thing");
-            MouseOverText = "This structure creates " + ResourceType;
+            MouseOverText = "This structure creates Stone, Metal, Gold, and Gems";
             MouseOverText = MouseOverText.Remove(MouseOverText.Length - 2, 2);
             MouseOverText += "\n You will improve at " + SkillType;
             MouseOverText += "\n You have only just started to explore it ";
@@ -166,4 +166,31 @@ public class ResourceCollideCAVE : MonoBehaviour
         }
     }
 
+
+
+    void GainOre()
+    {
+        RNGOre = Random.Range(1, 48);
+        if (RNGOre > 17)
+        {
+            OreType(ResourceEnum.Resource.StoneC1);
+        }
+        if (RNGOre > 7 && RNGOre < 18)
+        {
+            OreType(ResourceEnum.Resource.GoldC2);
+        }
+        if (RNGOre > 2 && RNGOre < 8)
+        {
+            OreType(ResourceEnum.Resource.OreC3);
+        }
+        if (RNGOre < 3)
+        {
+            OreType(ResourceEnum.Resource.CrystalC4);
+        }
+    }
+
+    void OreType(ResourceEnum.Resource ORE)
+    {
+        ResourceEnum.ResourceDic[ORE] = Mathf.Clamp(ResourceEnum.ResourceDic[ORE] + 1, 0, ResourceEnum.ResourceMaxDic[ORE]);
+    }
 }

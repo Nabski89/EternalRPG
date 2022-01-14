@@ -19,15 +19,15 @@ public class ResourceEnum : MonoBehaviour
         
         //add everything to the dictionary
         //Group Knowledge Resources
-        ResourceDic[Resource.KnowledgeG1] = 0;
+        ResourceDic[Resource.KnowledgeG1] = 10;
         ResourceDic.Add(Resource.PictureG2, 0);
         ResourceDic.Add(Resource.ScrollG3, 0);
         ResourceDic.Add(Resource.BookG4, 0);
 
         ResourceMaxDic.Add(Resource.KnowledgeG1, 5);
-        ResourceMaxDic.Add(Resource.PictureG2, 4);
-        ResourceMaxDic.Add(Resource.ScrollG3, 3);
-        ResourceMaxDic.Add(Resource.BookG4, 2);
+        ResourceMaxDic.Add(Resource.PictureG2, 2);
+        ResourceMaxDic.Add(Resource.ScrollG3, 1);
+        ResourceMaxDic.Add(Resource.BookG4, 1);
 
         //Potion Resources
         ResourceDic[Resource.MeatP1] = 2;
@@ -35,8 +35,8 @@ public class ResourceEnum : MonoBehaviour
         ResourceDic.Add(Resource.HerbP3, 0);
         ResourceDic.Add(Resource.ExtractP4, 0);
 
-        ResourceMaxDic.Add(Resource.MeatP1, 6);
-        ResourceMaxDic.Add(Resource.VinesP2, 3);
+        ResourceMaxDic.Add(Resource.MeatP1, 3);
+        ResourceMaxDic.Add(Resource.VinesP2, 1);
         ResourceMaxDic.Add(Resource.HerbP3, 1);
         ResourceMaxDic.Add(Resource.ExtractP4, 1);
 
@@ -46,10 +46,10 @@ public class ResourceEnum : MonoBehaviour
         ResourceDic.Add(Resource.OrbM3, 0);
         ResourceDic.Add(Resource.ArcanaM4, 0);
 
-        ResourceMaxDic.Add(Resource.BigManaM1, 5);
-        ResourceMaxDic.Add(Resource.InkM2, 0);
-        ResourceMaxDic.Add(Resource.OrbM3, 0);
-        ResourceMaxDic.Add(Resource.ArcanaM4, 0);
+        ResourceMaxDic.Add(Resource.BigManaM1, 3);
+        ResourceMaxDic.Add(Resource.InkM2, 1);
+        ResourceMaxDic.Add(Resource.OrbM3, 1);
+        ResourceMaxDic.Add(Resource.ArcanaM4, 1);
 
         //Ore Resources
         ResourceDic[Resource.StoneC1] = 0;
@@ -57,10 +57,10 @@ public class ResourceEnum : MonoBehaviour
         ResourceDic.Add(Resource.OreC3, 0);
         ResourceDic.Add(Resource.CrystalC4, 0);
 
-        ResourceMaxDic.Add(Resource.StoneC1, 0);
-        ResourceMaxDic.Add(Resource.GoldC2, 0);
-        ResourceMaxDic.Add(Resource.OreC3, 0);
-        ResourceMaxDic.Add(Resource.CrystalC4, 0);
+        ResourceMaxDic.Add(Resource.StoneC1, 3);
+        ResourceMaxDic.Add(Resource.GoldC2, 2);
+        ResourceMaxDic.Add(Resource.OreC3, 1);
+        ResourceMaxDic.Add(Resource.CrystalC4, 1);
     }
 
     public static void ResourceChangeAmount(Resource TYPE, int number)

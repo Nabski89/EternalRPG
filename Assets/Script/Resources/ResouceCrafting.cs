@@ -83,35 +83,35 @@ public class ResouceCrafting : MonoBehaviour
                     Debug.Log("You got no tool");
                 }
                 if (Mathf.Floor(EquipmentController.ToolDic[ToolType]) == 1
-                    && ResourceEnum.ResourceDic[ResourceCost1] > 5
+                    && ResourceEnum.ResourceDic[ResourceCost1] >= 4
                     && controller.Mana > (20 + (EquipmentController.ToolDic[ToolType]) - Mathf.Floor(EquipmentController.ToolDic[ToolType]) * 10)
                     )
 
                 {
 
-                    ResourceEnum.ResourceDic[ResourceMake1] = Mathf.Clamp(ResourceEnum.ResourceDic[ResourceMake1] - 5, 0, ResourceEnum.ResourceMaxDic[ResourceMake1]);
+                    ResourceEnum.ResourceDic[ResourceMake1] = Mathf.Clamp(ResourceEnum.ResourceDic[ResourceMake1] - 4, 0, ResourceEnum.ResourceMaxDic[ResourceMake1]);
                     controller.SpendMana(20 + ((EquipmentController.ToolDic[ToolType]) - Mathf.Floor(EquipmentController.ToolDic[ToolType]) * 10));
                     ResourceEnum.ResourceDic[ResourceMake1] = Mathf.Clamp(ResourceEnum.ResourceDic[ResourceMake1] + 1, 0, ResourceEnum.ResourceMaxDic[ResourceMake1]);
                     controllerSkill.GainSkill(SkillType1);
                     Debug.Log("We Made Something");
                 }
                 if (Mathf.Floor(EquipmentController.ToolDic[ToolType]) == 1
-                    && ResourceEnum.ResourceDic[ResourceCost2] > 4
+                    && ResourceEnum.ResourceDic[ResourceCost2] >= 3
                     && controller.Mana > (30 + ((EquipmentController.ToolDic[ToolType]) - Mathf.Floor(EquipmentController.ToolDic[ToolType]) * 10))
                     )
                 {
-                    ResourceEnum.ResourceDic[ResourceMake2] = Mathf.Clamp(ResourceEnum.ResourceDic[ResourceMake2] - 4, 0, ResourceEnum.ResourceMaxDic[ResourceMake2]);
+                    ResourceEnum.ResourceDic[ResourceMake2] = Mathf.Clamp(ResourceEnum.ResourceDic[ResourceMake2] - 3, 0, ResourceEnum.ResourceMaxDic[ResourceMake2]);
                     controller.SpendMana(30 + ((EquipmentController.ToolDic[ToolType]) - Mathf.Floor(EquipmentController.ToolDic[ToolType]) * 10));
                     ResourceEnum.ResourceDic[ResourceMake2] = Mathf.Clamp(ResourceEnum.ResourceDic[ResourceMake2] + 1, 0, ResourceEnum.ResourceMaxDic[ResourceMake2]);
                     controllerSkill.GainSkill(SkillType2);
                     CraftProgress = 0;
                 }
                 if (Mathf.Floor(EquipmentController.ToolDic[ToolType]) == 1
-                    && ResourceEnum.ResourceDic[ResourceCost3] > 3
+                    && ResourceEnum.ResourceDic[ResourceCost3] >= 2
                     && controller.Mana > (50 + ((EquipmentController.ToolDic[ToolType]) - Mathf.Floor(EquipmentController.ToolDic[ToolType]) * 10))
                     )
                 {
-                    ResourceEnum.ResourceDic[ResourceMake3] = Mathf.Clamp(ResourceEnum.ResourceDic[ResourceMake3] - 3, 0, ResourceEnum.ResourceMaxDic[ResourceMake3]);
+                    ResourceEnum.ResourceDic[ResourceMake3] = Mathf.Clamp(ResourceEnum.ResourceDic[ResourceMake3] - 2, 0, ResourceEnum.ResourceMaxDic[ResourceMake3]);
                     controller.SpendMana(50 + ((EquipmentController.ToolDic[ToolType]) - Mathf.Floor(EquipmentController.ToolDic[ToolType]) * 10));
                     ResourceEnum.ResourceDic[ResourceMake3] = Mathf.Clamp(ResourceEnum.ResourceDic[ResourceMake3] + 1, 0, ResourceEnum.ResourceMaxDic[ResourceMake3]);
                     controllerSkill.GainSkill(SkillType3);
