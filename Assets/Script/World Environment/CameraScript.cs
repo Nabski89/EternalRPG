@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class CameraScript : MonoBehaviour
 {
-    public static float WorldSizeX = 31;
-    public static float WorldSizeY = 16;
+    public static float WorldSizeX = 31+50;
+    public static float WorldSizeY = 16+50;
     public static float WorldSizeBuffer = 1;
     public GameObject TopObject;
     public GameObject RightObject;

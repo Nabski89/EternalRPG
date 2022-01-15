@@ -52,6 +52,7 @@ public class EquipCollide : MonoBehaviour
     }
     void EquipIt()
     {
+        Debug.Log("Pick Up Equipment");
         //make it into a child of the kobold and send it to the FUCKING SHADOW ZONE until we want to drop it again
     }
 }

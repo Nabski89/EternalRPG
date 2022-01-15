@@ -16,6 +16,9 @@ public class KoboldEquipment : MonoBehaviour
     //do I do all the things it can do as some kind of enum list?
     //yeah I do
 
+public GameObject ToolObject;
+public GameObject GearObject;
+
     public enum Tools { PenValue, HerbValue, WandValue, PickValue, HammerValue }; //craft better book, craft potion types, magic improvements, improve chances of what you get out of mine, change what you will craft
     public enum Gear { Amulet, Hat, Backpack } //I have no idea what these are going to do, they are for non crafting things.
 

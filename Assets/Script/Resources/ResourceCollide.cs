@@ -15,20 +15,19 @@ public class ResourceCollide : MonoBehaviour
     //not public because they are basically ready only
     float sanguineValue;
     float soulValue;
-    float strongValue;
-    float smartValue;
-    float speedValue;
     float skillValue;
     //the mod that goes along with each stat
     public float sanguineMod = 0.05f; //levels range from 1 to 20? so max level would double original speed
     public float soulMod = 0.05f;
-    public float strongMod = 0.05f;
-    public float smartMod = 0.05f;
-    public float speedMod = 0.05f;
     public float skillMod = 0.2f; //common max level is 5, which would double the speed
 
     public ResourceEnum.Resource ResourceType;
     public KoboldSkillController.Skill SkillType;
+
+    //set this to the same thing if we aren't using it
+    public ResourceEnum.Resource ResourceType2;
+    public KoboldSkillController.Skill SkillType2;
+
     string SkillName;
     public bool IsThisTheKnowledgeBuilding = false;
 
@@ -63,13 +62,8 @@ public class ResourceCollide : MonoBehaviour
             controller.targetX = position.x;
             controller.targetY = position.y;
 
-
             sanguineValue = controller.sanguine;
             soulValue = controller.soul;
-            strongValue = controller.strong;
-            smartValue = controller.smart;
-            speedValue = controller.speed;
-
 
             controller.ProgressBar.SetActive(true);
             controller.ProgressIdle = 0;
@@ -92,10 +86,6 @@ public class ResourceCollide : MonoBehaviour
             + 1
             + sanguineValue * sanguineMod
             + soulValue * soulMod
-            + strongValue * strongMod
-            + smartValue * smartMod
-            + speedValue * speedMod
-            + skillValue * skillMod
             ;
 
             controller.ProgressBarUpdate(ResourceProgress / ResourceProgressReqd);
@@ -105,25 +95,48 @@ public class ResourceCollide : MonoBehaviour
                 ResourceProgress = 0;
                 Debug.Log("GAIN 1 RESOURCE");
 
-                //knowledge gain is weird and based on our stored type 2, 3, 4 resources
-                if (IsThisTheKnowledgeBuilding == true)
+                //check if we are able to use the advanced version
+                if (controllerSkill.SkillMaxDic[SkillType2] > 1)
                 {
-                    //call these out
-                    int G2Multiplier = ResourceEnum.ResourceDic[ResourceEnum.Resource.PictureG2];
-                    int G3Multiplier = ResourceEnum.ResourceDic[ResourceEnum.Resource.ScrollG3];
-                    int G4Multiplier = ResourceEnum.ResourceDic[ResourceEnum.Resource.BookG4];
-                    //then gain it, t2 gets 1, t3 2, t4 3 
-                    ResourceEnum.ResourceDic[ResourceType] = Mathf.Clamp(ResourceEnum.ResourceDic[ResourceType] + 1 * G2Multiplier + 2 * G3Multiplier + 3 * G4Multiplier, 0, ResourceEnum.ResourceMaxDic[ResourceType]);
+                    //knowledge gain is weird and based on our stored type 2, 3, 4 resources
+                    if (IsThisTheKnowledgeBuilding == true)
+                    {
+                        //call these out
+                        int G2Multiplier = ResourceEnum.ResourceDic[ResourceEnum.Resource.PictureG2];
+                        int G3Multiplier = ResourceEnum.ResourceDic[ResourceEnum.Resource.ScrollG3];
+                        int G4Multiplier = ResourceEnum.ResourceDic[ResourceEnum.Resource.BookG4];
+                        //then gain it, t2 gets 1, t3 2, t4 3 
+                        ResourceEnum.ResourceDic[ResourceType2] = Mathf.Clamp(ResourceEnum.ResourceDic[ResourceType2] + 1 * G2Multiplier + 2 * G3Multiplier + 3 * G4Multiplier, 0, ResourceEnum.ResourceMaxDic[ResourceType2]);
+                    }
+                    else
+                    {
+                        ResourceEnum.ResourceDic[ResourceType2] = Mathf.Clamp(ResourceEnum.ResourceDic[ResourceType2] + 1, 0, ResourceEnum.ResourceMaxDic[ResourceType2]);
+                    }
+                    controllerSkill.GainSkill(SkillType2);
                 }
                 else
                 {
-                    ResourceEnum.ResourceDic[ResourceType] = Mathf.Clamp(ResourceEnum.ResourceDic[ResourceType] + 1, 0, ResourceEnum.ResourceMaxDic[ResourceType]);
+                    //knowledge gain is weird and based on our stored type 2, 3, 4 resources
+                    if (IsThisTheKnowledgeBuilding == true)
+                    {
+                        //call these out
+                        int G2Multiplier = ResourceEnum.ResourceDic[ResourceEnum.Resource.PictureG2];
+                        int G3Multiplier = ResourceEnum.ResourceDic[ResourceEnum.Resource.ScrollG3];
+                        int G4Multiplier = ResourceEnum.ResourceDic[ResourceEnum.Resource.BookG4];
+                        //then gain it, t2 gets 1, t3 2, t4 3 
+                        ResourceEnum.ResourceDic[ResourceType] = Mathf.Clamp(ResourceEnum.ResourceDic[ResourceType] + 1 * G2Multiplier + 2 * G3Multiplier + 3 * G4Multiplier, 0, ResourceEnum.ResourceMaxDic[ResourceType]);
+                    }
+                    else
+                    {
+                        ResourceEnum.ResourceDic[ResourceType] = Mathf.Clamp(ResourceEnum.ResourceDic[ResourceType] + 1, 0, ResourceEnum.ResourceMaxDic[ResourceType]);
+                    }
+                    controllerSkill.GainSkill(SkillType);
                 }
 
                 //resource change updates our resource trackers
                 ResourceEnum.ResourceChange();
                 Debug.Log("GAIN RESOURCE");
-                controllerSkill.GainSkill(SkillType);
+
                 Degrade += 1;
                 if (Degrade > Uses)
                 {
@@ -135,6 +148,16 @@ public class ResourceCollide : MonoBehaviour
         }
     }
 
+
+    void GetResource(ResourceEnum.Resource GetResource)
+    {
+
+
+
+    }
+
+
+
     public void OnMouseOver()
     {
         MouseOverTiming += 1;
@@ -143,7 +166,12 @@ public class ResourceCollide : MonoBehaviour
             Debug.Log("We Hovered over this thing");
             MouseOverText = "This structure creates " + ResourceType;
             MouseOverText = MouseOverText.Remove(MouseOverText.Length - 2, 2);
-            MouseOverText += "\n You will improve at " + SkillName;
+            if (ResourceType != ResourceType2)
+            {
+                MouseOverText += "and" + ResourceType2;
+                MouseOverText = MouseOverText.Remove(MouseOverText.Length - 2, 2);
+            }
+
             foreach (var UIMouseOverBox in GameObject.FindObjectsOfType<UIInfoBox>())
             {
                 UIMouseOverBox.signaltotheworldthatIhavedonesomething(MouseOverText);
