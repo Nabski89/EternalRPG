@@ -13,6 +13,7 @@ public class CombatProjectile : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+
         Destroy(gameObject, 5);
 
         Vector2 position = transform.position;
