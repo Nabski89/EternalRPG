@@ -4,66 +4,86 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    public int stall = 60;
-    int RandomNUMBER;
-    //we need this to make something a child on spawn
-    int attack = 0;
-    int block = 0;
-    public GameObject AttackPrefab;
-    public GameObject BlockPrefab;
+    public Rigidbody2D rb;
+    public EnemyCombatController CombatScript;
+    public bool NeedsToMove = false;
+    public bool CombatMode = false;
+    float targetX;
+    float targetY;
 
-    public SpriteRenderer m_SpriteRenderer;
+    int MoveCountDown = 30;
+
     // Start is called before the first frame update
     void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
+
+        Vector2 position = transform.position;
+        targetX = position.x;
+        targetY = position.y;
     }
 
-    // Update is called once per frame
-
-    public void CreateEnemy()
+    void OnTriggerEnter2D(Collider2D other)
     {
-        //select the sprite
-        //select the location based on how many enemies we have
-        //seed the loot pool?
-        //set the stats
-    }
+        KoboldController controller = other.GetComponent<KoboldController>();
 
-
-    void Update()
-    {
-        stall = stall - 1;
-        if (stall == 10)
+        if (controller != null)
         {
-            RandomNUMBER = Random.Range(0, 2);
-            if (RandomNUMBER == 0)
-            {
-                attack = 1;
-            }
-            else
-            {
-                block = 1;
-            }
+            Debug.Log("Collision with line");
+            //this makes it only move towards PLAYERS not other enemies
+
+            //           Vector3 linePos = controller.transform.position;
+            //            float linePosX = controller.transform.position.x;
+            //          float linePosY = controller.transform.position.y;
+            targetX = controller.transform.position.x;
+            targetY = controller.transform.position.y;
+
+            Debug.Log("Go to " + targetX + ", " + targetY + " to fight");
+
+            CombatMode = true;
+
+        float velocitymath = 1 / (Mathf.Sqrt((targetX * targetX) + (targetY * targetY)));
+        Debug.Log(velocitymath);
         }
 
 
-        //these objects are being created in their original location, they need to be created in front of the raven and aimed left.
-        if (stall == 0)
-        {
-            if (attack == 1)
-            {
-                attack = 0;
+        CombatScript.FIRE(1, 1);
+    }
 
-                GameObject childGameObject = Instantiate(AttackPrefab, this.transform);
-                childGameObject.name = "Attack";
-                stall = 60;
-            }
-            if (block == 1)
+    // Update is called once per frame
+    void Update()
+    {
+
+        if (CombatMode == true)
+        {
+            // this code moves us
+            // the math bit decides if it goes right or left
+
+            Vector2 position = transform.position;
+            position.x = position.x + 1f * Time.deltaTime * Mathf.Clamp(targetX - position.x, -1, 1);
+            position.y = position.y + 1f * Time.deltaTime * Mathf.Clamp(targetY - position.y, -1, 1);
+            transform.position = position;
+
+            //Are we there yet?
+            if (Mathf.Abs(targetY - position.y) < .05 && Mathf.Abs(targetX - position.x) < 0.5)
             {
-                block = 0;
-                GameObject childGameObject = Instantiate(BlockPrefab, this.transform);
-                childGameObject.name = "Block";
-                stall = 60;
+                NeedsToMove = false;
             }
+            //Multiply everything by time delta I guess because it's updated per frame for some janky reason
+        }
+        else
+        {
+            IdleMove();
+        }
+    }
+
+    void IdleMove()
+    {
+        MoveCountDown -= 1;
+        if (MoveCountDown == 0)
+        {
+            MoveCountDown = Random.Range(0, 6 * 30);
+            rb.velocity = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0);
         }
     }
 }

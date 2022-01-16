@@ -55,6 +55,7 @@
      <Compile Include="Assets\Script\Character\KoboldDNA.cs" />
      <Compile Include="Assets\Script\CombatAbilityUpdate.cs" />
      <Compile Include="Assets\Script\World Environment\CameraScript.cs" />
+     <Compile Include="Assets\Script\EnemyController.cs" />
      <Compile Include="Assets\Script\WorldBorderStorage.cs" />
      <Compile Include="Assets\Script\CraftResearch.cs" />
      <Compile Include="Assets\Script\Build\BuildBlocker.cs" />
@@ -78,7 +79,7 @@
      <Compile Include="Assets\Script\EquipCollide.cs" />
      <Compile Include="Assets\Script\Build\BuildShopButtons.cs" />
      <Compile Include="Assets\Script\Character\KoboldCombatController.cs" />
-     <Compile Include="Assets\Script\EnemyController.cs" />
+     <Compile Include="Assets\Script\EnemyCombatController.cs" />
      <Compile Include="Assets\Script\WorldPopulate.cs" />
      <Compile Include="Assets\Script\CombatProjectile.cs" />
      <Compile Include="Assets\Script\Queuing.cs" />
