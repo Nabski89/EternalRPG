@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraScript : MonoBehaviour
 {
     public static float WorldSizeX = 31+50;
-    public static float WorldSizeY = 16+50;
+    public static float WorldSizeY = 16;
     public static float WorldSizeBuffer = 1;
     public GameObject TopObject;
     public GameObject RightObject;
@@ -28,25 +28,24 @@ public class CameraScript : MonoBehaviour
         position.x = Mathf.Clamp(position.x + 10f * horizontal * Time.deltaTime, 0 + 13.5f, WorldSizeX - 17.5f + WorldSizeBuffer);
         position.y = Mathf.Clamp(position.y + 10f * vertical * Time.deltaTime, 0 + 6, WorldSizeY - 10 + WorldSizeBuffer);
         transform.position = position;
+
+                    if (Input.GetKeyDown(KeyCode.H))
+            {
+                TeleportToArea(13.5f, 6);
+            }
     }
     //add 13.5 amount to X
     //add 6 to y
 
     //We aren't using this anymore
-    public void TeleportToArea(int Area, int CombatArea)
+    public void TeleportToArea(float TarX, float TarY)
     {
         Debug.Log("CAMERA TELEPORT ACTIVATE");
 
         Vector3 position = transform.position;
-        position.x = (CombatArea * 50f) + 13.5f;
-        if (CombatArea == 1)
-        {
-            position.y = 30;
-        }
-        else
-        {
-            position.y = 0;
-        }
+        position.x = TarX;
+            position.y = TarY;
+
         transform.position = position;
     }
 
