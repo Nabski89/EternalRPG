@@ -7,3 +7,5 @@ You have a small tribe of characters.
 When one dies you will need to spawn a new one from two existing characters.
 They will live ABOUT ten minutes each, less if you don't feed them.
 Build structures, gain skills, grow your village
+
+Note to self in unity you set the world enviroment color under Windows-Rendering-Lighting. When you are unhappy with how it looks, adjust that.
