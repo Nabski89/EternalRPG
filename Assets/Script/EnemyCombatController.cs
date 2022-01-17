@@ -13,6 +13,7 @@ public class EnemyCombatController : MonoBehaviour
     public GameObject BlockPrefab;
 
     public Vector3 VecTarget;
+    public float VelocityTarget;
 
     public SpriteRenderer m_SpriteRenderer;
     // Start is called before the first frame update
@@ -47,32 +48,34 @@ public class EnemyCombatController : MonoBehaviour
             }
         }
 
+        /* removed and being called from the main enemy controller as FIRE() and ?BLOCK()?
+                //these objects are being created in their original location, they need to be created in front of the raven and aimed left.
+                if (stall == 0)
+                {
+                    if (attack == 1)
+                    {
+                        attack = 0;
 
-        //these objects are being created in their original location, they need to be created in front of the raven and aimed left.
-        if (stall == 0)
-        {
-            if (attack == 1)
-            {
-                attack = 0;
-
-                GameObject childGameObject = Instantiate(AttackPrefab, this.transform);
-                childGameObject.name = "Attack";
-                stall = 60;
-            }
-            if (block == 1)
-            {
-                block = 0;
-                GameObject childGameObject = Instantiate(BlockPrefab, this.transform);
-                childGameObject.name = "Block";
-                stall = 60;
-            }
-        }
+                        GameObject childGameObject = Instantiate(AttackPrefab, this.transform);
+                        childGameObject.name = "Attack";
+                        stall = 60;
+                    }
+                    if (block == 1)
+                    {
+                        block = 0;
+                        GameObject childGameObject = Instantiate(BlockPrefab, this.transform);
+                        childGameObject.name = "Block";
+                        stall = 60;
+                    }
+                }
+            */
     }
 
-    public void FIRE(float TarX, float TarY)
+    public void FIRE(float TarX, float TarY, float VelocityMod)
     {
         VecTarget.x = TarX;
         VecTarget.y = TarY;
+        VelocityTarget = VelocityMod;
 
         GameObject childGameObject = Instantiate(AttackPrefab, this.transform);
     }

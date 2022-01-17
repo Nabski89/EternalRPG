@@ -8,7 +8,7 @@ public class CombatProjectile : MonoBehaviour
     //base attributes off the attacker and some other stuff
     //call the change health script
     public float damageValue = 2;
-    public float debuffValue = .2f/30f;
+    public float debuffValue = .2f / 30f;
     public float direction = -1f;
     // Start is called before the first frame update
     void Awake()
@@ -19,10 +19,29 @@ public class CombatProjectile : MonoBehaviour
         Vector2 position = transform.position;
         position.x = position.x + 5f * direction;
         transform.position = position;
+
+        go();
+    }
+    public Rigidbody2D rb;
+    void start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
+
+    void go()
+    {
+        EnemyCombatController CombatController = GetComponentInParent<EnemyCombatController>();
+
+
+//still need to apply a uniform speed modifier on this with CombatController.VelocityTarget
+        rb.velocity = CombatController.VecTarget - transform.position;
+
+        Debug.Log(CombatController.VecTarget);
+
     }
 
 
-//tries to call info from the parent
+    //tries to call info from the parent
     public void SetValues(float Attack, string TYPE1, float Attack2, string TYPE2, float FIRE)
     {
         if (TYPE1 == "DAMAGE")
@@ -48,16 +67,10 @@ public class CombatProjectile : MonoBehaviour
             Debug.Log("It's an attack!");
         }
     }
-public void Blocked(float shieldValue)
-{
-    if(damageValue <= 0)
-    Destroy(gameObject);
-}
-    void Update()
+    public void Blocked(float shieldValue)
     {
-        Vector2 position = transform.position;
-        position.x = position.x + 1f * direction;
-        position.y = position.y;
-        transform.position = position;
+        if (damageValue <= 0)
+            Destroy(gameObject);
     }
+
 }

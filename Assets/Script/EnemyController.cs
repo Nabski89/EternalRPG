@@ -11,6 +11,12 @@ public class EnemyController : MonoBehaviour
     float targetX;
     float targetY;
 
+
+    float Health = 5;
+    float Mana = 0;
+    float ManaMax = 5;
+    float ManaRegen = .5f / 30;
+
     int MoveCountDown = 30;
 
     // Start is called before the first frame update
@@ -41,15 +47,28 @@ public class EnemyController : MonoBehaviour
             Debug.Log("Go to " + targetX + ", " + targetY + " to fight");
 
             CombatMode = true;
-
-        float velocitymath = 1 / (Mathf.Sqrt((targetX * targetX) + (targetY * targetY)));
-        Debug.Log(velocitymath);
         }
-
-
-        CombatScript.FIRE(1, 1);
     }
 
+    void OnTriggerStay2D(Collider2D other)
+    {
+        KoboldController controller = other.GetComponent<KoboldController>();
+
+        if (controller != null)
+        {
+            if (Mana > 2)
+            {
+
+                targetX = controller.transform.position.x;
+                targetY = controller.transform.position.y;
+
+                float velocitymath = 1 / (Mathf.Sqrt((targetX * targetX) + (targetY * targetY)));
+                Debug.Log(velocitymath);
+                CombatScript.FIRE(targetX, targetY, velocitymath);
+                Mana -= 2;
+            }
+        }
+    }
     // Update is called once per frame
     void Update()
     {
@@ -70,6 +89,9 @@ public class EnemyController : MonoBehaviour
                 NeedsToMove = false;
             }
             //Multiply everything by time delta I guess because it's updated per frame for some janky reason
+
+            //only regen when in combat
+            updateLife();
         }
         else
         {
@@ -84,6 +106,17 @@ public class EnemyController : MonoBehaviour
         {
             MoveCountDown = Random.Range(0, 6 * 30);
             rb.velocity = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0);
+        }
+    }
+    void updateLife()
+    {
+
+        Mana = Mathf.Clamp(Mana + ManaRegen, 0, ManaMax);
+
+        // set some UI bars
+        if (Health <= 0)
+        {
+            Destroy(gameObject, 5);
         }
     }
 }

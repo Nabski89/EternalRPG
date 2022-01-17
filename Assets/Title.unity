@@ -15037,6 +15037,8 @@ MonoBehaviour:
   stall: 60
   AttackPrefab: {fileID: 3470498609445153589, guid: bce02562d9a0b2741b45d7247ceec251, type: 3}
   BlockPrefab: {fileID: 7178548414419924537, guid: 373fe3a6a21b1e4499f234e46d58962c, type: 3}
+  VecTarget: {x: 0, y: 0, z: 0}
+  VelocityTarget: 0
   m_SpriteRenderer: {fileID: 0}
 --- !u!50 &767465063
 Rigidbody2D:
@@ -25037,11 +25039,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6146496856518080431, guid: 12ada2fd431c2b34fa389b404bdb4404, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 23.05
+      value: 17.21
       objectReference: {fileID: 0}
     - target: {fileID: 6146496856518080431, guid: 12ada2fd431c2b34fa389b404bdb4404, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.98
+      value: 3.54
       objectReference: {fileID: 0}
     - target: {fileID: 6146496856518080431, guid: 12ada2fd431c2b34fa389b404bdb4404, type: 3}
       propertyPath: m_LocalPosition.z
@@ -29701,6 +29703,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2619267746513069898, guid: 6d1bbd3b389ae844fac8a548bc76883f, type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4167280743394806330, guid: 6d1bbd3b389ae844fac8a548bc76883f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4167280743394806330, guid: 6d1bbd3b389ae844fac8a548bc76883f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4167280743394806330, guid: 6d1bbd3b389ae844fac8a548bc76883f, type: 3}
+      propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4306643203051859313, guid: 6d1bbd3b389ae844fac8a548bc76883f, type: 3}
@@ -36915,7 +36929,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 50, y: 20}
   m_EdgeRadius: 6
 --- !u!114 &1589464177
 MonoBehaviour:
@@ -36930,6 +36944,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
+  CombatScript: {fileID: 1589464178}
   NeedsToMove: 0
   CombatMode: 0
 --- !u!114 &1589464178
@@ -36947,6 +36962,8 @@ MonoBehaviour:
   stall: 60
   AttackPrefab: {fileID: 3470498609445153589, guid: bce02562d9a0b2741b45d7247ceec251, type: 3}
   BlockPrefab: {fileID: 7178548414419924537, guid: 373fe3a6a21b1e4499f234e46d58962c, type: 3}
+  VecTarget: {x: 0, y: 0, z: 0}
+  VelocityTarget: 0
   m_SpriteRenderer: {fileID: 0}
 --- !u!212 &1589464179
 SpriteRenderer:
@@ -37007,7 +37024,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1589464175}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 81.25, y: 8.86, z: 0}
+  m_LocalPosition: {x: 24.79, y: 8.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

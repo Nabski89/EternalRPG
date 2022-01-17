@@ -96,6 +96,7 @@ MonoBehaviour:
   damageValue: 0
   debuffValue: 0
   direction: -1
+  rb: {fileID: -517516803675667194}
 --- !u!212 &-7396697984671492017
 SpriteRenderer:
   m_ObjectHideFlags: 0
