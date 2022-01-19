@@ -35,7 +35,7 @@ public class EquipCollide : MonoBehaviour
                 {
                     EquipController.HaveGear = true;
                     EquipController.GearDic[GearType] = GearScore;
-                    EquipIt();
+                    EquipIt(controller.CharacterNumber);
                 }
             }
 
@@ -45,14 +45,27 @@ public class EquipCollide : MonoBehaviour
                 {
                     EquipController.HaveTool = true;
                     EquipController.ToolDic[ToolType] = GearScore;
-                    EquipIt();
+                    EquipIt(controller.CharacterNumber);
                 }
             }
         }
     }
-    void EquipIt()
+    void EquipIt(int CharNum)
     {
         Debug.Log("Pick Up Equipment");
+
+        Vector2 position = transform.position;
+        if (gear == true)
+        {
+            position.x = 0;
+        }
+        if (tool == true)
+        {
+            position.x = 1;
+        }
+        position.y = -20 + CharNum;
+        transform.position = position;
+
         //make it into a child of the kobold and send it to the FUCKING SHADOW ZONE until we want to drop it again
     }
 }

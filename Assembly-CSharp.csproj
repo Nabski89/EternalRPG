@@ -57,6 +57,7 @@
      <Compile Include="Assets\Script\World Environment\CameraScript.cs" />
      <Compile Include="Assets\Script\EnemyController.cs" />
      <Compile Include="Assets\Script\WorldBorderStorage.cs" />
+     <Compile Include="Assets\Script\PickUpPotion.cs" />
      <Compile Include="Assets\Script\CraftResearch.cs" />
      <Compile Include="Assets\Script\Build\BuildBlocker.cs" />
      <Compile Include="Assets\Script\Resources\ResouceCrafting.cs" />

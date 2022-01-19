@@ -29,7 +29,7 @@ public class KoboldController : MonoBehaviour
 
     //core stats, to be redefined by DNA
     //the max is what we can gain up to
-    
+
     public int sanguine;
     public int soul;
     public int strong;
@@ -253,7 +253,7 @@ public class KoboldController : MonoBehaviour
             // this code moves us
             // the math bit decides if it goes right or left
 
-//this means it moves at about 1 unit per second, our screen is about 30 units wide.
+            //this means it moves at about 1 unit per second, our screen is about 30 units wide.
             Vector2 position = transform.position;
             position.x = position.x + 1f * Time.deltaTime * Mathf.Clamp(targetX - position.x, -1, 1);
             position.y = position.y + 1f * Time.deltaTime * Mathf.Clamp(targetY - position.y, -1, 1);
@@ -329,4 +329,27 @@ public class KoboldController : MonoBehaviour
         */
         //skill refresh is handled in the DNA rebirth section
     }
+
+
+
+    //POTIONS!
+    public int PotionMax = 6;
+    public int PotionCount;
+
+    public int HealthPot = 0;
+    public int ManaPot = 0;
+
+    public void PotionUIUpdate()
+    {
+
+        PotionCount = HealthPot + ManaPot;
+
+
+        foreach (var resource in GameObject.FindObjectsOfType<UIPotion>())
+        {
+            resource.UpdateUI(CharacterNumber, HealthPot, ManaPot);
+        }
+    }
+
+
 }

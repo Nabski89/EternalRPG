@@ -59,14 +59,16 @@ public GameObject GearObject;
     {
         HaveGear = true;
     }
-    void UnequipTool()
+    public void UnequipTool()
     {
         HaveTool = false;
+ZeroEquipTool();
         //set values to 0
     }
-    void UnequipGear()
+    public void UnequipGear()
     {
         HaveGear = false;
+ ZeroEquipGear();
         //set values to 0
     }
 
