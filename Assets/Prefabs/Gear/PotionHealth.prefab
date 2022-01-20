@@ -64,6 +64,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3817010865769153782, guid: db90a2a5ae8aac148acfef5c814c6b04, type: 3}
+      propertyPath: healthpot
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4257404113610876787, guid: db90a2a5ae8aac148acfef5c814c6b04, type: 3}
       propertyPath: m_RootOrder
       value: 0

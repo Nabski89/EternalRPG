@@ -24,11 +24,12 @@ public class PickUpPotion : MonoBehaviour
 
         if (controller != null)
         {
-            if (controller.PotionMax < controller.PotionCount)
+            if (controller.PotionMax > controller.PotionCount)
             {
 
                 if (healthpot == true)
                 {
+                    Debug.Log("Character" + controller.CharacterNumber + "got a health potion");
                     controller.HealthPot += 1;
                     controller.PotionUIUpdate();
                     Destroy(gameObject);
@@ -36,6 +37,7 @@ public class PickUpPotion : MonoBehaviour
 
                 if (manapot == true)
                 {
+                    Debug.Log("Character" + controller.CharacterNumber + "got a mana potion");
                     controller.ManaPot += 1;
                     controller.PotionUIUpdate();
                     Destroy(gameObject);

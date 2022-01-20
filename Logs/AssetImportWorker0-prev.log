@@ -15,11 +15,11 @@ C:/Users/Nabski/Desktop/The Eternal RPG/Eternal RPG
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-49360
+58223
 Successfully changed project path to: C:/Users/Nabski/Desktop/The Eternal RPG/Eternal RPG
 C:/Users/Nabski/Desktop/The Eternal RPG/Eternal RPG
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 39.13 ms, found 1 plugins.
+Refreshing native plugins compatible for Editor in 37.45 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2020.2.4f1 (becced5a802b)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2020.2.4f1/Editor/Data/Resources/UnitySubsystems
@@ -35,31 +35,31 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2020.2.4f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2020.2.4f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2020.2.4f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56496
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56708
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.2.4f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.002056 seconds.
+Registered in 0.001929 seconds.
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 38.19 ms, found 1 plugins.
+Refreshing native plugins compatible for Editor in 35.83 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.033 seconds
+- Completed reload, in  0.982 seconds
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.001061 seconds.
+Registered in 0.001049 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 67.34 ms, found 1 plugins.
+Refreshing native plugins compatible for Editor in 35.61 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.184 seconds
+- Completed reload, in  0.848 seconds
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
@@ -67,40 +67,473 @@ Launched and connected shader compiler UnityShaderCompiler.exe after 0.04 second
 Refreshing native plugins compatible for Editor in 0.38 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 1976 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 90.8 MB.
-System memory in use after: 90.7 MB.
-
-Unloading 24 unused Assets to reduce memory usage. Loaded Objects now: 2420.
-Total: 2.353300 ms (FindLiveObjects: 0.246000 ms CreateObjectMapping: 0.205700 ms MarkObjects: 1.775200 ms  DeleteObjects: 0.125100 ms)
-
-========================================================================
-Received Import Request.
-  path: Assets/Script/PickUpPotion.cs
-  artifactKey: Guid(f5fb748c07c7d6a4c8cbb6ca0a146b41) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Script/PickUpPotion.cs using Guid(f5fb748c07c7d6a4c8cbb6ca0a146b41) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7f5d0e1d91e875c10733fa2071f14458') in 0.031047 seconds
-  Import took 0.034111 seconds .
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.002418 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.46 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.896 seconds
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.37 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 1971 Unused Serialized files (Serialized files now loaded: 0)
 System memory in use before: 90.7 MB.
 System memory in use after: 90.7 MB.
 
-Unloading 12 unused Assets to reduce memory usage. Loaded Objects now: 2423.
-Total: 1.892900 ms (FindLiveObjects: 0.183000 ms CreateObjectMapping: 0.070700 ms MarkObjects: 1.544900 ms  DeleteObjects: 0.093300 ms)
+Unloading 24 unused Assets to reduce memory usage. Loaded Objects now: 2420.
+Total: 2.105000 ms (FindLiveObjects: 0.174100 ms CreateObjectMapping: 0.077300 ms MarkObjects: 1.733700 ms  DeleteObjects: 0.119000 ms)
+
+========================================================================
+Received Import Request.
+  path: Assets/Prefabs/Gear/Potion2Life.prefab
+  artifactKey: Guid(f38ffc2a1c14821489d94f3a8219da02) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Gear/Potion2Life.prefab using Guid(f38ffc2a1c14821489d94f3a8219da02) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b7b0c6f27096a54a7dd5da9d4b2e2719') in 0.050516 seconds
+  Import took 0.053492 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000280 seconds.
+  path: Assets/Prefabs/Gear/PotionBase.prefab
+  artifactKey: Guid(db90a2a5ae8aac148acfef5c814c6b04) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Gear/PotionBase.prefab using Guid(db90a2a5ae8aac148acfef5c814c6b04) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ccf6792ad9a156f1f9d83c85a88d6ca8') in 0.007731 seconds
+  Import took 0.010550 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000197 seconds.
+  path: Assets/Prefabs/Gear/PotionHealth.prefab
+  artifactKey: Guid(addd45759d3affb47a0896aab0d27abe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Gear/PotionHealth.prefab using Guid(addd45759d3affb47a0896aab0d27abe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a595d2c96487f5558b1b1de4a5721b20') in 0.066708 seconds
+  Import took 0.069782 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000275 seconds.
+  path: Assets/Prefabs/Gear/Potion2Skill.prefab
+  artifactKey: Guid(c527c9a3217836f48bfde9b99d5dddf7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Gear/Potion2Skill.prefab using Guid(c527c9a3217836f48bfde9b99d5dddf7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ce3ed7e7ba5aa4be2760a0fc277f6633') in 0.008265 seconds
+  Import took 0.011177 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000240 seconds.
+  path: Assets/Prefabs/Gear/PotionMana.prefab
+  artifactKey: Guid(82c7706caa47c9841907ae06483a3ea3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Gear/PotionMana.prefab using Guid(82c7706caa47c9841907ae06483a3ea3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a23c9f68722d4e1a5eae598262519fee') in 0.011162 seconds
+  Import took 0.014475 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 2.256468 seconds.
+  path: Assets/Prefabs/Gear/Potion2Life.prefab
+  artifactKey: Guid(f38ffc2a1c14821489d94f3a8219da02) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Gear/Potion2Life.prefab using Guid(f38ffc2a1c14821489d94f3a8219da02) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '022da51ecbbc2289e7863c4861680aab') in 0.003650 seconds
+  Import took 0.006829 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000257 seconds.
+  path: Assets/Prefabs/Gear/PotionBase.prefab
+  artifactKey: Guid(db90a2a5ae8aac148acfef5c814c6b04) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Gear/PotionBase.prefab using Guid(db90a2a5ae8aac148acfef5c814c6b04) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2ab7646af191d65bbba461ab2336bb41') in 0.003027 seconds
+  Import took 0.006328 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000195 seconds.
+  path: Assets/Prefabs/Gear/PotionHealth.prefab
+  artifactKey: Guid(addd45759d3affb47a0896aab0d27abe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Gear/PotionHealth.prefab using Guid(addd45759d3affb47a0896aab0d27abe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '717fbdd905e4ae874ed76d5ecb03bcf5') in 0.008162 seconds
+  Import took 0.011056 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000229 seconds.
+  path: Assets/Prefabs/Gear/Potion2Skill.prefab
+  artifactKey: Guid(c527c9a3217836f48bfde9b99d5dddf7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Gear/Potion2Skill.prefab using Guid(c527c9a3217836f48bfde9b99d5dddf7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4d595b99a136853cee96504fec94db5a') in 0.003798 seconds
+  Import took 0.006789 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000289 seconds.
+  path: Assets/Prefabs/Gear/PotionMana.prefab
+  artifactKey: Guid(82c7706caa47c9841907ae06483a3ea3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Gear/PotionMana.prefab using Guid(82c7706caa47c9841907ae06483a3ea3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '14273dec9de17b27b5c51f32b01d1aca') in 0.010438 seconds
+  Import took 0.013788 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 2.993600 seconds.
+  path: Assets/Prefabs/Gear/Potion2Life.prefab
+  artifactKey: Guid(f38ffc2a1c14821489d94f3a8219da02) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Gear/Potion2Life.prefab using Guid(f38ffc2a1c14821489d94f3a8219da02) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7dc23506528a615b4176d79013b4338c') in 0.003790 seconds
+  Import took 0.006736 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000258 seconds.
+  path: Assets/Prefabs/Gear/PotionBase.prefab
+  artifactKey: Guid(db90a2a5ae8aac148acfef5c814c6b04) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Gear/PotionBase.prefab using Guid(db90a2a5ae8aac148acfef5c814c6b04) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6682e8bf2ebb9713f39096ebb1a8a155') in 0.003196 seconds
+  Import took 0.006319 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000291 seconds.
+  path: Assets/Prefabs/Gear/PotionHealth.prefab
+  artifactKey: Guid(addd45759d3affb47a0896aab0d27abe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Gear/PotionHealth.prefab using Guid(addd45759d3affb47a0896aab0d27abe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd94e2b7d9d2eae92520d794c47fc3576') in 0.012938 seconds
+  Import took 0.016053 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000209 seconds.
+  path: Assets/Prefabs/Gear/Potion2Skill.prefab
+  artifactKey: Guid(c527c9a3217836f48bfde9b99d5dddf7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Gear/Potion2Skill.prefab using Guid(c527c9a3217836f48bfde9b99d5dddf7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0d6495ced826cd02cad2ab6055c2373c') in 0.003233 seconds
+  Import took 0.006241 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000237 seconds.
+  path: Assets/Prefabs/Gear/PotionMana.prefab
+  artifactKey: Guid(82c7706caa47c9841907ae06483a3ea3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Gear/PotionMana.prefab using Guid(82c7706caa47c9841907ae06483a3ea3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'eeb01bd349da09969d98eb57c56cfef7') in 0.009178 seconds
+  Import took 0.012192 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 5.721060 seconds.
+  path: Assets/Prefabs/Gear/Potion2Life.prefab
+  artifactKey: Guid(f38ffc2a1c14821489d94f3a8219da02) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Gear/Potion2Life.prefab using Guid(f38ffc2a1c14821489d94f3a8219da02) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bf0812edc32a93d4b5d2705de45559d0') in 0.003723 seconds
+  Import took 0.006705 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000253 seconds.
+  path: Assets/Prefabs/Gear/PotionBase.prefab
+  artifactKey: Guid(db90a2a5ae8aac148acfef5c814c6b04) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Gear/PotionBase.prefab using Guid(db90a2a5ae8aac148acfef5c814c6b04) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ad9c45bad8bf081d098c138d758e82e5') in 0.003161 seconds
+  Import took 0.006074 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000252 seconds.
+  path: Assets/Prefabs/Gear/PotionHealth.prefab
+  artifactKey: Guid(addd45759d3affb47a0896aab0d27abe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Gear/PotionHealth.prefab using Guid(addd45759d3affb47a0896aab0d27abe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '880de4f6ac0844af899c376a25ee15b7') in 0.008145 seconds
+  Import took 0.011107 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000239 seconds.
+  path: Assets/Prefabs/Gear/Potion2Skill.prefab
+  artifactKey: Guid(c527c9a3217836f48bfde9b99d5dddf7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Gear/Potion2Skill.prefab using Guid(c527c9a3217836f48bfde9b99d5dddf7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f6184acb502f12a70f2f5635800815e5') in 0.003694 seconds
+  Import took 0.006670 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000268 seconds.
+  path: Assets/Prefabs/Gear/PotionMana.prefab
+  artifactKey: Guid(82c7706caa47c9841907ae06483a3ea3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Gear/PotionMana.prefab using Guid(82c7706caa47c9841907ae06483a3ea3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a3bc0807ff9ec661f122e6b5292496af') in 0.008251 seconds
+  Import took 0.011195 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 2.392867 seconds.
+  path: Assets/Prefabs/Gear/Potion2Life.prefab
+  artifactKey: Guid(f38ffc2a1c14821489d94f3a8219da02) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Gear/Potion2Life.prefab using Guid(f38ffc2a1c14821489d94f3a8219da02) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '81159fe72d7ee127ae6a68206822e40b') in 0.003904 seconds
+  Import took 0.007130 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000265 seconds.
+  path: Assets/Prefabs/Gear/PotionBase.prefab
+  artifactKey: Guid(db90a2a5ae8aac148acfef5c814c6b04) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Gear/PotionBase.prefab using Guid(db90a2a5ae8aac148acfef5c814c6b04) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8db336135e26f223bb60518773eaf3c8') in 0.002794 seconds
+  Import took 0.005716 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000250 seconds.
+  path: Assets/Prefabs/Gear/PotionHealth.prefab
+  artifactKey: Guid(addd45759d3affb47a0896aab0d27abe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Gear/PotionHealth.prefab using Guid(addd45759d3affb47a0896aab0d27abe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fcd6ab3f2e9af36d120eb097d79b4858') in 0.007935 seconds
+  Import took 0.011119 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000256 seconds.
+  path: Assets/Prefabs/Gear/Potion2Skill.prefab
+  artifactKey: Guid(c527c9a3217836f48bfde9b99d5dddf7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Gear/Potion2Skill.prefab using Guid(c527c9a3217836f48bfde9b99d5dddf7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '663035e2b168d49a0e433d933554c556') in 0.003232 seconds
+  Import took 0.006280 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000206 seconds.
+  path: Assets/Prefabs/Gear/PotionMana.prefab
+  artifactKey: Guid(82c7706caa47c9841907ae06483a3ea3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Gear/PotionMana.prefab using Guid(82c7706caa47c9841907ae06483a3ea3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ef94bd95cf2db84f1c29e9d1e58d78a9') in 0.010337 seconds
+  Import took 0.013548 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 53.446844 seconds.
+  path: Assets/Prefabs/Gear/Potion2Life.prefab
+  artifactKey: Guid(f38ffc2a1c14821489d94f3a8219da02) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Gear/Potion2Life.prefab using Guid(f38ffc2a1c14821489d94f3a8219da02) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '97103d138c75837546af3e31df6b30cc') in 0.003718 seconds
+  Import took 0.007015 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000253 seconds.
+  path: Assets/Prefabs/Gear/PotionBase.prefab
+  artifactKey: Guid(db90a2a5ae8aac148acfef5c814c6b04) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Gear/PotionBase.prefab using Guid(db90a2a5ae8aac148acfef5c814c6b04) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8783e5ea93d1fbe27229ffab06873bd0') in 0.003072 seconds
+  Import took 0.006024 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000238 seconds.
+  path: Assets/Prefabs/Gear/PotionHealth.prefab
+  artifactKey: Guid(addd45759d3affb47a0896aab0d27abe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Gear/PotionHealth.prefab using Guid(addd45759d3affb47a0896aab0d27abe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4e4b0e55a1a5e7d476eecf162b8ef3f0') in 0.010698 seconds
+  Import took 0.013856 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000248 seconds.
+  path: Assets/Prefabs/Gear/Potion2Skill.prefab
+  artifactKey: Guid(c527c9a3217836f48bfde9b99d5dddf7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Gear/Potion2Skill.prefab using Guid(c527c9a3217836f48bfde9b99d5dddf7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b1c0ab58f367bd9a174446fdddd6c079') in 0.003366 seconds
+  Import took 0.006372 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000217 seconds.
+  path: Assets/Prefabs/Gear/PotionMana.prefab
+  artifactKey: Guid(82c7706caa47c9841907ae06483a3ea3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Gear/PotionMana.prefab using Guid(82c7706caa47c9841907ae06483a3ea3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8857d41cb847b615f5f64f697fc7073f') in 0.008065 seconds
+  Import took 0.011246 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.948538 seconds.
+  path: Assets/Prefabs/Gear/Potion2Life.prefab
+  artifactKey: Guid(f38ffc2a1c14821489d94f3a8219da02) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Gear/Potion2Life.prefab using Guid(f38ffc2a1c14821489d94f3a8219da02) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bf7de7b27bbf7826401d552bd1989a60') in 0.004535 seconds
+  Import took 0.008275 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000283 seconds.
+  path: Assets/Prefabs/Gear/PotionBase.prefab
+  artifactKey: Guid(db90a2a5ae8aac148acfef5c814c6b04) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Gear/PotionBase.prefab using Guid(db90a2a5ae8aac148acfef5c814c6b04) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5c7e92ed250c4634771fd6961f7f13db') in 0.027332 seconds
+  Import took 0.031141 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000773 seconds.
+  path: Assets/Prefabs/Gear/PotionHealth.prefab
+  artifactKey: Guid(addd45759d3affb47a0896aab0d27abe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Gear/PotionHealth.prefab using Guid(addd45759d3affb47a0896aab0d27abe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7872b6e4eef9ba12e2bc4864b0f29cb8') in 0.012773 seconds
+  Import took 0.016496 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000192 seconds.
+  path: Assets/Prefabs/Gear/Potion2Skill.prefab
+  artifactKey: Guid(c527c9a3217836f48bfde9b99d5dddf7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Gear/Potion2Skill.prefab using Guid(c527c9a3217836f48bfde9b99d5dddf7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ac183edadeb933bce7da2ded9e80812a') in 0.005115 seconds
+  Import took 0.008655 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000191 seconds.
+  path: Assets/Prefabs/Gear/PotionMana.prefab
+  artifactKey: Guid(82c7706caa47c9841907ae06483a3ea3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Gear/PotionMana.prefab using Guid(82c7706caa47c9841907ae06483a3ea3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '183c4840e2827c9aa57c38eb8263bddc') in 0.010125 seconds
+  Import took 0.013505 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.925942 seconds.
+  path: Assets/Prefabs/Gear/Potion2Life.prefab
+  artifactKey: Guid(f38ffc2a1c14821489d94f3a8219da02) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Gear/Potion2Life.prefab using Guid(f38ffc2a1c14821489d94f3a8219da02) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8d90eaa2d6ba0087eb49a415fa3bdede') in 0.003521 seconds
+  Import took 0.006842 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000195 seconds.
+  path: Assets/Prefabs/Gear/PotionBase.prefab
+  artifactKey: Guid(db90a2a5ae8aac148acfef5c814c6b04) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Gear/PotionBase.prefab using Guid(db90a2a5ae8aac148acfef5c814c6b04) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0fb47f84c2e26e495c8d1a763e93fe52') in 0.002794 seconds
+  Import took 0.005765 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000243 seconds.
+  path: Assets/Prefabs/Gear/PotionHealth.prefab
+  artifactKey: Guid(addd45759d3affb47a0896aab0d27abe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Gear/PotionHealth.prefab using Guid(addd45759d3affb47a0896aab0d27abe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c29059a9a297d805c9b5102274975d22') in 0.014761 seconds
+  Import took 0.018120 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000205 seconds.
+  path: Assets/Prefabs/Gear/Potion2Skill.prefab
+  artifactKey: Guid(c527c9a3217836f48bfde9b99d5dddf7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Gear/Potion2Skill.prefab using Guid(c527c9a3217836f48bfde9b99d5dddf7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8fc2448a0346a82e9e32ba8c8dcacb20') in 0.003179 seconds
+  Import took 0.005887 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000219 seconds.
+  path: Assets/Prefabs/Gear/PotionMana.prefab
+  artifactKey: Guid(82c7706caa47c9841907ae06483a3ea3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Gear/PotionMana.prefab using Guid(82c7706caa47c9841907ae06483a3ea3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c4c345e45b1b7a5c3d84c755876048f2') in 0.007504 seconds
+  Import took 0.010262 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 37.820177 seconds.
+  path: Assets/Prefabs/Gear/PotionHealth.prefab
+  artifactKey: Guid(addd45759d3affb47a0896aab0d27abe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Gear/PotionHealth.prefab using Guid(addd45759d3affb47a0896aab0d27abe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9460fd7f86bb7b608219162af830abed') in 0.009415 seconds
+  Import took 0.012993 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 2.406947 seconds.
+  path: Assets/Prefabs/Gear/PotionHealth.prefab
+  artifactKey: Guid(addd45759d3affb47a0896aab0d27abe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Gear/PotionHealth.prefab using Guid(addd45759d3affb47a0896aab0d27abe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '59576ff793cb09869c416c4b87d88052') in 0.008237 seconds
+  Import took 0.011539 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 3.433222 seconds.
+  path: Assets/Prefabs/Gear/PotionHealth.prefab
+  artifactKey: Guid(addd45759d3affb47a0896aab0d27abe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Gear/PotionHealth.prefab using Guid(addd45759d3affb47a0896aab0d27abe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6c214a8d37f04c99763c114e73b15405') in 0.009598 seconds
+  Import took 0.012916 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 2.818263 seconds.
+  path: Assets/Prefabs/Gear/PotionHealth.prefab
+  artifactKey: Guid(addd45759d3affb47a0896aab0d27abe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Gear/PotionHealth.prefab using Guid(addd45759d3affb47a0896aab0d27abe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f3760e5e2a82bad2756e7393560ecd3e') in 0.009693 seconds
+  Import took 0.013113 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 4.225600 seconds.
+  path: Assets/Prefabs/Gear/PotionHealth.prefab
+  artifactKey: Guid(addd45759d3affb47a0896aab0d27abe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Gear/PotionHealth.prefab using Guid(addd45759d3affb47a0896aab0d27abe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8e6b4209f3e793c89d42da44dad2de25') in 0.008191 seconds
+  Import took 0.011444 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 16.571835 seconds.
+  path: Assets/Prefabs/Gear/PotionHealth.prefab
+  artifactKey: Guid(addd45759d3affb47a0896aab0d27abe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Gear/PotionHealth.prefab using Guid(addd45759d3affb47a0896aab0d27abe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3e6212a8e81ea7adae67deb49890b86b') in 0.008844 seconds
+  Import took 0.012060 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 9.665340 seconds.
+  path: Assets/Prefabs/Gear/PotionHealth.prefab
+  artifactKey: Guid(addd45759d3affb47a0896aab0d27abe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Gear/PotionHealth.prefab using Guid(addd45759d3affb47a0896aab0d27abe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd50d5eb710bcc0da64fd363fc352b8d2') in 0.008051 seconds
+  Import took 0.011390 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.806001 seconds.
+  path: Assets/Prefabs/Gear/PotionHealth.prefab
+  artifactKey: Guid(addd45759d3affb47a0896aab0d27abe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Gear/PotionHealth.prefab using Guid(addd45759d3affb47a0896aab0d27abe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8ee3b4ee01685e149c9e4885268ef23a') in 0.007718 seconds
+  Import took 0.011098 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.393372 seconds.
+  path: Assets/Prefabs/Gear/PotionHealth.prefab
+  artifactKey: Guid(addd45759d3affb47a0896aab0d27abe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Gear/PotionHealth.prefab using Guid(addd45759d3affb47a0896aab0d27abe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f1ed406ef557491485100c8b9a8fa32f') in 0.009255 seconds
+  Import took 0.012422 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 10.993780 seconds.
+  path: Assets/Prefabs/Gear/Potion2Life.prefab
+  artifactKey: Guid(f38ffc2a1c14821489d94f3a8219da02) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Gear/Potion2Life.prefab using Guid(f38ffc2a1c14821489d94f3a8219da02) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '191669f8352eee0ce6025b4e87d15f4b') in 0.004211 seconds
+  Import took 0.007270 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000246 seconds.
+  path: Assets/Prefabs/Gear/PotionBase.prefab
+  artifactKey: Guid(db90a2a5ae8aac148acfef5c814c6b04) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Gear/PotionBase.prefab using Guid(db90a2a5ae8aac148acfef5c814c6b04) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fc2602ed245da7783eec09bbf2111658') in 0.003187 seconds
+  Import took 0.006093 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000283 seconds.
+  path: Assets/Prefabs/Gear/PotionHealth.prefab
+  artifactKey: Guid(addd45759d3affb47a0896aab0d27abe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Gear/PotionHealth.prefab using Guid(addd45759d3affb47a0896aab0d27abe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c08278fccb8516c66fe614a232247bf8') in 0.016702 seconds
+  Import took 0.019706 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000243 seconds.
+  path: Assets/Prefabs/Gear/Potion2Skill.prefab
+  artifactKey: Guid(c527c9a3217836f48bfde9b99d5dddf7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Gear/Potion2Skill.prefab using Guid(c527c9a3217836f48bfde9b99d5dddf7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dc1da93bd8e071ea5ad7b26824c2957f') in 0.003479 seconds
+  Import took 0.006631 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000284 seconds.
+  path: Assets/Prefabs/Gear/PotionMana.prefab
+  artifactKey: Guid(82c7706caa47c9841907ae06483a3ea3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Gear/PotionMana.prefab using Guid(82c7706caa47c9841907ae06483a3ea3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ec4a661a4c8598e1ec8dd83747be4ca8') in 0.013238 seconds
+  Import took 0.016570 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 4.775378 seconds.
+  path: Assets/Prefabs/Gear/PotionHealth.prefab
+  artifactKey: Guid(addd45759d3affb47a0896aab0d27abe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Gear/PotionHealth.prefab using Guid(addd45759d3affb47a0896aab0d27abe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a454265c67b16fe3f0b4e1b686af21df') in 0.010486 seconds
+  Import took 0.013537 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 7217.372249 seconds.
+  path: Assets/Script/UIPotion.cs
+  artifactKey: Guid(8dcb0e76a68122945b6695132968599f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Script/UIPotion.cs using Guid(8dcb0e76a68122945b6695132968599f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fde9aa7eabb58dc13666605b0add7c23') in 0.009262 seconds
+  Import took 0.013886 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 23.954256 seconds.
+  path: Assets/Script/UIPotion.cs
+  artifactKey: Guid(8dcb0e76a68122945b6695132968599f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Script/UIPotion.cs using Guid(8dcb0e76a68122945b6695132968599f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '000bca68800afbb6db6dfc112490984a') in 0.002361 seconds
+  Import took 0.005532 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000716 seconds.
+  path: Assets/Script/UIPotion.cs
+  artifactKey: Guid(8dcb0e76a68122945b6695132968599f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Script/UIPotion.cs using Guid(8dcb0e76a68122945b6695132968599f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '000bca68800afbb6db6dfc112490984a') in 0.002546 seconds
+  Import took 0.006276 seconds .
 
 AssetImportWorkerClient::OnTransportError - code=2 error=End of file

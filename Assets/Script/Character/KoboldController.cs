@@ -47,21 +47,16 @@ public class KoboldController : MonoBehaviour
 
     //Stamina, controls how long someone lives
     public int StaminaMax = 18000;
-    public int StaminaRegen = 4;
     public int Stamina = 18000;
-    public float maxHealth = 10;
-    public float currentHealth = 10;
+    public float maxHealth = 100;
+    public float currentHealth = 100;
     //soul stats Mana, controls casting spells
     public float Mana = 1;
     public float ManaMax = 20;
     //strong stats
-    public float PunchRegen = 1;
     //smart stats
     public float ManaRegen = 1 / 30;
     //speed stats
-    public int moveMod;
-    public int atkCD;
-
     // Is this the moving object
     public int CharacterNumber = 1;
 
@@ -85,8 +80,7 @@ public class KoboldController : MonoBehaviour
 
     void Start()
     {
-        maxHealth = 10;
-        currentHealth = 10;
+
     }
 
 
@@ -209,7 +203,20 @@ public class KoboldController : MonoBehaviour
         STAMINABAR.SetValue(Stamina / (float)StaminaMax);
 
         //and regen mana
-        Mana = Mathf.Clamp(Mana + ManaRegen, 0, ManaMax);
+        if (Mana < ManaMax)
+        {
+            Mana = Mathf.Clamp(Mana + ManaRegen, 0, ManaMax);
+        }
+        if (Mana < 0)
+        {
+            Mana = Mana + ManaRegen;
+            ChangeHealth(-2 / 30);
+        }
+        if (Mana > ManaMax)
+        {
+            Mana = Mathf.Clamp(Mana - ManaRegen, ManaMax, 999);
+        }
+
 
         //mana bar
         MANABAR.SetValue(Mana / (float)ManaMax);
@@ -313,8 +320,8 @@ public class KoboldController : MonoBehaviour
     {
         DNATarget.rebirthDNA();
         Body1Target.RefreshBody();
-        maxHealth = 10;
-        currentHealth = 10;
+        maxHealth = 100;
+        currentHealth = 100;
         Stamina = StaminaMax;
         foodCounter = 1800;
         hungry = 0;
@@ -350,6 +357,24 @@ public class KoboldController : MonoBehaviour
             resource.UpdateUI(CharacterNumber, HealthPot, ManaPot);
         }
     }
+    public void UsePotionHP()
+    {
+        if (HealthPot > 0)
+        {
+            HealthPot -= 1;
+            ChangeHealth(40);
+            PotionUIUpdate();
+        }
+    }
 
+    public void UsePotionMana()
+    {
+        if (ManaPot > 0)
+        {
+            ManaPot -= 1;
+            Mana += 10;
+            PotionUIUpdate();
+        }
+    }
 
 }

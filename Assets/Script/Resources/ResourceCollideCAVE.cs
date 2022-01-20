@@ -127,7 +127,7 @@ public class ResourceCollideCAVE : MonoBehaviour
         {
             Debug.Log("We Hovered over this thing");
             MouseOverText = "This structure creates Stone, Metal, Gold, and Gems";
-            MouseOverText = MouseOverText.Remove(MouseOverText.Length - 2, 2);
+ //           MouseOverText = MouseOverText.Remove(MouseOverText.Length - 2, 2);
             MouseOverText += "\n You will improve at " + SkillType;
             MouseOverText += "\n You have only just started to explore it ";
             foreach (var UIMouseOverBox in GameObject.FindObjectsOfType<UIInfoBox>())

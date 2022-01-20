@@ -7,23 +7,42 @@ public class UIPotion : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    public image MaskHPot;
+    public Image MaskHPot;
     float originalSizeH;
-    public image MaskMPot;
+    public Image MaskMPot;
     float originalSizeM;
+    public int CharacterNumber;
     void Start()
     {
-        originalSizeH = maskMana.rectTransform.rect.width;
-        originalSizeM = maskMana.rectTransform.rect.width;
+        originalSizeH = MaskHPot.rectTransform.rect.width;
+        originalSizeM = MaskMPot.rectTransform.rect.width;
+        UpdateUI(CharacterNumber, 0, 0);
     }
-
     // Update is called once per frame
-
     public void UpdateUI(int charNum, int HealthPotNum, int ManaPotNum)
     {
-
-        MaskHPot.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, originalSize * HealthPotNum/3);
-        MaskMPot.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, originalSize * ManaPotNum/3);
-
+        if (charNum == CharacterNumber)
+        {
+            if (HealthPotNum <= 3)
+            {
+                MaskHPot.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, originalSizeH * HealthPotNum / 3);
+                MaskHPot.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, originalSizeH / 2);
+            }
+            else
+            {
+                MaskHPot.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, originalSizeH * HealthPotNum / 3);
+                MaskHPot.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, originalSizeH);
+            }
+            if (ManaPotNum <= 3)
+            {
+                MaskMPot.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, originalSizeM * ManaPotNum / 3);
+                MaskMPot.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, originalSizeM / 2);
+            }
+            else
+            {
+                MaskMPot.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, originalSizeM * ManaPotNum / 3);
+                MaskMPot.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, originalSizeM);
+            }
+        }
     }
 }
