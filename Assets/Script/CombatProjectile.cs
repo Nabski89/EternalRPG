@@ -7,18 +7,14 @@ public class CombatProjectile : MonoBehaviour
     //shoot forward
     //base attributes off the attacker and some other stuff
     //call the change health script
-    public float damageValue = 2;
+    public float damageValue = 20;
     public float debuffValue = .2f / 30f;
     public float direction = -1f;
-    // Start is called before the first frame update
     void Awake()
     {
-
+        Debug.Log("An Enemy Attack Has Fired");
         Destroy(gameObject, 5);
 
-        Vector2 position = transform.position;
-        position.x = position.x + 5f * direction;
-        transform.position = position;
 
         go();
     }
@@ -32,11 +28,11 @@ public class CombatProjectile : MonoBehaviour
     {
         EnemyCombatController CombatController = GetComponentInParent<EnemyCombatController>();
 
+        //still need to apply a uniform speed modifier on this with CombatController.VelocityTarget
+        Vector2 position = transform.position;
+        rb.velocity = (CombatController.VecTarget - transform.position) / 2;
 
-//still need to apply a uniform speed modifier on this with CombatController.VelocityTarget
-        rb.velocity = CombatController.VecTarget - transform.position;
-
-        Debug.Log(CombatController.VecTarget);
+        Debug.Log("Projectile Target Location At" + CombatController.VecTarget);
 
     }
 
@@ -58,19 +54,19 @@ public class CombatProjectile : MonoBehaviour
     // Update is called once per frame
     public void OnTriggerEnter2D(Collider2D other)
     {
-        KoboldController controller = other.GetComponent<KoboldController>();
-
-        if (controller != null)
+        KoboldController Kcontroller = other.GetComponent<KoboldController>();
+        if (Kcontroller != null)
         {
-            controller.ChangeHealth(-3);
+            Kcontroller.ChangeHealth(-20);
+            Debug.Log("An Enemy Attack Has Hit A Kobold");
             Destroy(gameObject);
-            Debug.Log("It's an attack!");
         }
     }
     public void Blocked(float shieldValue)
     {
         if (damageValue <= 0)
+        {
             Destroy(gameObject);
+        }
     }
-
 }

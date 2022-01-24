@@ -35,7 +35,7 @@ public class EnemyController : MonoBehaviour
 
         if (controller != null)
         {
-            Debug.Log("Collision with line");
+            Debug.Log("An Enemy has engaged in combat");
             //this makes it only move towards PLAYERS not other enemies
 
             //           Vector3 linePos = controller.transform.position;
@@ -79,7 +79,8 @@ public class EnemyController : MonoBehaviour
             // the math bit decides if it goes right or left
 
             Vector2 position = transform.position;
-            position.x = position.x + 1f * Time.deltaTime * Mathf.Clamp(targetX - position.x, -1, 1);
+            //they aim to go 6 units to the right of the enemy
+            position.x = position.x + 1f * Time.deltaTime * Mathf.Clamp(targetX + 6 - position.x, -1, 1);
             position.y = position.y + 1f * Time.deltaTime * Mathf.Clamp(targetY - position.y, -1, 1);
             transform.position = position;
 
@@ -91,7 +92,7 @@ public class EnemyController : MonoBehaviour
             //Multiply everything by time delta I guess because it's updated per frame for some janky reason
 
             //only regen when in combat
-            updateLife();
+            updateLife(.1f/30);
         }
         else
         {
@@ -108,15 +109,22 @@ public class EnemyController : MonoBehaviour
             rb.velocity = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0);
         }
     }
-    void updateLife()
+    public void updateLife(float damLif)
     {
 
         Mana = Mathf.Clamp(Mana + ManaRegen, 0, ManaMax);
+
+        Health -= damLif;
 
         // set some UI bars
         if (Health <= 0)
         {
             Destroy(gameObject, 5);
         }
+    }
+
+    public void ChangeHealth(float dam)
+    {
+        updateLife(dam);
     }
 }
