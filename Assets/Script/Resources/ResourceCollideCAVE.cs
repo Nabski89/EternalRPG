@@ -108,7 +108,7 @@ public class ResourceCollideCAVE : MonoBehaviour
                 Debug.Log("GAIN 1 RESOURCE");
 
                 //level up the skill, probably shouldn't be only on completion but it's kinda hilarious to have two people working and only one levels up randomly.
-                controllerSkill.GainSkill(SkillType);
+                controllerSkill.GainSkill();
                 Degrade += 1;
                 if (Degrade > Uses)
                 {

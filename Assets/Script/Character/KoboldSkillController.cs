@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class KoboldSkillController : MonoBehaviour
 {
-    public int ValueToRead = 3;
     public float SkillPoints = 3;
+    float SkillProgress = 0;
 
     //for use to update a progress bar when performing an action
     public GameObject ProgressBar;
@@ -16,23 +16,15 @@ public class KoboldSkillController : MonoBehaviour
 
     public Dictionary<Skill, float> SkillDic = new Dictionary<Skill, float>();
     public Dictionary<Skill, string> SkillNameDic = new Dictionary<Skill, string>();
-    public Dictionary<Skill, float> SkillExpDic = new Dictionary<Skill, float>();
     public Dictionary<Skill, float> SkillMaxDic = new Dictionary<Skill, float>();
 
     public KoboldController TargetController;
     void Awake()
     {
-
-
         assignDic(Skill.G1, Skill.G2, Skill.G3, Skill.G4, Skill.G5);
         assignDic(Skill.P1, Skill.P2, Skill.P3, Skill.P4, Skill.P5);
         assignDic(Skill.M1, Skill.M2, Skill.M3, Skill.M4, Skill.M5);
         assignDic(Skill.C1, Skill.C2, Skill.C3, Skill.C4, Skill.C5);
-
-        assignExpDic(Skill.G1, Skill.G2, Skill.G3, Skill.G4, Skill.G5);
-        assignExpDic(Skill.P1, Skill.P2, Skill.P3, Skill.P4, Skill.P5);
-        assignExpDic(Skill.M1, Skill.M2, Skill.M3, Skill.M4, Skill.M5);
-        assignExpDic(Skill.C1, Skill.C2, Skill.C3, Skill.C4, Skill.C5);
 
         assignMaxDic(Skill.G1, Skill.G2, Skill.G3, Skill.G4, Skill.G5);
         assignMaxDic(Skill.P1, Skill.P2, Skill.P3, Skill.P4, Skill.P5);
@@ -74,16 +66,6 @@ public class KoboldSkillController : MonoBehaviour
         SkillDic[S5] = 0;
     }
 
-    void assignExpDic(Skill S1, Skill S2, Skill S3, Skill S4, Skill S5)
-    {
-        SkillExpDic[S1] = 0;
-        SkillExpDic[S2] = 0;
-        SkillExpDic[S3] = 0;
-        SkillExpDic[S4] = 0;
-        SkillExpDic[S5] = 0;
-    }
-
-
     void assignMaxDic(Skill S1, Skill S2, Skill S3, Skill S4, Skill S5)
     {
         SkillMaxDic[S1] = 0;
@@ -117,28 +99,18 @@ public class KoboldSkillController : MonoBehaviour
         }
     }
 
-    public void GainSkill(Skill Skill)
+    public void GainSkill()
     {
-        Debug.Log("GAINSKILL");
-        Debug.Log(SkillDic[Skill]);
-        Debug.Log(SkillMaxDic[Skill]);
-
-        if (SkillDic[Skill] < SkillMaxDic[Skill])
+        SkillProgress += 1 / 30;
+        //check if we have enough XP to level up, this formula will 100% need to be revisited
+        if (SkillProgress > 30)
         {
-            SkillExpDic[Skill] += 1;
-
-            //check if we have enough XP to level up, this formula will 100% need to be revisited
-            if (SkillExpDic[Skill] > SkillDic[Skill])
-            {
-                SkillExpDic[Skill] = 0;
-                SkillDic[Skill] += 1;
-                SkillPoints += 0.1f;
-                SkillPointUpdate();
-            }
-
-            SkillUpdate();
+            SkillProgress = 0;
+            SkillPoints += 1;
+            SkillPointUpdate();
         }
     }
+
     public void ResetSkills(int PlayerNumber)
     {
         if (PlayerNumber == TargetController.CharacterNumber)
@@ -147,12 +119,6 @@ public class KoboldSkillController : MonoBehaviour
             assignDic(Skill.P1, Skill.P2, Skill.P3, Skill.P4, Skill.P5);
             assignDic(Skill.M1, Skill.M2, Skill.M3, Skill.M4, Skill.M5);
             assignDic(Skill.C1, Skill.C2, Skill.C3, Skill.C4, Skill.C5);
-
-
-            assignExpDic(Skill.G1, Skill.G2, Skill.G3, Skill.G4, Skill.G5);
-            assignExpDic(Skill.P1, Skill.P2, Skill.P3, Skill.P4, Skill.P5);
-            assignExpDic(Skill.M1, Skill.M2, Skill.M3, Skill.M4, Skill.M5);
-            assignExpDic(Skill.C1, Skill.C2, Skill.C3, Skill.C4, Skill.C5);
 
             assignDic(Skill.G1, Skill.G2, Skill.G3, Skill.G4, Skill.G5);
             assignMaxDic(Skill.P1, Skill.P2, Skill.P3, Skill.P4, Skill.P5);
@@ -178,11 +144,12 @@ public class KoboldSkillController : MonoBehaviour
 
     public void SkillPointUse(Skill Skill)
     {
-        if(SkillPoints >= 1){
-        SkillPoints -= 1;
-        SkillMaxDic[Skill] += 5;
-        SkillPointUpdate();
-        SkillUpdate();
+        if (SkillPoints >= 1)
+        {
+            SkillPoints -= 1;
+            SkillMaxDic[Skill] += 5;
+            SkillPointUpdate();
+            SkillUpdate();
         }
     }
 }

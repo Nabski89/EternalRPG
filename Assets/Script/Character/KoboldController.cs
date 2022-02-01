@@ -226,10 +226,23 @@ public class KoboldController : MonoBehaviour
 
     public float MouseDistance = 50f;
     // Update is called once per frame
+
+
+public bool Selected = false;
+    void OnMouseDown()
+    {
+        foreach (var koboldC in GameObject.FindObjectsOfType<KoboldController>())
+        {
+            koboldC.Selected = false;
+        }
+        Selected = true;
+    }
     void Update()
     {
-        if (CharacterNumber == ActiveCharacterController.CurrentCharacter)
+        if (Selected == true)
         {
+
+
             if (Input.GetMouseButtonDown(0))
             {
                 //check to make sure we didn't click on the UI

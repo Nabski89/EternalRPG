@@ -13,13 +13,10 @@ public class ResourceCollide : MonoBehaviour
 
     //read in each stat, skill will need to turn into some kind of enum list most likely
     //not public because they are basically ready only
-    float sanguineValue;
-    float soulValue;
-    float skillValue;
-    //the mod that goes along with each stat
-    public float sanguineMod = 0.05f; //levels range from 1 to 20? so max level would double original speed
-    public float soulMod = 0.05f;
-    public float skillMod = 0.2f; //common max level is 5, which would double the speed
+    public int GroupBool = 0;
+    public int PotionBool = 0;
+    public int MagicBool = 0;
+    public int CraftBool = 0;
 
     public ResourceEnum.Resource ResourceType;
     public KoboldSkillController.Skill SkillType;
@@ -62,9 +59,6 @@ public class ResourceCollide : MonoBehaviour
             controller.targetX = position.x;
             controller.targetY = position.y;
 
-            sanguineValue = controller.sanguine;
-            soulValue = controller.soul;
-
             controller.ProgressBar.SetActive(true);
             controller.ProgressIdle = 0;
             //            skillValue = controller.WHATEVER THE ENUM SKILL IS DEFINED AS
@@ -79,16 +73,18 @@ public class ResourceCollide : MonoBehaviour
 
         if (controller != null && controllerSkill != null)
         {
-            //        controller.SKILLTrigger(1); //this might be neat later?
-
             ResourceProgress =
             ResourceProgress
             + 1
-            + sanguineValue * sanguineMod
-            + soulValue * soulMod
+            + .06f * GroupBool * controllerSkill.SkillDic[KoboldSkillController.Skill.G1]
+            + .06f * PotionBool * controllerSkill.SkillDic[KoboldSkillController.Skill.P1]
+                        + .06f * MagicBool * controllerSkill.SkillDic[KoboldSkillController.Skill.M1]
+                                    + .06f * CraftBool * controllerSkill.SkillDic[KoboldSkillController.Skill.C1]
             ;
 
             controller.ProgressBarUpdate(ResourceProgress / ResourceProgressReqd);
+
+            controllerSkill.GainSkill();
 
             if (ResourceProgress > ResourceProgressReqd)
             {
@@ -112,7 +108,7 @@ public class ResourceCollide : MonoBehaviour
                     {
                         ResourceEnum.ResourceDic[ResourceType2] = Mathf.Clamp(ResourceEnum.ResourceDic[ResourceType2] + 1, 0, ResourceEnum.ResourceMaxDic[ResourceType2]);
                     }
-                    controllerSkill.GainSkill(SkillType2);
+
                 }
                 else
                 {
@@ -130,7 +126,6 @@ public class ResourceCollide : MonoBehaviour
                     {
                         ResourceEnum.ResourceDic[ResourceType] = Mathf.Clamp(ResourceEnum.ResourceDic[ResourceType] + 1, 0, ResourceEnum.ResourceMaxDic[ResourceType]);
                     }
-                    controllerSkill.GainSkill(SkillType);
                 }
 
                 //resource change updates our resource trackers

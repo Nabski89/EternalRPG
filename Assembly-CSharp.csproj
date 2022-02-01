@@ -51,6 +51,7 @@
      <Compile Include="Assets\Script\Build\BuildButton.cs" />
      <Compile Include="Assets\Script\UIPotion.cs" />
      <Compile Include="Assets\Script\EGG.cs" />
+     <Compile Include="Assets\Script\Dungeon\RoomBase.cs" />
      <Compile Include="Assets\Script\Resources\ResourceTracker.cs" />
      <Compile Include="Assets\Script\UIMana.cs" />
      <Compile Include="Assets\Script\Character\KoboldDNA.cs" />
@@ -66,8 +67,10 @@
      <Compile Include="Assets\Script\ButtonSkillPoints.cs" />
      <Compile Include="Assets\Script\UIResources.cs" />
      <Compile Include="Assets\Script\Character\KoboldController.cs" />
+     <Compile Include="Assets\Script\Character\UIElementClamp.cs" />
      <Compile Include="Assets\Script\EnemyUIBarController.cs" />
      <Compile Include="Assets\Script\ActiveCharacterController.cs" />
+     <Compile Include="Assets\Script\Character\KCombatProjectile.cs" />
      <Compile Include="Assets\Script\UIMinimizerButton.cs" />
      <Compile Include="Assets\Script\Build\UIBuildDescription.cs" />
      <Compile Include="Assets\Script\Character\KoboldBodyController.cs" />
@@ -78,6 +81,7 @@
      <Compile Include="Assets\Script\UIInfoBox.cs" />
      <Compile Include="Assets\Script\Build\BuildOnBuild.cs" />
      <Compile Include="Assets\Script\projectilePrefab.cs" />
+     <Compile Include="Assets\Script\EnemyHitbox.cs" />
      <Compile Include="Assets\Script\EquipCollide.cs" />
      <Compile Include="Assets\Script\Build\BuildShopButtons.cs" />
      <Compile Include="Assets\Script\Character\KoboldCombatController.cs" />
@@ -95,8 +99,11 @@
      <Compile Include="Assets\Script\Build\BuildDestroy.cs" />
      <Compile Include="Assets\Script\Resources\ResourceCollide.cs" />
      <Compile Include="Assets\Script\UIHealth.cs" />
+     <Compile Include="Assets\Script\Dungeon\RoomOffshoot.cs" />
      <Compile Include="Assets\Script\Character\KoboldSkillController.cs" />
+     <Compile Include="Assets\Script\Character\KoboldCombatProjectile.cs" />
      <Compile Include="Assets\Script\CombatShield.cs" />
+     <Compile Include="Assets\Script\Dungeon\DungeonDarkness.cs" />
      <Compile Include="Assets\Script\VOID.cs" />
      <Compile Include="Assets\Script\Build\BuildSpace.cs" />
  <Reference Include="UnityEngine">
