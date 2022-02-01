@@ -4,22 +4,22 @@ using UnityEngine;
 
 public class ResouceCrafting : MonoBehaviour
 {
+    public GameObject CraftCustomizeButton;
+    public GameObject CraftType;
     public int CraftProgress = 0;
     public int CraftProgressReqd = 300; //we may want to do something to set this based on the value of the equipment, that would be cool
 
     public KoboldEquipment.Tools ToolType;
 
     public ResourceEnum.Resource ResourceMake1;
-    public ResourceEnum.Resource ResourceCost1;
+    public ResourceEnum.Resource OreCost;
+    public ResourceEnum.Resource PlantCost;
+    public ResourceEnum.Resource MagicCost;
+
     public KoboldSkillController.Skill SkillType1;
-    public ResourceEnum.Resource ResourceMake2;
-    public ResourceEnum.Resource ResourceCost2;
     public KoboldSkillController.Skill SkillType2;
-    public ResourceEnum.Resource ResourceMake3;
-    public ResourceEnum.Resource ResourceCost3;
-
-
     public KoboldSkillController.Skill SkillType3;
+        
     string SkillName = "ERROR";
 
 
@@ -28,6 +28,7 @@ public class ResouceCrafting : MonoBehaviour
     {
         //
         instance = this;
+        Instantiate(CraftCustomizeButton);
     }
 
     //when kobold enters, check it's equipment to decide what we are going to craft, maybe include a lock out type trigger titled "CraftingInProgress" so that we can't cheat it
@@ -65,63 +66,24 @@ public class ResouceCrafting : MonoBehaviour
 
         if (controller != null && controllerSkill != null)
         {
-            //        controller.SKILLTrigger(1); //this might be neat later?
 
-            CraftProgress =
-            CraftProgress
-            + 1;
-
-            controller.ProgressBarUpdate(CraftProgress / CraftProgressReqd);
-
-            if (CraftProgress > CraftProgressReqd)
+            //        if (controller != null && controllerSkill != null) check if they are skilled enough to work on this
             {
-                Debug.Log("You got no tool");
-                CraftProgress = 0;
-                if (Mathf.Floor(EquipmentController.ToolDic[ToolType]) == 0)
-                {
-                    //if we have no tool we won't craft it but we can train a skill?
-                    Debug.Log("You got no tool");
-                }
-                if (Mathf.Floor(EquipmentController.ToolDic[ToolType]) == 1
-                    && ResourceEnum.ResourceDic[ResourceCost1] >= 4
-                    && controller.Mana > (20 + (EquipmentController.ToolDic[ToolType]) - Mathf.Floor(EquipmentController.ToolDic[ToolType]) * 10)
-                    )
+                CraftProgress +=
+                //mods here
+                +1;
 
-                {
+                // gain skill
+                controllerSkill.GainSkill();
 
-                    ResourceEnum.ResourceDic[ResourceMake1] = Mathf.Clamp(ResourceEnum.ResourceDic[ResourceMake1] - 4, 0, ResourceEnum.ResourceMaxDic[ResourceMake1]);
-                    controller.SpendMana(20 + ((EquipmentController.ToolDic[ToolType]) - Mathf.Floor(EquipmentController.ToolDic[ToolType]) * 10));
-                    ResourceEnum.ResourceDic[ResourceMake1] = Mathf.Clamp(ResourceEnum.ResourceDic[ResourceMake1] + 1, 0, ResourceEnum.ResourceMaxDic[ResourceMake1]);
-                    controllerSkill.GainSkill(SkillType1);
-                    Debug.Log("We Made Something");
-                }
-                if (Mathf.Floor(EquipmentController.ToolDic[ToolType]) == 1
-                    && ResourceEnum.ResourceDic[ResourceCost2] >= 3
-                    && controller.Mana > (30 + ((EquipmentController.ToolDic[ToolType]) - Mathf.Floor(EquipmentController.ToolDic[ToolType]) * 10))
-                    )
-                {
-                    ResourceEnum.ResourceDic[ResourceMake2] = Mathf.Clamp(ResourceEnum.ResourceDic[ResourceMake2] - 3, 0, ResourceEnum.ResourceMaxDic[ResourceMake2]);
-                    controller.SpendMana(30 + ((EquipmentController.ToolDic[ToolType]) - Mathf.Floor(EquipmentController.ToolDic[ToolType]) * 10));
-                    ResourceEnum.ResourceDic[ResourceMake2] = Mathf.Clamp(ResourceEnum.ResourceDic[ResourceMake2] + 1, 0, ResourceEnum.ResourceMaxDic[ResourceMake2]);
-                    controllerSkill.GainSkill(SkillType2);
-                    CraftProgress = 0;
-                }
-                if (Mathf.Floor(EquipmentController.ToolDic[ToolType]) == 1
-                    && ResourceEnum.ResourceDic[ResourceCost3] >= 2
-                    && controller.Mana > (50 + ((EquipmentController.ToolDic[ToolType]) - Mathf.Floor(EquipmentController.ToolDic[ToolType]) * 10))
-                    )
-                {
-                    ResourceEnum.ResourceDic[ResourceMake3] = Mathf.Clamp(ResourceEnum.ResourceDic[ResourceMake3] - 2, 0, ResourceEnum.ResourceMaxDic[ResourceMake3]);
-                    controller.SpendMana(50 + ((EquipmentController.ToolDic[ToolType]) - Mathf.Floor(EquipmentController.ToolDic[ToolType]) * 10));
-                    ResourceEnum.ResourceDic[ResourceMake3] = Mathf.Clamp(ResourceEnum.ResourceDic[ResourceMake3] + 1, 0, ResourceEnum.ResourceMaxDic[ResourceMake3]);
-                    controllerSkill.GainSkill(SkillType3);
-                    CraftProgress = 0;
-                }
-                //either instantiate the thing we need
-                //ORRRRR
-                //create the equipment
+                //progress bar
+                controller.ProgressBarUpdate(CraftProgress / CraftProgressReqd);
 
-                //then give them the skill update they earned
+                //if we are done create the object
+                if (CraftProgress > CraftProgressReqd)
+                {
+                    Instantiate(CraftType);
+                }
 
                 //resource change updates our resource trackers
                 ResourceEnum.ResourceChange();
@@ -155,3 +117,49 @@ public class ResouceCrafting : MonoBehaviour
         MouseOverTiming = 0;
     }
 }
+
+
+
+/* This was pulled from the crafting thing when I thought I cared about skills more
+{
+    Debug.Log("You got no tool");
+    CraftProgress = 0;
+    if (Mathf.Floor(EquipmentController.ToolDic[ToolType]) == 0)
+    {
+        //if we have no tool we won't craft it but we can train a skill?
+        Debug.Log("You got no tool");
+    }
+    if (Mathf.Floor(EquipmentController.ToolDic[ToolType]) == 1
+        && ResourceEnum.ResourceDic[ResourceCost1] >= 4
+        && controller.Mana > (20 + (EquipmentController.ToolDic[ToolType]) - Mathf.Floor(EquipmentController.ToolDic[ToolType]) * 10)
+        )
+    {
+        ResourceEnum.ResourceDic[ResourceMake1] = Mathf.Clamp(ResourceEnum.ResourceDic[ResourceMake1] - 4, 0, ResourceEnum.ResourceMaxDic[ResourceMake1]);
+        controller.SpendMana(20 + ((EquipmentController.ToolDic[ToolType]) - Mathf.Floor(EquipmentController.ToolDic[ToolType]) * 10));
+        ResourceEnum.ResourceDic[ResourceMake1] = Mathf.Clamp(ResourceEnum.ResourceDic[ResourceMake1] + 1, 0, ResourceEnum.ResourceMaxDic[ResourceMake1]);
+        controllerSkill.GainSkill();
+        Debug.Log("We Made Something");
+    }
+    if (Mathf.Floor(EquipmentController.ToolDic[ToolType]) == 1
+        && ResourceEnum.ResourceDic[ResourceCost2] >= 3
+        && controller.Mana > (30 + ((EquipmentController.ToolDic[ToolType]) - Mathf.Floor(EquipmentController.ToolDic[ToolType]) * 10))
+        )
+    {
+        ResourceEnum.ResourceDic[ResourceMake2] = Mathf.Clamp(ResourceEnum.ResourceDic[ResourceMake2] - 3, 0, ResourceEnum.ResourceMaxDic[ResourceMake2]);
+        controller.SpendMana(30 + ((EquipmentController.ToolDic[ToolType]) - Mathf.Floor(EquipmentController.ToolDic[ToolType]) * 10));
+        ResourceEnum.ResourceDic[ResourceMake2] = Mathf.Clamp(ResourceEnum.ResourceDic[ResourceMake2] + 1, 0, ResourceEnum.ResourceMaxDic[ResourceMake2]);
+        controllerSkill.GainSkill();
+        CraftProgress = 0;
+    }
+    if (Mathf.Floor(EquipmentController.ToolDic[ToolType]) == 1
+        && ResourceEnum.ResourceDic[ResourceCost3] >= 2
+        && controller.Mana > (50 + ((EquipmentController.ToolDic[ToolType]) - Mathf.Floor(EquipmentController.ToolDic[ToolType]) * 10))
+        )
+    {
+        ResourceEnum.ResourceDic[ResourceMake3] = Mathf.Clamp(ResourceEnum.ResourceDic[ResourceMake3] - 2, 0, ResourceEnum.ResourceMaxDic[ResourceMake3]);
+        controller.SpendMana(50 + ((EquipmentController.ToolDic[ToolType]) - Mathf.Floor(EquipmentController.ToolDic[ToolType]) * 10));
+        ResourceEnum.ResourceDic[ResourceMake3] = Mathf.Clamp(ResourceEnum.ResourceDic[ResourceMake3] + 1, 0, ResourceEnum.ResourceMaxDic[ResourceMake3]);
+        controllerSkill.GainSkill();
+        CraftProgress = 0;
+    }
+*/
