@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class RoomBase : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public bool Room = true;
+
+    void awake()
     {
-        
+
     }
 
-    // Update is called once per frame
-    void Update()
+    void OnTriggerEnter2D(Collider2D other)
     {
-        
+        RoomOffshoot RoomHit = other.GetComponent<RoomOffshoot>();
+
+        if (RoomHit != null)
+        {
+            Debug.Log("There should be a doorway");
+            Destroy(RoomHit);
+        }
     }
 }
