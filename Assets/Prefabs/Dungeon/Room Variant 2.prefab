@@ -64,6 +64,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2023822482343039500, guid: 0c6ac87e5f9095944b9642d6fa3f4f4e, type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 3617927503584619661, guid: 0c6ac87e5f9095944b9642d6fa3f4f4e, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -108,6 +112,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6250422590882434418, guid: 0c6ac87e5f9095944b9642d6fa3f4f4e, type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 8888524141657270426, guid: 0c6ac87e5f9095944b9642d6fa3f4f4e, type: 3}
       propertyPath: m_Name
       value: Room Variant 2
@@ -129,6 +137,18 @@ PrefabInstance:
     - target: {fileID: 180335841752786243, guid: 168b286dfb6283c468609f34dcecd9a8, type: 3}
       propertyPath: m_Name
       value: Wall Variant (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1224304061647900270, guid: 168b286dfb6283c468609f34dcecd9a8, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1224304061647900270, guid: 168b286dfb6283c468609f34dcecd9a8, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1224304061647900270, guid: 168b286dfb6283c468609f34dcecd9a8, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6192736854767623675, guid: 168b286dfb6283c468609f34dcecd9a8, type: 3}
       propertyPath: m_RootOrder
@@ -186,6 +206,18 @@ PrefabInstance:
     - target: {fileID: 180335841752786243, guid: 168b286dfb6283c468609f34dcecd9a8, type: 3}
       propertyPath: m_Name
       value: Wall Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 1224304061647900270, guid: 168b286dfb6283c468609f34dcecd9a8, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1224304061647900270, guid: 168b286dfb6283c468609f34dcecd9a8, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1224304061647900270, guid: 168b286dfb6283c468609f34dcecd9a8, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6192736854767623675, guid: 168b286dfb6283c468609f34dcecd9a8, type: 3}
       propertyPath: m_RootOrder

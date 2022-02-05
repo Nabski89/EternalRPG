@@ -4,15 +4,28 @@ using UnityEngine;
 
 public class RoomOffshoot : MonoBehaviour
 {
-    // Start is called before the first frame update
+
+
+    public GameObject DOORKILLER;
     void Start()
     {
-        
+        Destroy(gameObject, 30);
     }
-
-    // Update is called once per frame
-    void Update()
+    void OnTriggerEnter2D(Collider2D other)
     {
-        
+        RoomBase RoomHit = other.GetComponent<RoomBase>();
+
+        if (RoomHit != null)
+        {
+
+            Debug.Log("There should be a doorway");
+            Destroy(gameObject);
+            Debug.Log("Why am I not dead?");
+        }
+    }
+    public void DoorKill()
+    {
+        Instantiate(DOORKILLER, new Vector3((transform.position.x + transform.parent.position.x) / 2, (transform.position.y + transform.parent.position.y) / 2, 0), Quaternion.identity, transform);
+
     }
 }
